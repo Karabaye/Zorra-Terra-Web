@@ -21,7 +21,7 @@ const Header = () => {
       <nav
         className={`flex items-center justify-center gap-[200px] px-8 py-[30px] text-sm transition-colors duration-300 ${
           scrolled
-            ? "fixed top-0 left-0 z-50 w-full bg-[#386565]"
+            ? "fixed top-0 left-0 z-50 w-full bg-[#386565]/99"
             : "absolute top-0 left-0 w-full bg-transparent"
         }`}
       >
