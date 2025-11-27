@@ -1,0 +1,125 @@
+import React from "react";
+
+const services = [
+  {
+    title: "Wildlife Safaris",
+    summary: "Tailored safaris across Rwanda’s national parks with expert trackers and naturalists.",
+    bullets: [
+      "Game drives in Akagera National Park",
+      "Boat trips on wildlife-rich lakes",
+      "End-to-end trip planning and logistics",
+    ],
+  },
+  {
+    title: "Gorilla Trekking",
+    summary: "Seamless Volcanoes National Park expeditions that handle permits, transport, and guided tracking.",
+    bullets: [
+      "Permit procurement & briefing support",
+      "Private transfers & lodge coordination",
+      "Experienced trekking guides",
+    ],
+  },
+  {
+    title: "Chimpanzee Tracking",
+    summary: "Immersive Nyungwe adventures that spotlight Rwanda’s playful primate communities.",
+    bullets: [
+      "Guided forest treks",
+      "Naturalist storytelling",
+      "Close yet respectful primate encounters",
+    ],
+  },
+  {
+    title: "Hiking & Outdoor Adventures",
+    summary: "Adrenaline-filled hikes and exploratory outings for travelers who crave movement.",
+    bullets: [
+      "Volcano and forest hiking circuits",
+      "Cave exploration, canopy walks, ziplines",
+      "Camping, scenic viewpoints, trail scouting",
+    ],
+  },
+  {
+    title: "Cultural & Community Experiences",
+    summary: "Deep connections with Rwanda’s people, history, and creative collectives.",
+    bullets: [
+      "Museum visits & Kigali by day/night",
+      "Traditional cooking, markets, artisan workshops",
+      "Community projects and park visits",
+    ],
+  },
+  {
+    title: "Lake & Water Experiences",
+    summary: "Restful lakeside days shaped by wellness, exploration, and cultural exchange.",
+    bullets: [
+      "Island visits & kayaking",
+      "Boat rides, hot springs, fishing",
+      "Local cultural interactions on the water",
+    ],
+  },
+  {
+    title: "Honeymoon & Family Packages",
+    summary: "Custom journeys blending romance, comfort, adventure, and age-appropriate fun.",
+    bullets: [
+      "Personalized itineraries & surprise moments",
+      "Kid-friendly pacing & multi-room villa stays",
+      "Private chefs, photographers, and keepsakes",
+    ],
+  },
+  {
+    title: "Corporate, Conference & Short-Stay",
+    summary: "Meaningful mini-escapes for business travelers, teams, and retreat groups.",
+    bullets: [
+      "Tailored short tours around busy schedules",
+      "Team-building, wellness, and cultural add-ons",
+      "On-call coordinators for flights & venues",
+    ],
+  },
+];
+
+const ServicesShowcase = () => {
+  return (
+    <section className="py-20 bg-[#f7f9f5] px-6">
+      <div className="mx-auto max-w-6xl">
+        <div className="max-w-3xl mx-auto text-center space-y-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#0F9D58]">
+            Our Services
+          </p>
+          <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">
+            Ways we bring Rwanda to life
+          </h2>
+          <p className="text-lg text-slate-600 leading-relaxed">
+            Every itinerary is handcrafted—from primate tracking and outdoor adventures to cultural immersions,
+            lake escapes, milestone celebrations, and corporate retreats.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-8 md:grid-cols-2">
+          {services.map((service, index) => (
+            <div
+              key={service.title}
+              className="h-full rounded-3xl border border-[#0F9D58]/20 bg-white p-8 shadow-lg hover:-translate-y-1 hover:shadow-xl hover:shadow-[#0F9D58]/10 transition-all"
+            >
+              <div className="flex items-center justify-between gap-4">
+                <h3 className="text-2xl font-bold text-slate-900">{service.title}</h3>
+                <span className="text-sm font-semibold uppercase tracking-[0.3em] text-[#0F9D58]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <p className="mt-3 text-slate-600 leading-relaxed">{service.summary}</p>
+              <ul className="mt-5 space-y-2 text-sm text-slate-600">
+                {service.bullets.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0F9D58]" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ServicesShowcase;
+

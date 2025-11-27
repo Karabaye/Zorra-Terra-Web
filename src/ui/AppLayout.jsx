@@ -1,10 +1,10 @@
-import { Outlet } from "react-router";
+import { Outlet } from "react-router-dom";
 import Header from "./Header";
 
 const AppLayout = () => (
   <div className="">
     <Header />
-    <main>
+    <main className="pt-[120px]">
       <Outlet />
     </main>
   </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const WhatWeDo = () => {
   return (
@@ -20,10 +21,13 @@ const WhatWeDo = () => {
           reprehenderit id optio.
         </p>
 
-        <button className="inline-flex items-center justify-center bg-[#a86a3d] px-8 py-3 text-xs tracking-[0.25em] text-white uppercase transition-colors hover:bg-[#8d5833]">
+        <Link 
+          to="/about"
+          className="inline-flex items-center justify-center bg-[#a86a3d] px-8 py-3 text-xs tracking-[0.25em] text-white uppercase transition-colors hover:bg-[#8d5833]"
+        >
           More about our story
           <span className="ml-2">→</span>
-        </button>
+        </Link>
       </div>
     </section>
   );
