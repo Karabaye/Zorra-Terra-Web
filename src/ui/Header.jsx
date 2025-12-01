@@ -59,9 +59,10 @@ const Header = () => {
 
   const cleanPath = location.pathname.replace(/\/+$/, "") || "/";
   const meta = pageMeta[cleanPath] ?? pageMeta.default;
-  const overlayClass = meta.showVideo
-    ? "bg-gradient-to-b from-slate-900/80 to-slate-900/60"
-    : "bg-gradient-to-b from-emerald-900/80 to-emerald-800/60";
+  // const overlayClass = meta.showVideo
+  //   ? "bg-gradient-to-b from-slate-900/80 to-slate-900/60"
+  //   : "bg-gradient-to-b from-emerald-900/80 to-emerald-800/60";
+  const overlayClass = "bg-gradient-to-b from-emerald-900/80 to-emerald-800/60";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -93,7 +94,7 @@ const Header = () => {
           <div className="absolute inset-0 bg-slate-900" aria-hidden="true" />
           <video
             className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
-              videoReady ? "opacity-100" : "opacity-0"
+              videoReady ? "opacity-30" : "opacity-0"
             }`}
             src="/videos/hero-video.mp4"
             autoPlay
@@ -135,26 +136,7 @@ const Header = () => {
         }`}
       >
         <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-12 text-sm">
-          <div className="flex items-center gap-12">
-            <Link
-              to="/about"
-              className="font-semibold tracking-widest text-white uppercase hover:underline"
-            >
-              About Us
-            </Link>
-            <a
-              href="/giving-back"
-              className="font-semibold tracking-widest text-white uppercase hover:underline"
-            >
-              Giving Back
-            </a>
-            <a
-              href="/safaris"
-              className="font-semibold tracking-widest text-white uppercase hover:underline"
-            >
-              Travel With Us
-            </a>
-          </div>
+          {/* <div className="flex items-center gap-12"></div> */}
 
           <Link to="/" className="relative z-20">
             <img
@@ -165,6 +147,24 @@ const Header = () => {
           </Link>
 
           <div className="flex items-center gap-12">
+            <Link
+              to="/about"
+              className="font-semibold tracking-widest text-white uppercase hover:underline"
+            >
+              About Us
+            </Link>
+            {/* <a
+              href="/giving-back"
+              className="font-semibold tracking-widest text-white uppercase hover:underline"
+            >
+              Giving Back
+            </a> */}
+            <a
+              href="/safaris"
+              className="font-semibold tracking-widest text-white uppercase hover:underline"
+            >
+              Travel With Us
+            </a>
             <a
               href="/gallery"
               className="font-semibold tracking-widest text-white uppercase hover:underline"

@@ -7,6 +7,7 @@ import ServicesShowcase from "../components/ServicesShowcase";
 const Home = () => {
   return (
     <>
+      <ServicesShowcase />
       <WhatWeDo />
       <ServicesShowcase />
       <SpiritOfAfrica />
