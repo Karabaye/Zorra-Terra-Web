@@ -3,17 +3,15 @@ import React from "react";
 const SpiritOfAfrica = () => {
   return (
     <section className="bg-[#f7f7f1] px-20 py-24">
-      <div className="mx-auto flex items-center gap-20">
-        
-        <div className="flex w-[50%] justify-center">
+      <div className="mx-auto flex items-center justify-center gap-20">
+        {/* <div className="flex w-[50%] justify-center">
           <img
             src="/images/africamap.png"
             alt="Africa map with safari scene"
             className="w-full object-contain"
           />
-        </div>
+        </div> */}
 
-       
         <div className="w-[50%] text-center">
           <p className="mb-4 text-sm tracking-[0.3em] text-[#325c52] uppercase">
             Spirit of Africa
