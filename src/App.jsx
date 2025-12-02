@@ -4,6 +4,7 @@ import About from "./pages/About";
 import AppLayout from "./ui/AppLayout";
 import Stories from "./pages/Stories";
 import Gallery from "./pages/Gallery";
+import ContactPage from "./pages/ContactPage";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="about" element={<About />} />
           <Route path="stories" element={<Stories />} />
           <Route path="gallery" element={<Gallery />} />
+          <Route path="contact" element={<ContactPage />} />
         </Route>
         <Route path="*" element={<div>Not Found</div>} />
       </Routes>
