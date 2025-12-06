@@ -1,7 +1,6 @@
-@import "tailwindcss";
-
-/* Import Dancing Script for titles */
+/* Import Dancing Script for titles (must come before other @imports) */
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+@import "tailwindcss";
 
 /* Global font variables */
 :root {
