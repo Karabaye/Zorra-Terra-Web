@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, Menu, X, ChevronDown } from "lucide-react";
 import gorilla from "../assets/imgs/gorilla.png";
-import zebra from "../assets/imgs/zebra.png";
+import zebra from "../assets/imgs/Zebra.png";
 import chimpanzee from "../assets/imgs/chimpanzee.png";
 
 const Header = () => {
