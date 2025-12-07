@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import homeVideo from "../assets/video/Home-video.mp4";
-import giraffeImg from "../assets/imgs/Giraffe.png";
+const homeVideo = "/assets/video/Home-video.mp4";
+const giraffeImg = "/assets/imgs/Giraffe.png";
 import {
   Users,
   Target,

@@ -1,6 +1,6 @@
 import { Instagram, Facebook, Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
-import natureImage from '../assets/imgs/wildebeest.png';
+const natureImage = '/assets/imgs/wildebeest.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

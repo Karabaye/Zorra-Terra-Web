@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, Menu, X, ChevronDown } from "lucide-react";
-import gorilla from "../assets/imgs/gorilla.png";
-import zebra from "../assets/imgs/Zebra.png";
-import chimpanzee from "../assets/imgs/chimpanzee.png";
+const gorilla = "/assets/imgs/gorilla.png";
+const zebra = "/assets/imgs/Zebra.png";
+const chimpanzee = "/assets/imgs/chimpanzee.png";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -116,7 +116,7 @@ const Header = () => {
             </div>
 
             {/* CTA Button - Right side */}
-            <div className="hidden lg:block">
+            <div className="hidden lg:block relative lg:-right-8">
               <Link
                 to="/contact"
                 className={`px-8 py-3 text-sm font-bold tracking-widest uppercase transition-all duration-300 ${

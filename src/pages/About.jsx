@@ -15,9 +15,9 @@ import {
   Clock,
   Calendar
 } from "lucide-react";
-import gorilla from "../assets/imgs/gorilla.png";
-import zebra from "../assets/imgs/Zebra.png";
-import chimpanzee from "../assets/imgs/chimpanzee.png";
+const gorilla = "/assets/imgs/gorilla.png";
+const zebra = "/assets/imgs/Zebra.png";
+const chimpanzee = "/assets/imgs/chimpanzee.png";
 
 // FadeIn component
 const FadeInSection = ({ children, delay = 0 }) => {

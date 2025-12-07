@@ -8,28 +8,28 @@ const SpiritOfAfrica = () => {
       name: "Volcanoes National Park",
       description: "Home to the majestic mountain gorillas in the misty Virunga Mountains. Trek through rich green rainforests towering almost 15,000 feet high.",
       highlight: "Gorilla & Golden Monkey Trekking",
-      image: "/src/assets/imgs/gorilla.png",
+      image: "/assets/imgs/gorilla.png",
       icon: <Mountain className="h-5 w-5" />
     },
     {
       name: "Akagera National Park",
       description: "Savannah, woodland, and wetland plains with a dozen lakes. Home to the Big Five following successful lion and rhino reintroductions.",
       highlight: "Big Five Safari & Boat Cruises",
-      image: "/src/assets/imgs/zebra.png",
+      image: "/assets/imgs/zebra.png",
       icon: <PawPrint className="h-5 w-5" />
     },
     {
       name: "Nyungwe National Park",
       description: "One of Africa's oldest rainforests, rich in biodiversity with chimpanzees and 12 other primate species. Features a breathtaking canopy walkway.",
       highlight: "Canopy Walks & Chimpanzee Tracking",
-      image: "/src/assets/imgs/chimpanzee.png",
+      image: "/assets/imgs/chimpanzee.png",
       icon: <Map className="h-5 w-5" />
     },
     {
       name: "Gishwati Mukura National Park",
       description: "Rwanda's newest national park featuring two separate forests, home to chimpanzees and rare monkeys.",
       highlight: "Forest Hiking & Waterfall Visits",
-      image: "/src/assets/imgs/buffalo.png",
+      image: "/assets/imgs/buffalo.png",
       icon: <Map className="h-5 w-5" />
     }
   ];

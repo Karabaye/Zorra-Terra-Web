@@ -18,56 +18,55 @@ let images = {};
 let videos = {};
 
 // Helper function to find asset by filename
-const findAsset = (assets, filename) => {
-  if (!assets) return '';
+import assetMap from "../util/assetMap";
 
+const findAsset = (assets, filename) => {
   if (!filename) {
     console.warn('No filename provided to findAsset');
     return '';
   }
-  
+
   // Normalize by removing extension, lowercasing, and removing spaces/underscores
   const normalize = (name) =>
     name.replace(/\.[^/.]+$/, '').toLowerCase().replace(/[\s_]+/g, '');
 
   const cleanName = normalize(filename);
 
-  const assetKey = Object.keys(assets).find((key) => {
-    const normalizedKey = normalize(key);
-    return normalizedKey === cleanName || normalizedKey.includes(cleanName);
-  });
-  
-  if (!assetKey) {
-    console.warn(`Asset not found: ${filename}. Available assets:`, Object.keys(assets));
-    // Fallback to first available asset if present to avoid broken external URLs
-    const firstKey = Object.keys(assets)[0];
-    return firstKey ? assets[firstKey] : '';
+  // First try assetMap (public assets manifest)
+  if (assetMap[cleanName]) return assetMap[cleanName];
+
+  // Next try provided assets mapping (if any) using similar normalization
+  if (assets) {
+    const assetKey = Object.keys(assets).find((key) => {
+      const normalizedKey = normalize(key);
+      return normalizedKey === cleanName || normalizedKey.includes(cleanName);
+    });
+
+    if (assetKey) return assets[assetKey];
   }
-  
-  return assets[assetKey];
+
+  // Fallback: try common extensions with URI encoding
+  const safeName = encodeURIComponent(filename.replace(/\.[^/.]+$/, '').trim());
+  const tryExtensions = ['.png', '.jpg', '.jpeg'];
+  for (const ext of tryExtensions) {
+    const url = `/assets/imgs/${safeName}${ext}`;
+    // We can't synchronously verify the URL here; return the first plausible one.
+    // If the image 404s at runtime, the browser devtools will show which name to fix.
+    return url;
+  }
+
+  return '';
 };
 
 // Load assets when component mounts
 const loadAssets = async () => {
   try {
-    // Import all images using Vite's import.meta.glob
-    const imageFiles = import.meta.glob('/src/assets/imgs/*.{png,jpg,jpeg}', { eager: true });
-    const videoFiles = import.meta.glob('/src/assets/video/*.{mp4,mov,avi}', { eager: true });
-
-    // Create a mapping of filenames to their imported paths
-    images = Object.entries(imageFiles).reduce((acc, [path, module]) => {
-      const filename = path.split('/').pop().replace(/\.[^/.]+$/, '');
-      return { ...acc, [filename]: module.default };
-    }, {});
-
-    videos = Object.entries(videoFiles).reduce((acc, [path, module]) => {
-      const filename = path.split('/').pop().replace(/\.[^/.]+$/, '');
-      return { ...acc, [filename]: module.default };
-    }, {});
-
-    console.log('Loaded images:', Object.keys(images));
-    console.log('Loaded videos:', Object.keys(videos));
-    
+    // Assets are now served from `public/assets`. We cannot glob the public folder
+    // via `import.meta.glob`. Provide empty mappings and rely on the
+    // `findAsset` fallback to construct public URLs when needed.
+    images = {};
+    videos = {};
+    console.log('Using public/assets for images and videos');
     return { images, videos };
   } catch (error) {
     console.error('Error loading assets:', error);

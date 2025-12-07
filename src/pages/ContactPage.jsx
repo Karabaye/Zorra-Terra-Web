@@ -1,9 +1,9 @@
 import { FaWhatsapp, FaPhone, FaEnvelope, FaMapMarkerAlt, FaPaperPlane, FaClock, FaUserFriends } from "react-icons/fa";
 import { useState } from "react";
 
-// Import your existing images
-import buffaloImage from "../assets/imgs/Buffalo.png";
-import consoImage from "../assets/imgs/conso.jpg";
+// Images now served from public/assets
+const buffaloImage = "/assets/imgs/Buffalo.png";
+const consoImage = "/assets/imgs/conso.jpg";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({

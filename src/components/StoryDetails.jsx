@@ -205,9 +205,9 @@ export default function StoryDetails() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-12">
                       {[
-                        "/src/assets/imgs/gorilla.png",
-                        "/src/assets/imgs/zebra.png",
-                        "/src/assets/imgs/chimpanzee.png"
+                        "/assets/imgs/gorilla.png",
+                        "/assets/imgs/zebra.png",
+                        "/assets/imgs/chimpanzee.png"
                       ].map((img, index) => (
                         <motion.div
                           key={index}
@@ -265,8 +265,8 @@ export default function StoryDetails() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-12">
                       {[
-                        "/src/assets/imgs/Buffalo.png",
-                        "/src/assets/imgs/Giraffe.png"
+                        "/assets/imgs/Buffalo.png",
+                        "/assets/imgs/Giraffe.png"
                       ].map((img, index) => (
                         <motion.div
                           key={index}

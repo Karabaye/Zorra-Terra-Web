@@ -1,22 +1,22 @@
-// Local images
-import gorillaImg from "../assets/imgs/gorilla.png";
-import chimpImg from "../assets/imgs/chimpanzee.png";
-import monkeyImg from "../assets/imgs/Monkey.png";
-import pangolinImg from "../assets/imgs/pangolin.png";
+// Local images moved to public/assets — expose public URL constants
+const gorillaImg = "/assets/imgs/gorilla.png";
+const chimpImg = "/assets/imgs/chimpanzee.png";
+const monkeyImg = "/assets/imgs/Monkey.png";
+const pangolinImg = "/assets/imgs/pangolin.png";
 
-import lionImg from "../assets/imgs/lion.png";
-import buffaloImg from "../assets/imgs/Buffalo.png";
-import zebraImg from "../assets/imgs/Zebra.png";
-import hyenaImg from "../assets/imgs/Hyena.png";
+const lionImg = "/assets/imgs/lion.png";
+const buffaloImg = "/assets/imgs/Buffalo.png";
+const zebraImg = "/assets/imgs/Zebra.png";
+const hyenaImg = "/assets/imgs/Hyena.png";
 
-import nyungweImg from "../assets/imgs/Nyungwe 0001.jpg";
-import natureImg from "../assets/imgs/Nature .jpg";
-import hikingImg from "../assets/imgs/Hiking gallery.jpg";
+const nyungweImg = "/assets/imgs/Nyungwe 0001.jpg";
+const natureImg = "/assets/imgs/Nature .jpg";
+const hikingImg = "/assets/imgs/Hiking gallery.jpg";
 
-import kigaliImg from "../assets/imgs/Hm page may be.jpg";
-import clientImg from "../assets/imgs/client.jpg";
-import consoImg from "../assets/imgs/conso.jpg";
-import safariGirlImg from "../assets/imgs/Safari Gir.jpg";
+const kigaliImg = "/assets/imgs/Hm page may be.jpg";
+const clientImg = "/assets/imgs/client.jpg";
+const consoImg = "/assets/imgs/conso.jpg";
+const safariGirlImg = "/assets/imgs/Safari Gir.jpg";
 
 // Updated stories array with Rwanda-specific content
 export const stories = [
