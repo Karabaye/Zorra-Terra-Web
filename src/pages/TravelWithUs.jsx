@@ -1,45 +1,57 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Star, ArrowRight, MapPin, Users, Zap } from "lucide-react";
+import { 
+  Star, 
+  ArrowRight, 
+  MapPin, 
+  Users, 
+  Zap, 
+  Award,
+  Shield,
+  Heart,
+  Globe,
+  Calendar,
+  Check
+} from "lucide-react";
 
 const TravelWithUs = () => {
   const activities = [
     {
-      icon: "🥾",
+      icon: <Users className="w-6 h-6" />,
       title: "Guided Hiking",
-      description:
-        "Trek through pristine wilderness with experienced guides who know every trail and hidden gem.",
+      description: "Trek through pristine wilderness with experienced guides who know every trail and hidden gem.",
+      color: "bg-[#0a2e1d]"
     },
     {
-      icon: "📸",
+      icon: <Globe className="w-6 h-6" />,
       title: "Photography Tours",
-      description:
-        "Capture stunning wildlife and landscapes with guidance from professional photographers.",
+      description: "Capture stunning wildlife and landscapes with guidance from professional photographers.",
+      color: "bg-[#1e4d2f]"
     },
     {
-      icon: "🦁",
+      icon: <MapPin className="w-6 h-6" />,
       title: "Wildlife Tracking",
-      description:
-        "Learn to track and identify animals while immersed in their natural environment.",
+      description: "Learn to track and identify animals while immersed in their natural environment.",
+      color: "bg-[#0a2e1d]"
     },
     {
-      icon: "🎒",
+      icon: <Zap className="w-6 h-6" />,
       title: "Adventure Sports",
-      description:
-        "Rock climbing, kayaking, and zip-lining for the thrill-seekers among our travelers.",
+      description: "Rock climbing, kayaking, and zip-lining for the thrill-seekers among our travelers.",
+      color: "bg-[#1e4d2f]"
     },
     {
-      icon: "🍽️",
+      icon: <Award className="w-6 h-6" />,
       title: "Culinary Experiences",
-      description:
-        "Taste authentic Rwandan cuisine and learn traditional cooking methods from local chefs.",
+      description: "Taste authentic Rwandan cuisine and learn traditional cooking methods from local chefs.",
+      color: "bg-[#0a2e1d]"
     },
     {
-      icon: "🏘️",
+      icon: <Heart className="w-6 h-6" />,
       title: "Community Visits",
-      description:
-        "Connect with local communities, support artisans, and learn about Rwandan culture.",
+      description: "Connect with local communities, support artisans, and learn about Rwandan culture.",
+      color: "bg-[#1e4d2f]"
     },
   ];
 
@@ -64,82 +76,117 @@ const TravelWithUs = () => {
     },
   ];
 
+  const features = [
+    {
+      icon: <Users className="w-8 h-8" />,
+      title: "Expert Local Guides",
+      description: "Our guides are passionate Rwandans with deep knowledge of their homeland and authentic insights.",
+    },
+    {
+      icon: <Shield className="w-8 h-8" />,
+      title: "Sustainable Tourism",
+      description: "Responsible travel that benefits local communities and protects Rwanda's natural resources.",
+    },
+    {
+      icon: <MapPin className="w-8 h-8" />,
+      title: "Personalized Experiences",
+      description: "Customized journeys matching your dreams, whether adventure, relaxation, or cultural immersion.",
+    },
+    {
+      icon: <Award className="w-8 h-8" />,
+      title: "Safety & Comfort",
+      description: "Premium accommodations and rigorous safety standards with 24/7 support throughout.",
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#fdfbf7] to-[#f5f1ec] px-4 py-32 md:py-48">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="animate-float absolute -top-32 -right-32 h-72 w-72 rounded-full bg-[#f0e8db]/40 blur-2xl"></div>
-          <div className="animate-float-slow absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-[#e9dfd0]/30 blur-3xl"></div>
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="relative min-h-[90vh] flex items-center justify-center bg-[#0a2e1d] text-white overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent" />
         </div>
-
-        <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <div className="mb-4 inline-block rounded-full bg-black/5 px-4 py-2 text-sm font-semibold text-gray-700 backdrop-blur-sm">
-            ✨ Explore Rwanda Like Never Before
-          </div>
-
-          <h1 className="mb-6 text-5xl font-extrabold text-gray-900 md:text-7xl">
-            Travel With Zoravia
-          </h1>
-
-          <p className="mb-10 text-lg text-gray-700 md:text-xl">
-            Immersive journeys crafted with passion and care.
-          </p>
-
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <a
-              href="#what-we-do"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#009966] px-8 py-4 font-semibold text-white shadow-xl hover:brightness-110"
-            >
-              Explore Experiences <ArrowRight className="h-5 w-5" />
-            </a>
-
-            <a
-              href="#testimonials"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-8 py-4 font-semibold text-gray-700 shadow-sm hover:bg-gray-100"
-            >
-              See Success Stories
-            </a>
-          </div>
-
-          <div className="mt-16 grid grid-cols-3 gap-8">
-            <div className="text-center">
-              <p className="text-3xl font-bold text-[#009966]">500+</p>
-              <p className="text-gray-600">Happy Travelers</p>
+        
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto text-center space-y-8"
+          >
+            <div className="inline-flex items-center space-x-2 text-sm font-medium tracking-widest uppercase text-[#9cd4b4] mb-4">
+              <span className="h-2 w-2 rounded-full bg-current"></span>
+              <span>Travel With Zoravia</span>
             </div>
-
-            <div className="text-center">
-              <p className="text-3xl font-bold text-[#009966]">15+</p>
-              <p className="text-gray-600">Experience Types</p>
+            
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-light leading-tight tracking-tight">
+              Immersive journeys crafted
+              <span className="block mt-4 text-[#9cd4b4] font-normal">with passion and care</span>
+            </h1>
+            
+            <p className="text-xl text-white/90 leading-relaxed max-w-2xl mx-auto font-light">
+              Experience Rwanda through thoughtfully designed adventures that connect you with nature, culture, and authentic human stories.
+            </p>
+            
+            <div className="pt-8 space-y-6">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  to="#experiences"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#0a2e1d] hover:bg-[#f8f8f8] transition-all duration-300 text-sm font-medium tracking-widest uppercase group"
+                >
+                  Explore Experiences
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link
+                  to="#testimonials"
+                  className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white hover:bg-white/10 transition-all duration-300 text-sm font-medium tracking-widest uppercase"
+                >
+                  Read Stories
+                </Link>
+              </div>
+              
+              <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-12">
+                <div className="text-center">
+                  <p className="text-3xl font-light text-white mb-2">500+</p>
+                  <p className="text-sm text-white/80 uppercase tracking-widest">Happy Travelers</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-3xl font-light text-white mb-2">15+</p>
+                  <p className="text-sm text-white/80 uppercase tracking-widest">Experience Types</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-3xl font-light text-white mb-2">100%</p>
+                  <p className="text-sm text-white/80 uppercase tracking-widest">Satisfaction</p>
+                </div>
+              </div>
             </div>
-
-            <div className="text-center">
-              <p className="text-3xl font-bold text-[#009966]">100%</p>
-              <p className="text-gray-600">Satisfaction Rate</p>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* What We Do Section */}
-      <section id="what-we-do" className="relative bg-white px-4 py-24">
-        <div className="mx-auto max-w-7xl">
+      {/* What We Offer Section */}
+      <section id="experiences" className="py-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-20 text-center"
+            className="max-w-3xl mx-auto text-center mb-20"
           >
-            <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
-              What We <span className="text-emerald-600">Offer</span>
+            <div className="inline-flex items-center space-x-2 text-sm font-medium tracking-widest uppercase text-[#0a2e1d] mb-4">
+              <span className="h-2 w-2 rounded-full bg-current"></span>
+              <span>Our Offerings</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-light text-gray-900 mb-6">
+              What We <span className="text-[#0a2e1d] font-normal">Offer</span>
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-gray-600">
-              From thrilling adventures to cultural immersion, we craft
-              experiences that resonate with your soul
+            <p className="text-lg text-gray-600 font-light max-w-2xl mx-auto">
+              From thrilling adventures to cultural immersion, we craft experiences that resonate with your soul
             </p>
           </motion.div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {activities.map((activity, idx) => (
               <motion.div
                 key={idx}
@@ -147,23 +194,19 @@ const TravelWithUs = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
-                whileHover={{
-                  y: -10,
-                  shadow: "0 25px 50px rgba(0,0,0,0.15)",
-                }}
-                className="group rounded-2xl border border-gray-200 bg-white p-8 shadow-lg transition duration-300 hover:border-emerald-500/50"
+                whileHover={{ y: -5 }}
+                className="group bg-white border border-gray-200 hover:border-[#0a2e1d]/30 p-8 transition-all duration-300"
               >
-                <div className="animate-bounce-slow mb-6 inline-block rounded-xl bg-linear-to-br from-emerald-50 to-emerald-50 p-4 text-4xl transition group-hover:scale-110 group-hover:from-emerald-200 group-hover:to-emerald-100">
+                <div className={`w-14 h-14 rounded-full ${activity.color} flex items-center justify-center text-white mb-6 transition-transform group-hover:scale-110`}>
                   {activity.icon}
                 </div>
-                <h3 className="mb-3 text-2xl font-bold text-gray-900 transition group-hover:text-emerald-600">
-                  {activity.title}
-                </h3>
-                <p className="leading-relaxed text-gray-600">
+                <h3 className="text-xl font-normal text-gray-900 mb-4">{activity.title}</h3>
+                <p className="text-gray-600 leading-relaxed font-light mb-6">
                   {activity.description}
                 </p>
-                <div className="mt-6 flex items-center font-semibold text-emerald-600 opacity-0 transition group-hover:opacity-100">
-                  Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                <div className="flex items-center text-[#0a2e1d] text-sm font-medium tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity">
+                  Learn More
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </div>
               </motion.div>
             ))}
@@ -172,130 +215,92 @@ const TravelWithUs = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="bg-linear-to-b from-gray-50 to-white px-4 py-24">
-        <div className="mx-auto">
+      <section className="py-24 bg-[#fafafa]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-20 text-center"
+            className="max-w-3xl mx-auto text-center mb-20"
           >
-            <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
-              Why <span className="text-emerald-600">Choose Us</span>
+            <div className="inline-flex items-center space-x-2 text-sm font-medium tracking-widest uppercase text-[#0a2e1d] mb-4">
+              <span className="h-2 w-2 rounded-full bg-current"></span>
+              <span>Our Difference</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-light text-gray-900 mb-6">
+              Why <span className="text-[#0a2e1d] font-normal">Choose Us</span>
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-gray-600">
+            <p className="text-lg text-gray-600 font-light max-w-2xl mx-auto">
               What sets Zoravia apart from ordinary travel companies
             </p>
           </motion.div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
-            {[
-              {
-                icon: <Users className="h-6 w-6" />,
-                title: "Expert Local Guides",
-                desc: "Our guides are passionate Rwandans with deep knowledge of their homeland. Every journey is enriched by their authentic insights and personal connections to the land.",
-              },
-              {
-                icon: <Zap className="h-6 w-6" />,
-                title: "Sustainable Tourism",
-                desc: "We are committed to responsible travel that benefits local communities and protects Rwanda's natural resources. Part of every journey supports conservation and community development.",
-              },
-              {
-                icon: <MapPin className="h-6 w-6" />,
-                title: "Personalized Experiences",
-                desc: "We believe every traveler is unique. Whether you seek adventure, relaxation, cultural immersion, or wildlife encounters, we customize your journey to match your dreams.",
-              },
-              {
-                icon: <Star className="h-6 w-6" />,
-                title: "Safety & Comfort",
-                desc: "Your safety and comfort are our priorities. We work with premium accommodations, maintain rigorous safety standards, and provide 24/7 support throughout your journey.",
-              },
-            ].map((item, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {features.map((feature, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="rounded-2xl border border-gray-200 bg-white p-10 shadow-sm transition hover:border-emerald-500/50 hover:shadow-lg"
+                className="bg-white p-8 border border-gray-200 hover:border-[#0a2e1d]/30 transition-all duration-300 group"
               >
-                <div className="mb-6 inline-flex rounded-xl bg-emerald-100 p-4 text-emerald-600 transition group-hover:bg-linear-to-r group-hover:from-emerald-200 group-hover:to-emerald-100">
-                  {item.icon}
+                <div className="w-16 h-16 rounded-full bg-[#0a2e1d] flex items-center justify-center text-white mb-6 group-hover:bg-[#9cd4b4] transition-colors">
+                  {feature.icon}
                 </div>
-                <h3 className="mb-3 text-2xl font-bold text-gray-900">
-                  {item.title}
-                </h3>
-                <p className="leading-relaxed text-gray-600">{item.desc}</p>
+                <h3 className="text-xl font-normal text-gray-900 mb-4">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed font-light">{feature.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section
-        id="testimonials"
-        className="relative overflow-hidden bg-[#12b886] px-4 py-24"
-      >
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="animate-float absolute -top-20 -right-20 h-64 w-64 rounded-full bg-white/5 blur-3xl"></div>
-          <div className="animate-float-slow absolute -bottom-20 -left-20 h-80 w-80 rounded-full bg-white/5 blur-3xl"></div>
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-6xl">
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-24 bg-[#0a2e1d] text-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-20 text-center"
+            className="max-w-3xl mx-auto text-center mb-20"
           >
-            <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl">
-              What Our <span className="text-amber-200">Travelers Say</span>
+            <div className="inline-flex items-center space-x-2 text-sm font-medium tracking-widest uppercase text-[#9cd4b4] mb-4">
+              <span className="h-2 w-2 rounded-full bg-current"></span>
+              <span>Traveler Stories</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-light text-white mb-6">
+              What Our <span className="text-[#9cd4b4] font-normal">Travelers Say</span>
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-white/90">
-              Real stories from adventurers who've transformed their lives
-              through our journeys
+            <p className="text-lg text-white/90 font-light max-w-2xl mx-auto">
+              Real stories from adventurers who've transformed their lives through our journeys
             </p>
           </motion.div>
 
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {testimonials.map((testimonial, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
-                whileHover={{ y: -10, shadow: "0 25px 50px rgba(0,0,0,0.2)" }}
-                className="group rounded-2xl border border-white/20 bg-white/10 p-8 shadow-xl backdrop-blur-lg transition hover:border-yellow-300/50 hover:bg-white/15"
+                whileHover={{ y: -5 }}
+                className="bg-white/10 backdrop-blur-sm border border-white/20 p-8 hover:border-[#9cd4b4]/50 transition-all duration-300"
               >
-                <div className="mb-5 flex gap-1">
+                <div className="flex gap-1 mb-6">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ scale: 0, opacity: 0 }}
-                      whileInView={{ scale: 1, opacity: 1 }}
-                      transition={{ delay: idx * 0.1 + i * 0.05 }}
-                    >
-                      <Star
-                        key={i}
-                        className="h-5 w-5 fill-yellow-300 text-yellow-300 transition group-hover:scale-125"
-                      />
-                    </motion.div>
+                    <Star key={i} className="h-5 w-5 fill-[#9cd4b4] text-[#9cd4b4]" />
                   ))}
                 </div>
-                <p className="mb-6 text-lg leading-relaxed text-white/90">
+                <p className="text-lg leading-relaxed text-white/90 font-light mb-8 italic">
                   "{testimonial.text}"
                 </p>
                 <div className="border-t border-white/20 pt-6">
-                  <p className="text-lg font-bold text-white">
-                    {testimonial.name}
-                  </p>
-                  <p className="text-sm text-white/70">
-                    {testimonial.location}
-                  </p>
+                  <p className="text-lg font-normal text-white">{testimonial.name}</p>
+                  <p className="text-sm text-white/70">{testimonial.location}</p>
                 </div>
               </motion.div>
             ))}
@@ -303,70 +308,107 @@ const TravelWithUs = () => {
         </div>
       </section>
 
-      {/* CTA Section - Elegant */}
-      <section className="relative overflow-hidden bg-linear-to-br from-emerald-50 via-white to-sky-50 px-4 py-24">
-        {/* Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-linear-to-r from-emerald-100/40 to-sky-100/40 blur-3xl"></div>
-          <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-linear-to-r from-sky-100/30 to-emerald-100/30 blur-3xl"></div>
+      {/* Journey Steps */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto text-center mb-20"
+          >
+            <div className="inline-flex items-center space-x-2 text-sm font-medium tracking-widest uppercase text-[#0a2e1d] mb-4">
+              <span className="h-2 w-2 rounded-full bg-current"></span>
+              <span>How It Works</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-light text-gray-900 mb-6">
+              Your Journey, <span className="text-[#0a2e1d] font-normal">Step by Step</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+            {[
+              { number: "01", title: "Plan & Dream", description: "Share your vision and preferences with our travel designers." },
+              { number: "02", title: "Custom Design", description: "We create a personalized itinerary matching your unique interests." },
+              { number: "03", title: "Experience Rwanda", description: "Embark on your journey with expert guides and seamless support." },
+            ].map((step, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.2 }}
+                className="text-center"
+              >
+                <div className="w-20 h-20 rounded-full border-4 border-[#0a2e1d] flex items-center justify-center text-2xl font-light text-[#0a2e1d] mx-auto mb-6">
+                  {step.number}
+                </div>
+                <h3 className="text-xl font-normal text-gray-900 mb-4">{step.title}</h3>
+                <p className="text-gray-600 leading-relaxed font-light">{step.description}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
+      </section>
 
-        {/* Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="relative z-10 mx-auto max-w-4xl text-center"
-        >
-          {/* Title with gradient */}
-          <h2 className="mb-8 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
-            <span className="text-[#009966]">Ready for Your</span>
-            <span className="mt-2 block text-gray-800">Rwanda Adventure?</span>
-          </h2>
+      {/* CTA Section */}
+      <section className="py-24 bg-[#0a2e1d] text-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <div className="inline-flex items-center space-x-2 text-sm font-medium tracking-widest uppercase text-[#9cd4b4] mb-4">
+              <span className="h-2 w-2 rounded-full bg-current"></span>
+              <span>Begin Your Adventure</span>
+            </div>
+            
+            <h2 className="text-3xl sm:text-5xl font-light text-white mb-8">
+              Ready for Your
+              <span className="block text-[#9cd4b4] font-normal mt-4">Rwanda Adventure?</span>
+            </h2>
+            
+            <p className="text-xl text-white/90 font-light mb-12 max-w-2xl mx-auto">
+              Let us help you craft the perfect Rwanda experience. Our expert team is ready to turn your travel dreams into unforgettable memories.
+            </p>
 
-          {/* Description */}
-          <p className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-gray-600 md:text-xl">
-            Let us help you craft the perfect Rwanda experience. Our expert team
-            is ready to turn your travel dreams into unforgettable memories.
-          </p>
-
-          {/* Buttons */}
-          <div className="flex flex-col justify-center gap-6 sm:flex-row">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            >
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
-                className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#009966] px-8 py-4 font-semibold text-white shadow-lg shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-500/35"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#0a2e1d] hover:bg-[#f8f8f8] transition-all duration-300 text-sm font-medium tracking-widest uppercase group"
               >
                 Plan Your Trip
-                <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            >
               <Link
                 to="/stories"
-                className="group inline-flex items-center justify-center gap-3 rounded-full border-2 border-emerald-200 bg-white/80 px-8 py-4 font-semibold text-emerald-700 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-300 hover:bg-white hover:shadow-lg"
+                className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white hover:bg-white/10 transition-all duration-300 text-sm font-medium tracking-widest uppercase"
               >
                 Explore Stories
-                <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
-            </motion.div>
-          </div>
+            </div>
 
-          {/* Decorative element */}
-          <div className="mt-16">
-            <div className="mx-auto h-1 w-24 rounded-full bg-linear-to-r from-emerald-400/50 via-sky-400/50 to-emerald-400/50"></div>
-          </div>
-        </motion.div>
+            <div className="mt-16 pt-12 border-t border-white/20">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
+                {[
+                  { label: "Flexible Booking", icon: <Calendar className="w-5 h-5" /> },
+                  { label: "24/7 Support", icon: <Shield className="w-5 h-5" /> },
+                  { label: "Sustainable Travel", icon: <Heart className="w-5 h-5" /> },
+                  { label: "Local Expertise", icon: <Users className="w-5 h-5" /> },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center space-x-3">
+                    <div className="text-[#9cd4b4]">{item.icon}</div>
+                    <span className="text-sm font-light text-white/80">{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </section>
     </div>
   );

@@ -25,37 +25,37 @@ const Footer = () => {
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-12 md:py-16">
         {/* Navigation Section */}
         <div className="mb-12">
-          <h2 className="text-lg font-semibold text-emerald-100 mb-6 uppercase tracking-wider border-b border-emerald-700/50 pb-3">
+          <h2 className="text-lg font-bold text-white mb-6 uppercase tracking-wider border-b border-emerald-600/50 pb-3">
             Explore
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             <Link 
               to="/about" 
-              className="text-emerald-100 hover:text-white transition-all duration-300 text-sm font-medium py-2 border-b border-emerald-800 hover:border-emerald-400 text-center hover:bg-emerald-900/30 rounded-lg px-2 hover:scale-105 transform"
+              className="text-white hover:text-emerald-100 transition-all duration-300 text-sm font-medium py-2 border-b border-emerald-600 hover:border-emerald-300 text-center hover:bg-emerald-900/40 rounded-lg px-2 hover:scale-105 transform"
             >
               About Us
             </Link>
             <Link 
               to="/travel" 
-              className="text-emerald-100 hover:text-white transition-all duration-300 text-sm font-medium py-2 border-b border-emerald-800 hover:border-emerald-400 text-center hover:bg-emerald-900/30 rounded-lg px-2 hover:scale-105 transform"
+              className="text-white hover:text-emerald-100 transition-all duration-300 text-sm font-medium py-2 border-b border-emerald-600 hover:border-emerald-300 text-center hover:bg-emerald-900/40 rounded-lg px-2 hover:scale-105 transform"
             >
               Travel With Us
             </Link>
             <Link 
               to="/gallery" 
-              className="text-emerald-100 hover:text-white transition-all duration-300 text-sm font-medium py-2 border-b border-emerald-800 hover:border-emerald-400 text-center hover:bg-emerald-900/30 rounded-lg px-2 hover:scale-105 transform"
+              className="text-white hover:text-emerald-100 transition-all duration-300 text-sm font-medium py-2 border-b border-emerald-600 hover:border-emerald-300 text-center hover:bg-emerald-900/40 rounded-lg px-2 hover:scale-105 transform"
             >
               Gallery
             </Link>
             <Link 
               to="/stories" 
-              className="text-emerald-100 hover:text-white transition-all duration-300 text-sm font-medium py-2 border-b border-emerald-800 hover:border-emerald-400 text-center hover:bg-emerald-900/30 rounded-lg px-2 hover:scale-105 transform"
+              className="text-white hover:text-emerald-100 transition-all duration-300 text-sm font-medium py-2 border-b border-emerald-600 hover:border-emerald-300 text-center hover:bg-emerald-900/40 rounded-lg px-2 hover:scale-105 transform"
             >
               Stories
             </Link>
             <Link 
               to="/contact" 
-              className="text-emerald-100 hover:text-white transition-all duration-300 text-sm font-medium py-2 border-b border-emerald-800 hover:border-emerald-400 text-center hover:bg-emerald-900/30 rounded-lg px-2 hover:scale-105 transform"
+              className="text-white hover:text-emerald-100 transition-all duration-300 text-sm font-medium py-2 border-b border-emerald-600 hover:border-emerald-300 text-center hover:bg-emerald-900/40 rounded-lg px-2 hover:scale-105 transform"
             >
               Get In Touch
             </Link>
@@ -72,7 +72,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           {/* About Column */}
           <div className="bg-emerald-900/30 backdrop-blur-sm rounded-xl p-6 border border-emerald-700/30 shadow-lg shadow-emerald-900/20 hover:shadow-emerald-800/30 transition-shadow duration-300">
-            <h3 className="text-base font-semibold mb-4 text-emerald-100 uppercase tracking-wider flex items-center gap-2">
+            <h3 className="text-base font-semibold mb-4 text-white uppercase tracking-wider flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-emerald-400"></div>
               About Us
             </h3>
@@ -81,7 +81,7 @@ const Footer = () => {
                 <Link 
                   key={item} 
                   to={`/${item.toLowerCase().replace(' ', '-')}`} 
-                  className="block text-emerald-200 hover:text-white transition-all duration-200 text-sm hover:translate-x-1 hover:pl-2 border-l-2 border-transparent hover:border-emerald-400 pl-3 py-1"
+                  className="block text-white hover:text-emerald-100 transition-all duration-200 text-sm font-medium hover:translate-x-1 hover:pl-2 border-l-2 border-transparent hover:border-emerald-300 pl-3 py-1"
                 >
                   {item}
                 </Link>
@@ -91,7 +91,7 @@ const Footer = () => {
 
           {/* Contact Info Column */}
           <div className="bg-emerald-900/30 backdrop-blur-sm rounded-xl p-6 border border-emerald-700/30 shadow-lg shadow-emerald-900/20 hover:shadow-emerald-800/30 transition-shadow duration-300">
-            <h3 className="text-base font-semibold mb-4 text-emerald-100 uppercase tracking-wider flex items-center gap-2">
+            <h3 className="text-base font-semibold mb-4 text-white uppercase tracking-wider flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-emerald-400"></div>
               Contact Info
             </h3>
@@ -101,8 +101,10 @@ const Footer = () => {
                   <MapPin className="w-5 h-5 text-emerald-300" />
                 </div>
                 <div>
-                  <p className="text-sm text-emerald-200 font-medium group-hover:text-white transition-colors">Kigali, Rwanda</p>
-                  <p className="text-xs text-emerald-300/70 mt-1">Headquarters</p>
+                  <p className="text-sm text-white font-medium group-hover:text-emerald-100 transition-colors">
+                    Kigali, Rwanda
+                  </p>
+                  <p className="text-xs text-emerald-100/80 mt-1">Headquarters</p>
                 </div>
               </div>
               <div className="flex items-center space-x-3 group">
@@ -111,7 +113,7 @@ const Footer = () => {
                 </div>
                 <a 
                   href="tel:+250783482368" 
-                  className="text-sm text-emerald-200 hover:text-white transition-colors group-hover:scale-105 inline-block"
+                  className="text-sm text-white hover:text-emerald-100 transition-colors group-hover:scale-105 inline-block font-medium"
                 >
                   +250 783 482 368
                 </a>
@@ -121,11 +123,11 @@ const Footer = () => {
 
           {/* Description Column */}
           <div className="bg-emerald-900/30 backdrop-blur-sm rounded-xl p-6 border border-emerald-700/30 shadow-lg shadow-emerald-900/20 hover:shadow-emerald-800/30 transition-shadow duration-300">
-            <h3 className="text-base font-semibold mb-4 text-emerald-100 uppercase tracking-wider flex items-center gap-2">
+            <h3 className="text-base font-semibold mb-4 text-white uppercase tracking-wider flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-emerald-400"></div>
               Our Mission
             </h3>
-            <p className="text-sm text-emerald-200 leading-relaxed mb-6 italic">
+            <p className="text-sm text-white leading-relaxed mb-6 font-medium">
               "Creating unforgettable experiences in the heart of Rwanda. Join us on a journey 
               of discovery, adventure, and transformation."
             </p>
@@ -149,29 +151,29 @@ const Footer = () => {
         <div className="bg-emerald-900/20 backdrop-blur-sm rounded-xl p-6 border border-emerald-700/20">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-center md:text-left">
-              <p className="text-sm text-emerald-200 font-medium">
-                © {currentYear} Zoravia Terra Journeys
+              <p className="text-sm text-white font-medium">
+                {currentYear} Zoravia Terra Journeys
               </p>
-              <p className="text-xs text-emerald-300/70 mt-1">All rights reserved.</p>
+              <p className="text-xs text-emerald-100/80 mt-1">All rights reserved.</p>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-emerald-200">
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-white">
               <Link 
                 to="/privacy" 
-                className="hover:text-white transition-colors duration-200 hover:underline underline-offset-4"
+                className="text-white hover:text-emerald-100 transition-colors duration-200 hover:underline underline-offset-4 font-medium"
               >
                 Privacy Policy
               </Link>
               <div className="w-px h-4 bg-emerald-600/50"></div>
               <Link 
                 to="/terms" 
-                className="hover:text-white transition-colors duration-200 hover:underline underline-offset-4"
+                className="text-white hover:text-emerald-100 transition-colors duration-200 hover:underline underline-offset-4 font-medium"
               >
                 Terms of Service
               </Link>
             </div>
 
-            <div className="text-sm text-emerald-200">
+            <div className="text-sm text-white">
               Website by <span className="text-emerald-100 font-medium">Zoravia Team</span>
             </div>
           </div>
@@ -189,7 +191,7 @@ const Footer = () => {
               href={social.href} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-emerald-200 hover:text-white transition-all duration-300 p-3 rounded-full bg-emerald-900/30 border border-emerald-700/40 hover:border-emerald-400 hover:bg-emerald-800/40 hover:shadow-lg hover:shadow-emerald-500/30 hover:scale-110"
+              className="text-white hover:text-emerald-100 transition-all duration-300 p-3 rounded-full bg-emerald-900/40 border border-emerald-600/50 hover:border-emerald-300 hover:bg-emerald-800/50 hover:shadow-lg hover:shadow-emerald-500/30 hover:scale-110"
               aria-label={social.label}
             >
               <social.icon className="w-5 h-5" />
