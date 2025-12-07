@@ -1,1 +1,67 @@
 @import "tailwindcss";
+
+/* Import Dancing Script for titles */
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap");
+/* Import Dancing Script for titles (must come before other @imports) */
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap");
+
+/* Global font variables */
+:root {
+  --title-font: "Dancing Script", cursive;
+  --body-font: Georgia, "Times New Roman", Times, serif;
+  --title-color: #7c3aed; /* purple/violet */
+}
+
+/* Apply body font site-wide */
+body {
+  font-family: var(--body-font) !important;
+}
+
+/* Apply Dancing Script to all headings and title-like elements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.title,
+.site-title {
+  font-family: var(--title-font) !important;
+  color: var(--title-color) !important;
+}
+
+/* Add to your global CSS file */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
