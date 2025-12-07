@@ -295,7 +295,7 @@ const Header = () => {
               {/* Text with arrow */}
               <div className="flex flex-col items-center space-y-1 opacity-80 transition-opacity duration-300 group-hover:opacity-100">
                 <span className="text-xs tracking-widest text-white/80 uppercase">
-                  Explore
+                  Explore 
                 </span>
                 <ChevronDown className="h-4 w-4 animate-pulse text-white/70 group-hover:text-white" />
               </div>

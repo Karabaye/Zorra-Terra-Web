@@ -6,11 +6,9 @@
   --body-font: Georgia, "Times New Roman", Times, serif;
   --title-color: #7c3aed; /* purple/violet */
 }
-
-/* Apply body font site-wide */
 body {
   font-family: var(--body-font) !important;
-}
+} 
 
 /* Apply Dancing Script to all headings and title-like elements */
 h1,
