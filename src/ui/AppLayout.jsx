@@ -1,12 +1,14 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
+import Footer from "./Footer";
 
 const AppLayout = () => (
   <div className="">
     <Header />
-    <main className="pt-[120px]">
+    <main>
       <Outlet />
     </main>
+    <Footer />
   </div>
 );
 

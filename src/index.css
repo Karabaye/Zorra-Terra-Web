@@ -1,11 +1,13 @@
 @import "tailwindcss";
 
 /* Import Dancing Script for titles */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap");
+/* Import Dancing Script for titles (must come before other @imports) */
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap");
 
 /* Global font variables */
 :root {
-  --title-font: 'Dancing Script', cursive;
+  --title-font: "Dancing Script", cursive;
   --body-font: Georgia, "Times New Roman", Times, serif;
   --title-color: #7c3aed; /* purple/violet */
 }
@@ -16,7 +18,14 @@ body {
 }
 
 /* Apply Dancing Script to all headings and title-like elements */
-h1, h2, h3, h4, h5, h6, .title, .site-title {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.title,
+.site-title {
   font-family: var(--title-font) !important;
   color: var(--title-color) !important;
 }
