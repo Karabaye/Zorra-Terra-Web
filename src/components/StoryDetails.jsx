@@ -206,7 +206,7 @@ export default function StoryDetails() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-12">
                       {[
                         "/assets/imgs/gorilla.png",
-                        "/assets/imgs/zebra.png",
+                        "/assets/imgs/Zebra.png",
                         "/assets/imgs/chimpanzee.png"
                       ].map((img, index) => (
                         <motion.div

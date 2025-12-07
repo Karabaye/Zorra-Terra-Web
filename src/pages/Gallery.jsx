@@ -19,6 +19,7 @@ let videos = {};
 
 // Helper function to find asset by filename
 import assetMap from "../util/assetMap";
+import videoMap from "../util/videoMap";
 
 const findAsset = (assets, filename) => {
   if (!filename) {
@@ -32,8 +33,11 @@ const findAsset = (assets, filename) => {
 
   const cleanName = normalize(filename);
 
-  // First try assetMap (public assets manifest)
+  // First try assetMap (public images manifest)
   if (assetMap[cleanName]) return assetMap[cleanName];
+
+  // If this is a video filename, check the `videoMap` manifest
+  if (videoMap[cleanName]) return videoMap[cleanName];
 
   // Next try provided assets mapping (if any) using similar normalization
   if (assets) {

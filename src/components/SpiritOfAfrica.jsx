@@ -15,7 +15,7 @@ const SpiritOfAfrica = () => {
       name: "Akagera National Park",
       description: "Savannah, woodland, and wetland plains with a dozen lakes. Home to the Big Five following successful lion and rhino reintroductions.",
       highlight: "Big Five Safari & Boat Cruises",
-      image: "/assets/imgs/zebra.png",
+      image: "/assets/imgs/Zebra.png",
       icon: <PawPrint className="h-5 w-5" />
     },
     {
@@ -29,7 +29,7 @@ const SpiritOfAfrica = () => {
       name: "Gishwati Mukura National Park",
       description: "Rwanda's newest national park featuring two separate forests, home to chimpanzees and rare monkeys.",
       highlight: "Forest Hiking & Waterfall Visits",
-      image: "/assets/imgs/buffalo.png",
+      image: "/assets/imgs/Buffalo.png",
       icon: <Map className="h-5 w-5" />
     }
   ];
