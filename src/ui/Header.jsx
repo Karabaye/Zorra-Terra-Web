@@ -52,7 +52,7 @@ const Header = () => {
       subtitle:
         "Every itinerary blends premium service, sustainable practices, and bold experiences, so you can explore Rwanda with confidence.",
       ctaText: "Explore Safaris",
-      ctaLink: "/safaris",
+      ctaLink: "/travel-with-us",
       showVideo: false,
     },
   };
@@ -87,8 +87,91 @@ const Header = () => {
     return () => clearInterval(interval);
   }, [cleanPath]);
 
+  // Check if current page is the contact page, stories page, or story details page
+  const isContactPage = cleanPath === "/contact";
+  const isStoriesPage = cleanPath === "/stories";
+  const isStoryDetailsPage =
+    cleanPath.startsWith("/stories/") && cleanPath !== "/stories";
+
   return (
-    <header className="relative min-h-screen w-full overflow-hidden bg-slate-900 text-white">
+    <header
+      className={`relative ${isContactPage || isStoriesPage || isStoryDetailsPage ? "h-auto" : "min-h-screen"} w-full overflow-hidden bg-slate-900 text-white`}
+    >
+      {/* Navigation */}
+      <nav
+        aria-label="Primary navigation"
+        className={`fixed inset-x-0 top-0 z-40 w-full ${scrolled ? "px-4 py-3" : "px-8 py-6"} transition-all duration-300 ${
+          scrolled
+            ? "bg-emerald-600 shadow backdrop-blur"
+            : isContactPage || isStoriesPage || isStoryDetailsPage
+              ? "bg-white shadow-md"
+              : "bg-transparent"
+        }`}
+      >
+        <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-12 text-sm">
+          <Link to="/" className="relative z-20">
+            <img
+              src={scrolled ? "/images/logo.png" : "/images/logo.jpeg"}
+              alt="Zoravia Terra Journeys logo"
+              className={`${scrolled ? "h-20 w-40" : isContactPage || isStoriesPage || isStoryDetailsPage ? "h-20 w-40" : "h-20 w-20"} object-contain transition-all duration-300`}
+            />
+          </Link>
+
+          <div className="flex items-center gap-12">
+            <Link
+              to="/about"
+              className={`font-semibold tracking-widest uppercase hover:underline ${
+                scrolled || isContactPage || isStoriesPage || isStoryDetailsPage
+                  ? "text-emerald-900"
+                  : "text-white"
+              }`}
+            >
+              About Us
+            </Link>
+            <a
+              href="/travel-with-us"
+              className={`font-semibold tracking-widest uppercase hover:underline ${
+                scrolled || isContactPage || isStoriesPage || isStoryDetailsPage
+                  ? "text-emerald-900"
+                  : "text-white"
+              }`}
+            >
+              Travel With Us
+            </a>
+            <a
+              href="/gallery"
+              className={`font-semibold tracking-widest uppercase hover:underline ${
+                scrolled || isContactPage || isStoriesPage || isStoryDetailsPage
+                  ? "text-emerald-900"
+                  : "text-white"
+              }`}
+            >
+              Gallery
+            </a>
+            <a
+              href="/stories"
+              className={`font-semibold tracking-widest uppercase hover:underline ${
+                scrolled || isContactPage || isStoriesPage || isStoryDetailsPage
+                  ? "text-emerald-900"
+                  : "text-white"
+              }`}
+            >
+              The Blog
+            </a>
+            <a
+              href="/contact"
+              className={`font-semibold tracking-widest uppercase hover:underline ${
+                scrolled || isContactPage || isStoriesPage || isStoryDetailsPage
+                  ? "text-emerald-900"
+                  : "text-white"
+              }`}
+            >
+              Get In Touch
+            </a>
+          </div>
+        </div>
+      </nav>
+
       {meta.showVideo ? (
         <>
           <div className="absolute inset-0 bg-slate-900" aria-hidden="true" />
@@ -129,96 +212,40 @@ const Header = () => {
         </div>
       )}
 
-      <nav
-        aria-label="Primary navigation"
-        className={`fixed inset-x-0 top-0 z-40 w-full ${scrolled ? "px-4 py-3" : "px-8 py-6"} transition-all duration-300 ${
-          scrolled ? "bg-[#099268] shadow backdrop-blur" : "bg-transparent"
-        }`}
-      >
-        <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-12 text-sm">
-          {/* <div className="flex items-center gap-12"></div> */}
-
-          <Link to="/" className="relative z-20">
-            <img
-              src={scrolled ? "/images/logo.png" : "/images/logo.jpeg"}
-              alt="Zoravia Terra Journeys logo"
-              className={`${scrolled ? "h-40 w-40" : "h-20 w-20"} object-contain transition-all duration-300`}
-            />
-          </Link>
-
-          <div className="flex items-center gap-12">
+      {!isContactPage && !isStoriesPage && !isStoryDetailsPage && (
+        <div className="relative z-10 mx-auto mt-20 max-w-4xl px-6 py-24 text-center sm:py-32">
+          <h1 className="text-4xl leading-tight font-bold tracking-tight text-white md:text-5xl lg:text-6xl">
+            {meta.title}
+          </h1>
+          {cleanPath !== "/about" && (
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/90">
+              {meta.subtitle}
+            </p>
+          )}
+          <div className="mt-8">
             <Link
-              to="/about"
-              className="font-semibold tracking-widest text-white uppercase hover:underline"
+              to={meta.ctaLink}
+              className="inline-flex items-center rounded-full bg-emerald-600 px-8 py-3 text-sm font-medium tracking-wide text-white transition-colors duration-200 hover:bg-emerald-700"
             >
-              About Us
+              {meta.ctaText}
+              <svg
+                className="ml-2 h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
             </Link>
-            {/* <a
-              href="/giving-back"
-              className="font-semibold tracking-widest text-white uppercase hover:underline"
-            >
-              Giving Back
-            </a> */}
-            <a
-              href="/safaris"
-              className="font-semibold tracking-widest text-white uppercase hover:underline"
-            >
-              Travel With Us
-            </a>
-            <a
-              href="/gallery"
-              className="font-semibold tracking-widest text-white uppercase hover:underline"
-            >
-              Gallery
-            </a>
-            <a
-              href="/stories"
-              className="font-semibold tracking-widest text-white uppercase hover:underline"
-            >
-              The Blog
-            </a>
-            <a
-              href="/contact"
-              className="font-semibold tracking-widest text-white uppercase hover:underline"
-            >
-              Get In Touch
-            </a>
           </div>
         </div>
-      </nav>
-
-      <div className="relative z-10 mx-auto mt-20 max-w-4xl px-6 py-24 text-center sm:py-32">
-        <h1 className="text-4xl leading-tight font-bold tracking-tight text-white md:text-5xl lg:text-6xl">
-          {meta.title}
-        </h1>
-        {cleanPath !== "/about" && (
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/90">
-            {meta.subtitle}
-          </p>
-        )}
-        <div className="mt-8">
-          <Link
-            to={meta.ctaLink}
-            className="inline-flex items-center rounded-full bg-emerald-600 px-8 py-3 text-sm font-medium tracking-wide text-white transition-colors duration-200 hover:bg-emerald-700"
-          >
-            {meta.ctaText}
-            <svg
-              className="ml-2 h-4 w-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M14 5l7 7m0 0l-7 7m7-7H3"
-              />
-            </svg>
-          </Link>
-        </div>
-      </div>
+      )}
     </header>
   );
 };

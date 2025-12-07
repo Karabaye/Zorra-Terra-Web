@@ -4,7 +4,7 @@ import Header from "./Header";
 const AppLayout = () => (
   <div className="">
     <Header />
-    <main className="pt-[120px]">
+    <main className=" ">
       <Outlet />
     </main>
   </div>
