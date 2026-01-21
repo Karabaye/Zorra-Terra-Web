@@ -85,16 +85,16 @@ const services = [
 
 const ServicesShowcase = () => {
   return (
-    <section className="bg-[#f7f9f5] px-6 py-20">
+    <section className="bg-[#021732] px-6 py-20">
       <div className="mx-auto max-w-6xl">
         <div className="mx-auto max-w-3xl space-y-4 text-center">
-          <p className="text-xs font-semibold tracking-[0.4em] text-[#0F9D58] uppercase">
+          <p className="text-xs font-semibold tracking-[0.4em] text-[#064a1b] uppercase">
             Our Services
           </p>
-          <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">
+          <h2 className="text-3xl font-bold text-white md:text-4xl">
             Ways we bring Rwanda to life
           </h2>
-          <p className="text-lg leading-relaxed text-slate-600">
+          <p className="text-lg leading-relaxed text-white/80">
             Every itinerary is handcrafted—from primate tracking and outdoor
             adventures to cultural immersions, lake escapes, milestone
             celebrations, and corporate retreats.
@@ -105,23 +105,23 @@ const ServicesShowcase = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="h-full rounded-3xl border border-[#0F9D58]/20 bg-white p-8 shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-[#0F9D58]/10"
+              className="h-full rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm p-8 shadow-lg transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-white/10 hover:border-white/20"
             >
               <div className="flex items-center justify-between gap-4">
-                <h3 className="text-2xl font-bold text-slate-900">
+                <h3 className="text-2xl font-bold text-white">
                   {service.title}
                 </h3>
-                <span className="text-sm font-semibold tracking-[0.3em] text-[#0F9D58] uppercase">
+                <span className="text-sm font-semibold tracking-[0.3em] text-[#064a1b] uppercase">
                   {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
-              <p className="mt-3 leading-relaxed text-slate-600">
+              <p className="mt-3 leading-relaxed text-white/80">
                 {service.summary}
               </p>
-              <ul className="mt-5 space-y-2 text-sm text-slate-600">
+              <ul className="mt-5 space-y-2 text-sm text-white/70">
                 {service.bullets.map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0F9D58]" />
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#064a1b]" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -135,4 +135,5 @@ const ServicesShowcase = () => {
 };
 
 export default ServicesShowcase;
+
 

@@ -3,13 +3,13 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { X, ChevronLeft, ChevronRight, Grid, List, Search, Filter, Camera } from 'lucide-react';
 
 const categoryColors = {
-  'Big Cats': 'from-amber-500 via-orange-600 to-red-600',
+  'Big Cats': 'from-[#064a1b] via-[#053b15] to-[#042d10]',
   'Large Mammals': 'from-slate-600 via-gray-700 to-zinc-800',
-  'Primates': 'from-emerald-500 via-teal-600 to-cyan-700',
-  'Herbivores': 'from-lime-500 via-green-600 to-emerald-700',
+  'Primates': 'from-[#064a1b] via-[#053b15] to-[#042d10]',
+  'Herbivores': 'from-blue-500 via-indigo-600 to-blue-700',
   'Carnivores': 'from-rose-500 via-red-600 to-pink-700',
-  'Big Five': 'from-yellow-500 via-amber-600 to-orange-700',
-  'Small Mammals': 'from-amber-600 via-yellow-600 to-orange-500',
+  'Big Five': 'from-[#064a1b] via-[#053b15] to-[#042d10]',
+  'Small Mammals': 'from-[#064a1b] via-[#053b15] to-[#042d10]',
   'Special Sightings': 'from-purple-500 via-indigo-600 to-violet-700'
 };
 
@@ -337,7 +337,7 @@ export default function WildlifeGallery() {
       await loadAssets();
       setAssetsLoaded(true);
     };
-    
+
     loadAllAssets();
   }, []);
 
@@ -345,7 +345,7 @@ export default function WildlifeGallery() {
     return galleryItems
       .filter(item => {
         const matchesFilter = activeFilter === 'all' || item.category === activeFilter;
-        const matchesSearch = !searchQuery || 
+        const matchesSearch = !searchQuery ||
           item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
           item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
           item.location.toLowerCase().includes(searchQuery.toLowerCase());
@@ -406,8 +406,8 @@ export default function WildlifeGallery() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      
+    <div className="min-h-screen bg-[#021732] text-white">
+
       {/* Hero Section */}
       {activeFilter === 'all' && !searchQuery && (
         <div className="relative h-screen overflow-hidden">
@@ -419,15 +419,15 @@ export default function WildlifeGallery() {
                 className={`absolute inset-0 transition-opacity duration-1000 ${i === heroIndex ? 'opacity-100' : 'opacity-0'}`}
               >
                 {item.type === 'video' ? (
-                  <video 
-                    src={findAsset(videos, item.video)} 
+                  <video
+                    src={findAsset(videos, item.video)}
                     className="w-full h-full object-cover scale-105"
                     controls
                     poster={findAsset(images, item.thumbnail)}
                   />
                 ) : (
-                  <img 
-                    src={findAsset(images, item.image)} 
+                  <img
+                    src={findAsset(images, item.image)}
                     alt={item.title}
                     className="w-full h-full object-cover scale-105"
                   />
@@ -440,31 +440,23 @@ export default function WildlifeGallery() {
           {/* Hero Content */}
           <div className="relative z-10 h-full flex flex-col justify-end p-12 max-w-7xl mx-auto">
             <div className="mb-24">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6">
-                <Camera className="w-4 h-4" />
-                <span className="text-sm font-medium">Wildlife Photography</span>
-              </div>
-              
               <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-tight">
                 Rwanda's Wild
-                <span className="block bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
+                <span className="block text-[#4ade80]">
                   Wonders
                 </span>
               </h1>
-              
+
               <p className="text-xl md:text-2xl text-white/80 max-w-3xl mb-8 leading-relaxed">
                 Discover the extraordinary wildlife of Akagera, Volcanoes, and Nyungwe through stunning photography and unforgettable encounters.
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <button 
+                <button
                   onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
-                  className="px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full font-semibold hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105"
+                  className="btn-outline"
                 >
                   Explore Gallery
-                </button>
-                <button className="px-8 py-4 bg-white/10 backdrop-blur-md rounded-full font-semibold border border-white/20 hover:bg-white/20 transition-all duration-300">
-                  View Featured
                 </button>
               </div>
             </div>
@@ -484,10 +476,10 @@ export default function WildlifeGallery() {
       )}
 
       {/* Search & Filter Bar - under hero, not glued to main navbar */}
-      <div className="z-40 bg-white/80 backdrop-blur-xl border-b border-gray-200">
+      <div className="z-40 bg-[#021732]/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col lg:flex-row gap-4">
-            
+
             {/* Search Bar */}
             <div className="relative flex-1 max-w-2xl">
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -496,10 +488,10 @@ export default function WildlifeGallery() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search wildlife, locations, or categories..."
-                className="w-full pl-14 pr-14 py-4 rounded-2xl backdrop-blur-md transition-all duration-300 bg-white border-2 border-gray-300 focus:border-orange-500 outline-none"
+                className="w-full pl-14 pr-14 py-4 rounded-2xl backdrop-blur-md transition-all duration-300 bg-[#031d3d] border-2 border-white/10 text-white focus:border-[#4ade80] outline-none"
               />
               {searchQuery && (
-                <button 
+                <button
                   onClick={() => setSearchQuery('')}
                   className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
                 >
@@ -512,25 +504,25 @@ export default function WildlifeGallery() {
             <div className="flex items-center gap-3 justify-end">
               <button
                 onClick={() => setShowFilters(!showFilters)}
-                className="flex items-center gap-2 px-6 py-4 rounded-2xl font-medium transition-all duration-300 bg-white hover:bg-gray-50 border border-gray-300"
+                className="flex items-center gap-2 px-6 py-4 rounded-2xl font-medium transition-all duration-300 bg-[#031d3d] hover:bg-white/5 border border-white/10 text-white"
               >
                 <Filter className="w-5 h-5" />
                 <span>Filters</span>
                 {activeFilter !== 'all' && (
-                  <span className="px-2 py-1 rounded-full bg-orange-500 text-white text-xs">1</span>
+                  <span className="px-2 py-1 rounded-full bg-[#4ade80] text-black text-xs">1</span>
                 )}
               </button>
 
-              <div className="flex gap-1 p-1 rounded-2xl bg-gray-200">
+              <div className="flex gap-1 p-1 rounded-2xl bg-white/5 border border-white/10">
                 <button
                   onClick={() => setViewMode('grid')}
-                  className={`p-3 rounded-xl transition-all duration-300 ${viewMode === 'grid' ? 'bg-white shadow-md' : ''}`}
+                  className={`p-3 rounded-xl transition-all duration-300 ${viewMode === 'grid' ? 'bg-[#064a1b] text-white' : 'text-white/50'}`}
                 >
                   <Grid className="w-5 h-5" />
                 </button>
                 <button
                   onClick={() => setViewMode('list')}
-                  className={`p-3 rounded-xl transition-all duration-300 ${viewMode === 'list' ? 'bg-white shadow-md' : ''}`}
+                  className={`p-3 rounded-xl transition-all duration-300 ${viewMode === 'list' ? 'bg-[#064a1b] text-white' : 'text-white/50'}`}
                 >
                   <List className="w-5 h-5" />
                 </button>
@@ -545,13 +537,12 @@ export default function WildlifeGallery() {
                 <button
                   key={cat}
                   onClick={() => setActiveFilter(cat)}
-                  className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 ${
-                    activeFilter === cat
-                      ? `bg-gradient-to-r ${cat === 'all' ? 'from-amber-500 to-orange-600' : categoryColors[cat]} text-white shadow-lg scale-105`
-                      : 'bg-gray-200 hover:bg-gray-300'
-                  }`}
+                  className={`px-6 py-3 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all duration-500 ${activeFilter === cat
+                    ? `bg-[#4ade80] text-[#021732]`
+                    : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white border border-white/5'
+                    }`}
                 >
-                  {cat === 'all' ? '🌍 All Wildlife' : cat}
+                  {cat === 'all' ? 'All Wildlife' : cat}
                 </button>
               ))}
             </div>
@@ -566,7 +557,7 @@ export default function WildlifeGallery() {
             <h2 className="text-3xl font-bold mb-2">
               {activeFilter === 'all' ? 'All Wildlife' : activeFilter}
             </h2>
-            <p className="text-gray-600">
+            <p className="text-white/60">
               {filteredItems.length} {filteredItems.length === 1 ? 'photo' : 'photos'} found
             </p>
           </div>
@@ -576,12 +567,12 @@ export default function WildlifeGallery() {
           <div className="text-center py-24">
             <div className="text-6xl mb-6">🔍</div>
             <h3 className="text-3xl font-bold mb-4">No wildlife found</h3>
-            <p className="text-xl mb-8 text-gray-600">
+            <p className="text-xl mb-8 text-white/50">
               Try adjusting your search or filters
             </p>
             <button
               onClick={() => { setSearchQuery(''); setActiveFilter('all'); }}
-              className="px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full font-semibold hover:shadow-xl transition-all duration-300"
+              className="btn-outline"
             >
               Clear Filters
             </button>
@@ -592,7 +583,7 @@ export default function WildlifeGallery() {
               <div
                 key={item.id}
                 onClick={() => openLightbox(item, idx)}
-                className="w-full aspect-[498/373] bg-gray-100 rounded-lg overflow-hidden border border-gray-200 cursor-pointer transition-transform duration-300 hover:scale-[1.01]"
+                className="w-full aspect-[498/373] bg-[#031d3d] rounded-lg overflow-hidden border border-white/5 cursor-pointer transition-transform duration-300 hover:scale-[1.01]"
               >
                 {item.type === 'video' ? (
                   <video
@@ -604,8 +595,8 @@ export default function WildlifeGallery() {
                     playsInline
                   />
                 ) : (
-                  <img 
-                    src={findAsset(images, item.image)} 
+                  <img
+                    src={findAsset(images, item.image)}
                     alt={item.title}
                     className="h-full w-full object-cover object-top"
                     loading="lazy"
@@ -619,12 +610,12 @@ export default function WildlifeGallery() {
 
       {/* Lightbox */}
       {selectedItem && (
-        <div 
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm shadow-2xl"
           onClick={closeLightbox}
         >
           {/* Close Button */}
-          <button 
+          <button
             onClick={closeLightbox}
             className="absolute top-6 right-6 p-3 rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300 z-10"
           >
@@ -634,13 +625,13 @@ export default function WildlifeGallery() {
           {/* Navigation */}
           {filteredItems.length > 1 && (
             <>
-              <button 
+              <button
                 onClick={(e) => { e.stopPropagation(); navigate(-1); }}
                 className="absolute left-6 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300 z-10"
               >
                 <ChevronLeft className="w-8 h-8 text-white" />
               </button>
-              <button 
+              <button
                 onClick={(e) => { e.stopPropagation(); navigate(1); }}
                 className="absolute right-6 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300 z-10"
               >
@@ -650,7 +641,7 @@ export default function WildlifeGallery() {
           )}
 
           {/* Content */}
-          <div 
+          <div
             className="max-w-7xl w-full flex flex-col lg:flex-row gap-8 items-center"
             onClick={e => e.stopPropagation()}
           >
@@ -665,8 +656,8 @@ export default function WildlifeGallery() {
                   autoPlay
                 />
               ) : (
-                <img 
-                  src={findAsset(images, selectedItem.image)} 
+                <img
+                  src={findAsset(images, selectedItem.image)}
                   alt={selectedItem.title}
                   className="w-full rounded-3xl shadow-2xl"
                 />

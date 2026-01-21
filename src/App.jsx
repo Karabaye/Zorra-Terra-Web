@@ -7,9 +7,13 @@ import Gallery from "./pages/Gallery";
 import ContactPage from "./pages/ContactPage";
 import StoryDetail from "./components/StoryDetails";
 import TravelWithUs from "./pages/TravelWithUs";
+import Booking from "./pages/Booking";
+import ScrollToTop from "./components/ScrollToTop";
+
 const App = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route index element={<Home />} />
@@ -18,6 +22,7 @@ const App = () => {
           <Route path="stories/:id" element={<StoryDetail />} />
           <Route path="gallery" element={<Gallery />} />
           <Route path="travel-with-us" element={<TravelWithUs />} />
+          <Route path="booking" element={<Booking />} />
           <Route path="contact" element={<ContactPage />} />
         </Route>
         <Route path="*" element={<div>Not Found</div>} />

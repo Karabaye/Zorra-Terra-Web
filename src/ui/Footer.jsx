@@ -6,202 +6,80 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full relative overflow-hidden text-white">
-      {/* Background with Image and Overlay */}
-      <div className="absolute inset-0 -z-10">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${natureImage})`,
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            opacity: 18
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/60 via-emerald-800/50 to-emerald-900/70" />
-      </div>
-
-      {/* Main Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-12 md:py-16">
-        {/* Navigation Section */}
-        <div className="mb-12">
-          <h2 className="text-lg font-bold text-white mb-6 uppercase tracking-wider border-b border-emerald-600/50 pb-3">
-            Explore
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <Link 
-              to="/about" 
-              className="text-white hover:text-emerald-100 transition-all duration-300 text-sm font-medium py-2 border-b border-emerald-600 hover:border-emerald-300 text-center hover:bg-emerald-900/40 rounded-lg px-2 hover:scale-105 transform"
-            >
-              About Us
+    <footer className="bg-[#021732] text-white pt-16 pb-8 border-t border-white/5">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          {/* Brand Column */}
+          <div className="space-y-6">
+            <Link to="/" className="inline-block transform transition-transform hover:scale-105">
+              <img src="/images/logo.jpeg" alt="Logo" className="h-14 w-auto rounded-lg" />
             </Link>
-            <Link 
-              to="/travel" 
-              className="text-white hover:text-emerald-100 transition-all duration-300 text-sm font-medium py-2 border-b border-emerald-600 hover:border-emerald-300 text-center hover:bg-emerald-900/40 rounded-lg px-2 hover:scale-105 transform"
-            >
-              Travel With Us
-            </Link>
-            <Link 
-              to="/gallery" 
-              className="text-white hover:text-emerald-100 transition-all duration-300 text-sm font-medium py-2 border-b border-emerald-600 hover:border-emerald-300 text-center hover:bg-emerald-900/40 rounded-lg px-2 hover:scale-105 transform"
-            >
-              Gallery
-            </Link>
-            <Link 
-              to="/stories" 
-              className="text-white hover:text-emerald-100 transition-all duration-300 text-sm font-medium py-2 border-b border-emerald-600 hover:border-emerald-300 text-center hover:bg-emerald-900/40 rounded-lg px-2 hover:scale-105 transform"
-            >
-              Stories
-            </Link>
-            <Link 
-              to="/contact" 
-              className="text-white hover:text-emerald-100 transition-all duration-300 text-sm font-medium py-2 border-b border-emerald-600 hover:border-emerald-300 text-center hover:bg-emerald-900/40 rounded-lg px-2 hover:scale-105 transform"
-            >
-              Get In Touch
-            </Link>
-          </div>
-        </div>
-
-        {/* Green Glow Divider */}
-        <div className="relative my-8">
-          <div className="h-px bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-400/20 to-transparent blur-sm"></div>
-        </div>
-
-        {/* About and Contact Section with Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {/* About Column */}
-          <div className="bg-emerald-900/30 backdrop-blur-sm rounded-xl p-6 border border-emerald-700/30 shadow-lg shadow-emerald-900/20 hover:shadow-emerald-800/30 transition-shadow duration-300">
-            <h3 className="text-base font-semibold mb-4 text-white uppercase tracking-wider flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-emerald-400"></div>
-              About Us
-            </h3>
-            <nav className="space-y-3">
-              {["About Us", "The Blog", "Gallery", "Safaris", "Retreats", "Contact"].map((item) => (
-                <Link 
-                  key={item} 
-                  to={`/${item.toLowerCase().replace(' ', '-')}`} 
-                  className="block text-white hover:text-emerald-100 transition-all duration-200 text-sm font-medium hover:translate-x-1 hover:pl-2 border-l-2 border-transparent hover:border-emerald-300 pl-3 py-1"
+            <p className="text-white/60 text-xs leading-relaxed max-w-xs italic">
+              "Creating unforgettable experiences in the heart of Rwanda. Join us on a journey of discovery, adventure, and transformation."
+            </p>
+            <div className="flex space-x-4">
+              {[Instagram, Facebook, Mail].map((Icon, idx) => (
+                <a
+                  key={idx}
+                  href="#"
+                  onClick={(e) => e.preventDefault()}
+                  className="p-2.5 border border-white/10 rounded-full hover:bg-white/5 hover:border-white/30 transition-all duration-300"
                 >
+                  <Icon size={16} />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div className="space-y-4">
+            <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-white/30">Explore</h4>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+              {["Home", "About Us", "Travel With Us", "Gallery", "Stories", "Contact"].map((item) => (
+                <Link key={item} to={item === "Home" ? "/" : `/${item.toLowerCase().replace(/ /g, '-')}`} className="text-sm font-medium text-white/70 hover:text-[#4ade80] transition-colors whitespace-nowrap">
                   {item}
                 </Link>
               ))}
-            </nav>
+            </div>
           </div>
 
-          {/* Contact Info Column */}
-          <div className="bg-emerald-900/30 backdrop-blur-sm rounded-xl p-6 border border-emerald-700/30 shadow-lg shadow-emerald-900/20 hover:shadow-emerald-800/30 transition-shadow duration-300">
-            <h3 className="text-base font-semibold mb-4 text-white uppercase tracking-wider flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-emerald-400"></div>
-              Contact Info
-            </h3>
-            <div className="space-y-6">
-              <div className="flex items-start space-x-3 group">
-                <div className="p-2 rounded-lg bg-emerald-800/40 group-hover:bg-emerald-700/60 transition-colors duration-300">
-                  <MapPin className="w-5 h-5 text-emerald-300" />
-                </div>
-                <div>
-                  <p className="text-sm text-white font-medium group-hover:text-emerald-100 transition-colors">
-                    Kigali, Rwanda
-                  </p>
-                  <p className="text-xs text-emerald-100/80 mt-1">Headquarters</p>
-                </div>
+          {/* Contact Details */}
+          <div className="space-y-4">
+            <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-white/30">Connect</h4>
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3 group text-sm text-white/70">
+                <MapPin className="text-[#4ade80]/70 shrink-0" size={16} />
+                <span>Kigali, Rwanda</span>
               </div>
-              <div className="flex items-center space-x-3 group">
-                <div className="p-2 rounded-lg bg-emerald-800/40 group-hover:bg-emerald-700/60 transition-colors duration-300">
-                  <Phone className="w-5 h-5 text-emerald-300" />
-                </div>
-                <a 
-                  href="tel:+250783482368" 
-                  className="text-sm text-white hover:text-emerald-100 transition-colors group-hover:scale-105 inline-block font-medium"
-                >
-                  +250 783 482 368
-                </a>
+              <div className="flex items-center space-x-3 group text-sm text-white/70">
+                <Mail className="text-[#4ade80]/70 shrink-0" size={16} />
+                <span className="truncate">info@zoraviaterra.com</span>
               </div>
             </div>
           </div>
 
-          {/* Description Column */}
-          <div className="bg-emerald-900/30 backdrop-blur-sm rounded-xl p-6 border border-emerald-700/30 shadow-lg shadow-emerald-900/20 hover:shadow-emerald-800/30 transition-shadow duration-300">
-            <h3 className="text-base font-semibold mb-4 text-white uppercase tracking-wider flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-emerald-400"></div>
-              Our Mission
-            </h3>
-            <p className="text-sm text-white leading-relaxed mb-6 font-medium">
-              "Creating unforgettable experiences in the heart of Rwanda. Join us on a journey 
-              of discovery, adventure, and transformation."
-            </p>
-            <Link 
-              to="/contact" 
-              className="inline-flex items-center justify-center gap-2 text-sm font-medium text-white bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 transition-all duration-300 px-6 py-3 rounded-lg shadow-lg shadow-emerald-900/30 hover:shadow-emerald-700/40 hover:translate-y-[-2px] group"
-            >
-              GET IN TOUCH
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
-            </Link>
-          </div>
-        </div>
-
-        {/* Green Glow Divider */}
-        <div className="relative my-8">
-          <div className="h-px bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-400/20 to-transparent blur-sm"></div>
-        </div>
-
-        {/* Bottom Section */}
-        <div className="bg-emerald-900/20 backdrop-blur-sm rounded-xl p-6 border border-emerald-700/20">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-center md:text-left">
-              <p className="text-sm text-white font-medium">
-                {currentYear} Zoravia Terra Journeys
+          {/* Plan Section */}
+          <div className="space-y-4">
+            <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-white/30">Ready?</h4>
+            <div className="p-5 bg-white/5 border border-white/5 rounded-xl space-y-4">
+              <p className="text-[11px] leading-relaxed text-white/60">
+                Start your journey through the land of a thousand hills.
               </p>
-              <p className="text-xs text-emerald-100/80 mt-1">All rights reserved.</p>
-            </div>
 
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-white">
-              <Link 
-                to="/privacy" 
-                className="text-white hover:text-emerald-100 transition-colors duration-200 hover:underline underline-offset-4 font-medium"
-              >
-                Privacy Policy
-              </Link>
-              <div className="w-px h-4 bg-emerald-600/50"></div>
-              <Link 
-                to="/terms" 
-                className="text-white hover:text-emerald-100 transition-colors duration-200 hover:underline underline-offset-4 font-medium"
-              >
-                Terms of Service
-              </Link>
-            </div>
-
-            <div className="text-sm text-white">
-              Website by <span className="text-emerald-100 font-medium">Zoravia Team</span>
             </div>
           </div>
         </div>
 
-        {/* Social Icons with Green Glow */}
-        <div className="flex justify-center space-x-6 mt-8 pt-8 border-t border-emerald-700/30">
-          {[
-            { icon: Instagram, href: "https://www.instagram.com/zoraviajourneys.rw/", label: "Instagram" },
-            { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
-            { icon: Mail, href: "mailto:info@zoraviaterra.com", label: "Email" },
-          ].map((social) => (
-            <a 
-              key={social.label}
-              href={social.href} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-white hover:text-emerald-100 transition-all duration-300 p-3 rounded-full bg-emerald-900/40 border border-emerald-600/50 hover:border-emerald-300 hover:bg-emerald-800/50 hover:shadow-lg hover:shadow-emerald-500/30 hover:scale-110"
-              aria-label={social.label}
-            >
-              <social.icon className="w-5 h-5" />
-            </a>
-          ))}
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[10px] font-medium text-white/20 gap-4">
+          <div className="flex space-x-6">
+            <span>&copy; {currentYear} Zoravia Terra Journeys</span>
+            <Link to="/privacy" className="hover:text-white/40 transition-colors">Privacy</Link>
+            <Link to="/terms" className="hover:text-white/40 transition-colors">Terms</Link>
+          </div>
+
         </div>
       </div>
-
-      {/* Bottom Green Glow Effect */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-emerald-400 to-emerald-500 opacity-50"></div>
     </footer>
   );
 };

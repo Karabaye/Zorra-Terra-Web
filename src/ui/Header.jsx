@@ -20,7 +20,7 @@ const Header = () => {
     { to: "/about", label: "About Us" },
     { to: "/travel-with-us", label: "Travel With Us" },
     { to: "/gallery", label: "Gallery" },
-    { to: "/stories", label: "Stories" },
+    { to: "/stories", label: "Upcoming Tours" },
     { to: "/contact", label: "Contact" },
   ];
 
@@ -37,21 +37,19 @@ const Header = () => {
   // Determine navbar styling based on scroll and page
   const getNavbarClasses = () => {
     if (scrolled || !isHomePage) {
-      return "bg-white shadow-lg border-b border-gray-100";
+      return "bg-[#021732]/90 backdrop-blur-md shadow-2xl border-b border-white/5";
     }
     return "bg-transparent";
   };
 
   // Determine text color for nav items
   const getNavTextColor = () => {
-    if (scrolled || !isHomePage) return "text-[#0a2e1d]";
     return "text-white";
   };
 
-  // Determine logo to use
+  // Determine logo to use - Always use the more visible one with background
   const getLogoSource = () => {
-    if (scrolled || !isHomePage) return "/images/logo.jpeg"; // dark logo for white background
-    return "/images/logo.png"; // light logo for dark background (home page)
+    return "/images/logo.jpeg";
   };
 
   // Scroll down function
@@ -99,15 +97,13 @@ const Header = () => {
                   >
                     <Link
                       to={item.to}
-                      className={`relative text-sm font-semibold tracking-widest whitespace-nowrap uppercase transition-all duration-300 ${getNavTextColor()} ${
-                        isActive ? "text-[#0a2e1d]" : ""
-                      } hover:text-[#9cd4b4]`}
+                      className={`relative text-[11px] font-bold tracking-[0.3em] whitespace-nowrap uppercase transition-all duration-300 ${getNavTextColor()} ${isActive ? "text-[#4ade80]" : ""
+                        } hover:text-[#4ade80]`}
                     >
                       {item.label}
                       <span
-                        className={`absolute -bottom-1 left-0 h-0.5 w-0 bg-[#9cd4b4] transition-all duration-300 group-hover:w-full ${
-                          isActive ? "w-full" : ""
-                        }`}
+                        className={`absolute -bottom-1 left-1/2 -translate-x-1/2 h-[1px] w-0 bg-[#4ade80] transition-all duration-300 group-hover:w-full ${isActive ? "w-full" : ""
+                          }`}
                       ></span>
                     </Link>
                   </div>
@@ -116,16 +112,12 @@ const Header = () => {
             </div>
 
             {/* CTA Button - Right side */}
-            <div className="hidden lg:block relative lg:-right-8">
+            <div className="hidden lg:flex items-center">
               <Link
-                to="/contact"
-                className={`px-8 py-3 text-sm font-bold tracking-widest uppercase transition-all duration-300 ${
-                  scrolled || !isHomePage
-                    ? "bg-[#0a2e1d] text-white hover:bg-[#1e4d2f]"
-                    : "bg-white text-[#0a2e1d] hover:bg-[#f8f8f8]"
-                }`}
+                to="/booking"
+                className="bg-[#4ade80] text-[#021732] px-8 py-3 rounded-xl text-[11px] font-bold uppercase tracking-[0.2em] border-2 border-[#4ade80] transition-all duration-500 hover:bg-[#021732] hover:text-[#4ade80] hover:-translate-y-0.5 active:translate-y-0 active:scale-95"
               >
-                Plan Your Trip
+                Booking
               </Link>
             </div>
 
@@ -145,33 +137,33 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="absolute top-full right-0 left-0 bg-white shadow-2xl lg:hidden">
-            <div className="container mx-auto px-4 py-6 sm:px-6">
-              <div className="space-y-1">
+          <div className="absolute top-full right-0 left-0 bg-[#021732] shadow-2xl lg:hidden border-b border-white/5">
+            <div className="container mx-auto px-4 py-8 sm:px-6">
+              <div className="space-y-2">
                 {navItems.map((item) => {
                   const isActive = location.pathname === item.to;
                   return (
                     <Link
                       key={item.to}
                       to={item.to}
-                      className={`block border-l-4 px-4 py-4 text-sm font-bold tracking-widest whitespace-nowrap uppercase transition-all ${
-                        isActive
-                          ? "border-[#0a2e1d] bg-[#0a2e1d]/5 text-[#0a2e1d]"
-                          : "border-transparent text-gray-700 hover:border-[#9cd4b4] hover:bg-gray-50"
-                      }`}
+                      className={`block px-6 py-4 text-xs font-bold tracking-[0.3em] uppercase transition-all rounded-xl ${isActive
+                        ? "bg-[#4ade80]/10 text-[#4ade80]"
+                        : "text-white/70 hover:bg-white/5 hover:text-white"
+                        }`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.label}
                     </Link>
                   );
                 })}
-                <div className="px-4 pt-4">
+                <div className="px-6 pt-6">
                   <Link
-                    to="/contact"
-                    className="block bg-[#0a2e1d] px-6 py-4 text-center text-sm font-bold tracking-widest text-white uppercase transition-colors hover:bg-[#1e4d2f]"
+                    to="/booking"
+                    className="flex items-center justify-center bg-[#4ade80] text-[#021732] py-4 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] transition-all group"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Plan Your Trip
+                    Booking
+                    <ArrowRight className="ml-3 h-3 w-3 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
               </div>
@@ -185,10 +177,10 @@ const Header = () => {
         <header className="relative min-h-screen w-full overflow-hidden">
           {/* Background Video */}
           <div className="absolute inset-0">
-            <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/70 via-black/40 to-transparent" />
+            <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#021732]/80 via-transparent to-[#021732] shadow-[inset_0_0_100px_rgba(0,0,0,0.5)]" />
             <video
               ref={videoRef}
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover scale-105"
               autoPlay
               loop
               muted
@@ -215,95 +207,37 @@ const Header = () => {
           <div className="relative z-10 flex min-h-screen items-center justify-center pt-20">
             <div className="container mx-auto px-4 py-32 sm:px-6 lg:px-8">
               <div className="mx-auto max-w-4xl space-y-10 text-center">
-                <div className="inline-flex items-center space-x-3 text-base font-medium tracking-widest text-[#9cd4b4] uppercase">
-                  <span className="h-3 w-3 animate-pulse rounded-full bg-current"></span>
-                  <span>Zoravia Terra Journeys</span>
+
+                <div className="flex justify-center items-center gap-4 mb-4">
+                  <div className="h-[1px] w-8 bg-[#4ade80]/40" />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.6em] text-[#4ade80]">
+                    TRAVEL MORE, SPEND LESS.
+                  </span>
+                  <div className="h-[1px] w-8 bg-[#4ade80]/40" />
                 </div>
 
-                <h1 className="text-5xl leading-tight font-light tracking-tight text-white sm:text-6xl lg:text-8xl">
-                  Every Journey Tells a Story
-                </h1>
+                <div className="space-y-6">
+                  <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-white uppercase px-4 leading-tight">
+                    Every Journey <br />
+                    <span className="text-[#4ade80] italic" style={{ fontFamily: "Dancing Script, cursive" }}>Tells a Story</span>
+                  </h1>
 
-                <p className="mx-auto max-w-3xl text-2xl leading-relaxed font-light text-white/90">
-                  Inspired by Rwanda's thousand hills, wildlife, and vibrant
-                  communities, we craft intentional journeys that connect
-                  nature, culture, and heartfelt discovery.
-                </p>
-
-                <div className="space-y-6 pt-12">
-                  <div className="flex flex-col justify-center gap-6 sm:flex-row">
-                    <Link
-                      to="/travel-with-us"
-                      className="group inline-flex items-center justify-center bg-white px-12 py-6 text-base font-bold tracking-widest text-[#0a2e1d] uppercase transition-all duration-300 hover:bg-[#f8f8f8]"
-                    >
-                      Begin Your Journey
-                      <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover:translate-x-2" />
-                    </Link>
-                    <Link
-                      to="/contact"
-                      className="inline-flex items-center justify-center border-2 border-white px-12 py-6 text-base font-bold tracking-widest text-white uppercase transition-all duration-300 hover:bg-white/10"
-                    >
-                      Contact Us
-                    </Link>
-                  </div>
-
-                  {/* Trust indicators */}
-                  <div className="flex flex-wrap justify-center gap-8 pt-12 text-white/80">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold">500+</div>
-                      <div className="text-sm tracking-widest">
-                        Happy Travelers
-                      </div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold">10+</div>
-                      <div className="text-sm tracking-widest">
-                        Years Experience
-                      </div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold">100%</div>
-                      <div className="text-sm tracking-widest">
-                        Satisfaction
-                      </div>
-                    </div>
-                  </div>
+                  <p className="text-2xl md:text-3xl font-light italic text-[#4ade80]/80" style={{ fontFamily: "Dancing Script, cursive" }}>
+                    Let Us Help You Create Yours
+                  </p>
                 </div>
+
+                <div className="max-w-2xl mx-auto pt-8 border-t border-white/10">
+                  <p className="text-2xl md:text-3xl leading-relaxed font-light text-white uppercase tracking-[0.2em]">
+                    Book Your Dream Trip Today!
+                  </p>
+                </div>
+
               </div>
             </div>
           </div>
 
           {/* Elegant Scroll Indicator - Only on home page when not scrolled */}
-          {!scrolled && (
-            <button
-              onClick={scrollDown}
-              className="group fixed bottom-8 left-1/2 z-40 -translate-x-1/2 transform"
-              aria-label="Scroll down"
-            >
-              {/* Animated mouse */}
-              <div className="relative mx-auto mb-2 h-16 w-10">
-                {/* Mouse outline */}
-                <div className="flex h-16 w-10 items-start justify-center rounded-full border-2 border-white/50 pt-3 transition-colors duration-300 group-hover:border-white">
-                  {/* Scroll wheel */}
-                  <div className="h-6 w-1.5 animate-bounce rounded-full bg-white/70 group-hover:bg-white"></div>
-                </div>
-
-                {/* Glow effect */}
-                <div className="absolute inset-0 h-16 w-10 rounded-full bg-white/10 blur-md transition-all duration-300 group-hover:bg-white/20"></div>
-              </div>
-
-              {/* Text with arrow */}
-              <div className="flex flex-col items-center space-y-1 opacity-80 transition-opacity duration-300 group-hover:opacity-100">
-                <span className="text-xs tracking-widest text-white/80 uppercase">
-                  Explore 
-                </span>
-                <ChevronDown className="h-4 w-4 animate-pulse text-white/70 group-hover:text-white" />
-              </div>
-
-              {/* Pulse animation */}
-              <div className="absolute -inset-4 animate-ping rounded-full bg-white/5 group-hover:bg-white/10"></div>
-            </button>
-          )}
         </header>
       )}
 

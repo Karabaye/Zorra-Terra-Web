@@ -173,13 +173,10 @@ const WhatWeDo = () => {
 
           <div className="text-center">
             <Link
-              to="/contact"
-              className="group inline-flex items-center justify-center bg-white px-8 py-4 text-sm font-medium tracking-widest text-[#0a2e1d] uppercase transition-all duration-300 hover:bg-[#f8f8f8]"
+              to="/booking"
+              className="btn-primary inline-flex items-center justify-center"
             >
               Plan Your Custom Itinerary
-              <span className="ml-2 transition-transform group-hover:translate-x-1">
-                →
-              </span>
             </Link>
             <p className="mt-6 text-sm text-white/70">
               Combine multiple parks for a comprehensive Rwanda experience
