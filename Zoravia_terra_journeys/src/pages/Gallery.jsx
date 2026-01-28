@@ -15,7 +15,7 @@ const findAsset = (filename) => {
   const keys = Object.keys(assetMap);
   const found = keys.find(k => k === cleanKey);
   if (found) return assetMap[found];
-  return `/assets/imgs/${filename}.jpg`;
+  return `/assets/images/${filename}.jpg`;
 };
 
 

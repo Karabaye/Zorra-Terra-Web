@@ -11,7 +11,7 @@ const ServicesIntro = () => {
 
           <div className="mt-10 flex justify-center">
             <img
-              src="/images/logo.jpeg"
+              src="/assets/images/logo.jpeg"
               alt="Zoravia Terra Journeys"
               className="h-16 md:h-20 w-auto rounded-xl shadow-lg"
               onError={(e) => {

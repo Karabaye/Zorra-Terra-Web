@@ -140,7 +140,7 @@ const TravelWithUs = () => {
     {
       title: "The Heart of Rwanda",
       tagline: "(A journey designed to be lived, not rushed)",
-      image: "/assets/imgs/The Heart of Rwanda.png",
+      image: "/assets/images/The Heart of Rwanda.png",
       tags: ["Wildlife", "Past & Modern Rwanda", "Primate Life", "Slow Travel"],
       description: "Discover Rwanda beyond the usual highlights. Our flexible journey blueprints are designed around your pace, interests, and purpose connecting you with real communities, authentic experiences, and unhurried moments.",
       sections: [
@@ -239,7 +239,7 @@ const TravelWithUs = () => {
     {
       title: "Into The Mist",
       tagline: "(Gorilla trek • Big Five Africa Safari • Nature)",
-      image: "/assets/imgs/Into The Mist.png",
+      image: "/assets/images/Into The Mist.png",
       description: "A choice led experiences combining gorilla trekking in Volcanoes National Park and Rwanda iconic experiences.",
       tags: ["Gorilla trek", "Big Five Africa Safari", "Nature"],
       sections: [
@@ -362,7 +362,7 @@ const TravelWithUs = () => {
       title: "Best of Rwanda Safari & Primate Experience",
       tagline: "(Rwanda Safari • Primates • Culture & Heritage • Lake Kivu • Local Life)",
       description: "Experience Rwanda like never before moving through savannahs, volcanoes, rainforests, lakeshores, and local towns while leaving space for authentic moments, local stories, and meaningful contrasts. Embark on a Rwanda safari that combines primate trekking, cultural heritage experiences, and lakeside relaxation at Lake Kivu.",
-      image: "/assets/imgs/safari buf.jpg",
+      image: "/assets/images/safari buf.jpg",
       tags: ["Rwanda Safari", "Primates", "Culture & Heritage", "Lake Kivu"],
       sections: [
         {
@@ -471,7 +471,7 @@ const TravelWithUs = () => {
       title: "Kigali, Unfiltered",
       tagline: "(Kigali City • Local Life • Culture & Creativity • Stories)",
       description: "Explore the city through the eyes of locals, uncover hidden stories, and experience moments that stay with you.",
-      image: "/assets/imgs/0001.jpg",
+      image: "/assets/images/0001.jpg",
       tags: ["Kigali City", "Local Life", "Culture & Creativity", "Stories"],
       sections: [
         {

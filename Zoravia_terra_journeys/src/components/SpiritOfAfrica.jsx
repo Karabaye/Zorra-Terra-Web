@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 const SpiritOfAfrica = () => {
-  const bg_image = "/assets/imgs/The Heart of Rwanda.png";
+  const bg_image = "/assets/images/The Heart of Rwanda.png";
 
   return (
     <section className="relative py-32 overflow-hidden min-h-[450px] flex items-center">

@@ -12,12 +12,12 @@ const Home = () => {
       <HomeIntro />
       <WhyTravel />
        <ParallaxDivider
-        image="/assets/imgs/tura.PNG"
+        image="/assets/images/tura.PNG"
         quote="Every journey into the wild is a step towards understanding our planet's soul."
       />
       <CoreOfferings />
       <ParallaxDivider
-        image="/assets/imgs/intare.PNG"
+        image="/assets/images/intare.PNG"
         quote="Every journey into the wild is a step towards understanding our planet's soul."
       />
       {/* <SpiritOfAfrica /> */}

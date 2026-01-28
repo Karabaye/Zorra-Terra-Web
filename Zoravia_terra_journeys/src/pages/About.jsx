@@ -140,7 +140,7 @@ const About = () => {
                 className="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl transition-all duration-700 hover:border-[#D4A574]/30"
               >
                 <img
-                  src="/images/owner.png"
+                  src="/assets/images/owner.png"
                   alt="Founder"
                   className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-110"
                 />

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion as Motion } from "framer-motion";
 
-const homeStaticImage = "/assets/imgs/nature.jpeg";
+const homeStaticImage = "/assets/images/nature.jpeg";
 
 const HomeIntro = () => {
   return (

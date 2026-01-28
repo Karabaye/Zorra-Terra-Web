@@ -195,7 +195,7 @@ const CoreOfferings = () => {
           <div className="bg-[#031d3d]/80 backdrop-blur-xl p-1.5 rounded-full border-2 border-[#D4A574]/20 w-48 h-48 overflow-hidden flex items-center justify-center group transition-all duration-700 hover:border-[#D4A574]/40">
             <div className="bg-white w-full h-full flex flex-col items-center justify-center rounded-full p-6 transition-colors duration-700 group-hover:bg-slate-50">
               <img
-                src="/images/logo.png"
+                src="/assets/images/logo.png"
                 alt="Zoravia Logo"
                 className="w-32 h-auto mb-1 transition-transform duration-700 group-hover:scale-110"
               />

@@ -68,7 +68,7 @@ export default function ContactPage() {
                                 initial={{ scale: 1.1 }}
                                 animate={{ scale: 1 }}
                                 transition={{ duration: 1.5 }}
-                                src="/assets/imgs/conso.jpg"
+                                src="/assets/images/conso.jpg"
                                 alt="Rwanda Nature"
                                 className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-105"
                             />

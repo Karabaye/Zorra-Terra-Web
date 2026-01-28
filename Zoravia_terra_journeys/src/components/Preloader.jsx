@@ -115,7 +115,7 @@ const Preloader = ({ onComplete }) => {
                         >
                             <div className="relative p-2 bg-white/5 rounded-full border border-white/10 shadow-[0_0_120px_rgba(74,222,128,0.25)]">
                                 <img
-                                    src="/images/logo.jpeg"
+                                    src="/assets/images/logo.jpeg"
                                     alt="Logo"
                                     className="h-32 md:h-44 w-auto rounded-full"
                                 />

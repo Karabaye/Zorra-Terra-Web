@@ -88,7 +88,7 @@ const Footer = () => {
             {/* Logo Container */}
             <div className="relative px-7 py-5 bg-gradient-to-br from-white/7 to-white/3 rounded-2xl border border-[#D4A574]/30 shadow-lg">
               <img 
-                src="/images/logo.jpeg" 
+                src="/assets/images/logo.jpeg" 
                 alt="Zoravia Terra Journeys" 
                 className="h-20 w-auto rounded-md shadow-sm"
               />

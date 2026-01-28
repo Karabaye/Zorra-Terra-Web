@@ -5,7 +5,7 @@ import { Quote } from "lucide-react";
  * ParallaxDivider Component
  * A fixed-background section used to break up content and add cinematic depth.
  */
-const ParallaxDivider = ({ image = "/assets/imgs/lion.png", quote = "Discover the magic of Rwanda's wilderness." }) => {
+const ParallaxDivider = ({ image = "/assets/images/lion.png", quote = "Discover the magic of Rwanda's wilderness." }) => {
     return (
         <section className="relative h-[40vh] md:h-[50vh] flex items-center justify-center overflow-hidden">
             <div

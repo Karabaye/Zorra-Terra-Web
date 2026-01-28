@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { motion as Motion, AnimatePresence } from "framer-motion";
 
-const gorilla = "/assets/imgs/gorilla.png";
+const gorilla = "/assets/images/gorilla.png";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -121,7 +121,7 @@ const Header = () => {
                   }}
                 >
                   <img
-                    src="/images/logo.jpeg"
+                    src="/assets/images/logo.jpeg"
                     alt="Zoravia Terra Journeys"
                     className={`w-auto object-contain transition-all duration-500 ${scrolled ? "h-9 md:h-10" : "h-10 md:h-12"
                       }`}
@@ -287,7 +287,7 @@ const Header = () => {
             {/* Menu Header (Logo & Close) */}
             <div className="relative flex items-center justify-between px-6 py-6 border-b border-white/5">
               <Link to="/" onClick={() => setMobileMenuOpen(false)}>
-                <img src="/images/logo.jpeg" alt="Logo" className="h-8 w-auto object-contain" />
+                <img src="/assets/images/logo.jpeg" alt="Logo" className="h-8 w-auto object-contain" />
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
@@ -379,7 +379,7 @@ const Header = () => {
               onCanPlay={() => setVideoReady(true)}
               preload="metadata"
             >
-              <source src="/videos/hero-video.mp4" type="video/mp4" />
+              <source src="/assets/videos/hero-video.mp4" type="video/mp4" />
               <img
                 src={gorilla}
                 alt="Rwanda landscape"
