@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion as Motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Calendar, MapPin, ArrowRight } from "lucide-react";
-import { stories } from "../util/stories";
+import { stories } from "../utilities/stories";
 
 const Stories = () => {
   const [selected, setSelected] = useState("All");

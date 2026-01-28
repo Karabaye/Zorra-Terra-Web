@@ -23,7 +23,7 @@ import {
   Binoculars,
   Target
 } from "lucide-react";
-import { stories } from "../util/stories";
+import { stories } from "../utilities/stories";
 
 export default function StoryDetails() {
   const { storyId } = useParams();

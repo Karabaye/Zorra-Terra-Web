@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Play, MapPin, Camera, ChevronRight, ChevronLeft, ArrowRight } from 'lucide-react';
-import assetMap from "../util/assetMap";
-import videoMap from "../util/videoMap";
+import assetMap from "../utilities/assetMap";
+import videoMap from "../utilities/videoMap";
 
 
 const findAsset = (filename) => {
