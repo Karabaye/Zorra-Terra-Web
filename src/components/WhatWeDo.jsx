@@ -71,7 +71,7 @@ const WhatWeDo = () => {
       {/* Background Video */}
       <div className="absolute inset-0 -z-10">
         <video
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-center"
           autoPlay
           loop
           muted
@@ -95,7 +95,7 @@ const WhatWeDo = () => {
               <Target className="h-4 w-4" />
               <span>Signature Experiences</span>
             </div>
-          
+
             <p className="mx-auto max-w-3xl text-xl leading-relaxed font-light text-white/90">
               We specialize in creating participatory wilderness experiences
               that connect you authentically with Africa's landscapes, wildlife,

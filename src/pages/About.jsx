@@ -7,7 +7,6 @@ import {
   Leaf,
   MessageSquare,
   ArrowRight,
-  Sparkles
 } from "lucide-react";
 
 const About = () => {
@@ -75,7 +74,7 @@ const About = () => {
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-[#021732] text-white selection:bg-[#D4A574]/30 selection:text-white overflow-x-hidden">
+    <div ref={containerRef} className="relative min-h-screen bg-[#021732] text-white selection:bg-[#D4A574]/30 selection:text-white overflow-x-hidden">
 
       {/* 1. HERO SECTION - Refined Reveal */}
       <section className="pt-32 pb-16 text-center relative overflow-hidden">
@@ -154,9 +153,8 @@ const About = () => {
                 whileInView={{ opacity: 1, rotate: -3 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05, rotate: 0 }}
-                className="absolute bottom-4 right-4 bg-gradient-to-br from-[#D4A574] to-[#C4A57B] text-[#021732] px-4 py-3 rounded-lg shadow-xl z-20 cursor-default"
+                className="absolute bottom-0 right-4 bg-gradient-to-br from-[#D4A574] to-[#C4A57B] text-[#021732] px-4 py-3 rounded-lg shadow-xl z-20 cursor-default"
               >
-                <Sparkles className="w-4 h-4 mb-2 opacity-60" />
                 <p className="text-[11px] font-black italic mb-0.5" style={{ fontFamily: "var(--title-font)" }}>Integrity & Heart</p>
                 <p className="text-[8px] font-bold uppercase tracking-widest opacity-60">Founded with Purpose</p>
               </Motion.div>
@@ -326,12 +324,7 @@ const About = () => {
                   }}
                   className={`flex-1 space-y-4 text-center ${i % 2 === 0 ? "lg:text-left" : "lg:text-right"}`}
                 >
-                  <div className={`inline-flex items-center gap-2 text-[#D4A574] text-[9px] font-bold uppercase tracking-[0.3em] mb-1 opacity-70`}>
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4A574] animate-pulse" />
-                    Value 0{i + 1}
-                  </div>
-
-                  <h4 className="text-2xl md:text-3xl font-light text-white leading-tight">
+                  <h4 className="text-2xl md:text-3xl font-light text-[#D4A574] leading-tight">
                     {v.title}
                   </h4>
 

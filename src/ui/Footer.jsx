@@ -1,6 +1,5 @@
-import { Instagram, Facebook, Mail, Phone, Linkedin } from "lucide-react";
+import { Instagram, Facebook, Mail, Phone, Linkedin, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
-import { motion as Motion } from "framer-motion";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,165 +10,125 @@ const Footer = () => {
     { icon: Linkedin, href: "https://linkedin.com/company/zoraviaterrajourneys", label: "LinkedIn" }
   ];
 
-  const navLinks = [
-    { label: "Home", to: "/" },
-    { label: "About Us", to: "/about" },
-    { label: "Travel With Us", to: "/travel-with-us" },
-    { label: "Stories", to: "/stories" },
-    { label: "Gallery", to: "/gallery" },
-    { label: "Contact", to: "/contact" }
-  ];
-
   return (
-    <footer className="relative bg-[#021732] text-white overflow-hidden">
-      {/* Layered hills with mountain-shaped top edge */}
-      <svg
-        className="absolute top-0 left-0 w-full h-auto pointer-events-none z-0"
-        viewBox="0 0 1200 220"
-        preserveAspectRatio="none"
-        style={{ minHeight: "140px" }}
-      >
-        <defs>
-          <linearGradient id="g-far" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#D4A574" stopOpacity="0.06" />
-            <stop offset="100%" stopColor="#D4A574" stopOpacity="0.015" />
-          </linearGradient>
-          <linearGradient id="g-mid" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#D4A574" stopOpacity="0.09" />
-            <stop offset="100%" stopColor="#D4A574" stopOpacity="0.02" />
-          </linearGradient>
-          <linearGradient id="g-near" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#D4A574" stopOpacity="0.13" />
-            <stop offset="100%" stopColor="#D4A574" stopOpacity="0.04" />
-          </linearGradient>
-        </defs>
-
-        {/* far smooth backdrop */}
-        <path
-          d="M0,150 C200,140 360,148 520,140 C700,132 860,140 1020,136 C1100,134 1160,138 1200,136 L1200,180 L0,180 Z"
-          fill="url(#g-far)"
-          opacity="0.6"
-        />
-
-        {/* middle smooth layer */}
-        <path
-          d="M0,160 C140,145 300,152 460,148 C610,144 760,152 910,148 C1000,146 1080,150 1200,146 L1200,180 L0,180 Z"
-          fill="url(#g-mid)"
-          opacity="0.75"
-        />
-
-        {/* foreground with mountain top peaks (centered notch under logo) - lowered */}
-        <path
-          d="M0,195 L90,170 L180,185 L270,165 L360,185 L450,175 L540,200 L630,160 L720,200 L810,175 L900,190 L990,175 L1080,185 L1170,175 L1200,180 L1200,220 L0,220 Z"
-          fill="url(#g-near)"
-        />
-
-        {/* thin highlight stroke along peaks */}
-        <path
-          d="M0,195 L90,170 L180,185 L270,165 L360,185 L450,175 L540,200 L630,160 L720,200 L810,175 L900,190 L990,175 L1080,185 L1170,175 L1200,180"
-          stroke="#C4A57B"
-          strokeWidth="1"
-          fill="none"
-          opacity="0.12"
-        />
-      </svg>
-
-      {/* Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 pt-8 pb-10">
-        {/* Logo Section */}
-        <Motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="flex justify-center mb-6"
-        >
-          <Link to="/">
-            {/* Logo Container */}
-            <div className="relative px-7 py-5 bg-gradient-to-br from-white/7 to-white/3 rounded-2xl border border-[#D4A574]/30 shadow-lg">
-              <img 
-                src="/assets/images/logo.jpeg" 
-                alt="Zoravia Terra Journeys" 
-                className="h-20 w-auto rounded-md shadow-sm"
+    <footer className="bg-[#0a1628]">
+      <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+        <div className="md:flex md:justify-between md:items-start">
+          {/* Logo and Social Icons */}
+          <div className="mb-6 md:mb-0 flex items-center gap-6">
+            <Link to="/" className="flex-shrink-0">
+              <img
+                src="/assets/images/logo.jpeg"
+                className="h-16 w-16 rounded-lg object-cover shadow-lg"
+                alt="Zoravia Terra Journeys Logo"
+                style={{
+                  filter: "drop-shadow(0 4px 8px rgba(212, 165, 116, 0.15))"
+                }}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23D4A574'/%3E%3Ctext x='50' y='50' text-anchor='middle' dy='.3em' fill='white' font-family='Arial' font-size='12' font-weight='bold'%3EZTJ%3C/text%3E%3C/svg%3E";
+                }}
               />
-            </div>
-          </Link>
-        </Motion.div>
-
-        {/* Navigation Links */}
-        <Motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-4 md:gap-6 mb-7"
-        >
-          {navLinks.map((item) => (
-            <Link
-              key={item.label}
-              to={item.to}
-              className="text-[12px] md:text-[13px] text-white/70 font-light"
-            >
-              {item.label}
             </Link>
-          ))}
-        </Motion.div>
+            {/* Social Media Icons */}
+            <div className="flex gap-4">
+              {socialLinks.map((social, idx) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={idx}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-[#D4A574] transition-colors transform hover:scale-110 duration-200"
+                    aria-label={social.label}
+                  >
+                    <Icon className="w-6 h-6" />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
 
-        {/* Contact Info */}
-        <Motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          viewport={{ once: true }}
-          className="flex flex-col md:flex-row items-center justify-center gap-5 md:gap-8 mb-7 pb-6 border-b border-white/5"
-        >
-          <a 
-            href="mailto:info@zoraviaterra.com" 
-            className="flex items-center gap-2 text-[11px] md:text-[12px] text-white/60"
-          >
-            <Mail size={14} className="text-[#D4A574]" />
-            <span>zoraviaterrajourneys@gmail.com</span>
-          </a>
-          <span className="text-white/20 hidden md:block">•</span>
-          <a 
-            href="tel:+250788123456" 
-            className="flex items-center gap-2 text-[11px] md:text-[12px] text-white/60"
-          >
-            <Phone size={14} className="text-[#D4A574]" />
-            <span>+250 783 482 368</span>
-          </a>
-        </Motion.div>
+          {/* Navigation Grid */}
+          <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+            {/* Quick Links */}
+            <div>
+              <h2 className="mb-6 text-sm font-semibold text-white uppercase">Quick Links</h2>
+              <ul className="text-gray-400 font-medium">
+                <li className="mb-4">
+                  <Link to="/" className="hover:text-[#D4A574] transition-colors">Home</Link>
+                </li>
+                <li className="mb-4">
+                  <Link to="/about" className="hover:text-[#D4A574] transition-colors">About Us</Link>
+                </li>
+                <li>
+                  <Link to="/gallery" className="hover:text-[#D4A574] transition-colors">Gallery</Link>
+                </li>
+              </ul>
+            </div>
 
-        {/* Social Links */}
-        <Motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.35 }}
-          viewport={{ once: true }}
-          className="flex justify-center gap-3 mb-6"
-        >
-          {socialLinks.map((social, idx) => {
-            const Icon = social.icon;
-            return (
-              <a
-                key={idx}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full border border-white/10"
-                title={social.label}
-              >
-                <Icon className="text-white/60" size={17} />
-              </a>
-            );
-          })}
-        </Motion.div>
+            {/* Services */}
+            <div>
+              <h2 className="mb-6 text-sm font-semibold text-white uppercase">Services</h2>
+              <ul className="text-gray-400 font-medium">
+                <li className="mb-4">
+                  <Link to="/travel-with-us" className="hover:text-[#D4A574] transition-colors">Travel With Us</Link>
+                </li>
+                <li className="mb-4">
+                  <Link to="/short-escapes" className="hover:text-[#D4A574] transition-colors">Short Escapes</Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="hover:text-[#D4A574] transition-colors">Contact</Link>
+                </li>
+              </ul>
+            </div>
 
-        {/* Bottom Copyright */}
-        <div className="text-center">
-          <p className="text-[9px] md:text-[10px] text-white/25 font-light tracking-wider">
-            &copy; {currentYear} Zoravia Terra Journeys. All rights reserved.
-          </p>
+            {/* Contact Info */}
+            <div>
+              <h2 className="mb-6 text-sm font-semibold text-white uppercase">Contact</h2>
+              <ul className="text-gray-400 font-medium">
+                <li className="mb-4">
+                  <a
+                    href="mailto:zoraviaterrajourneys@gmail.com"
+                    className="hover:text-[#D4A574] transition-colors flex items-start gap-2"
+                  >
+                    <Mail size={16} className="mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">zoraviaterrajourneys@gmail.com</span>
+                  </a>
+                </li>
+                <li className="mb-4">
+                  <a
+                    href="tel:+250783482368"
+                    className="hover:text-[#D4A574] transition-colors flex items-center gap-2"
+                  >
+                    <Phone size={16} className="flex-shrink-0" />
+                    <span>+250 783 482 368</span>
+                  </a>
+                </li>
+                <li>
+                  <div className="flex items-start gap-2 text-gray-400">
+                    <MapPin size={16} className="mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Remera, KG 17 Ave, Kigali</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <hr className="my-6 border-gray-700 sm:mx-auto lg:my-8" />
+
+        {/* Bottom Section */}
+        <div className="sm:flex sm:items-center sm:justify-center">
+          <span className="text-sm text-gray-400 text-center">
+            © {currentYear}{" "}
+            <Link to="/" className="hover:text-[#D4A574] transition-colors">
+              Zoravia Terra Journeys
+            </Link>
+            . All Rights Reserved.
+          </span>
         </div>
       </div>
     </footer>

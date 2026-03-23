@@ -9,10 +9,9 @@ const ParallaxDivider = ({ image = "/assets/images/lion.png", quote = "Discover 
     return (
         <section className="relative h-[40vh] md:h-[50vh] flex items-center justify-center overflow-hidden">
             <div
-                className="absolute inset-0 z-0 bg-fixed bg-center bg-cover"
+                className="absolute inset-0 z-0 bg-center bg-cover bg-scroll lg:bg-fixed"
                 style={{
                     backgroundImage: `url('${image}')`,
-                    backgroundAttachment: 'fixed',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: 'cover'

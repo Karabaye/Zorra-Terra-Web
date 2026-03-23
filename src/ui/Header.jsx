@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, Menu, X } from "lucide-react";
-import { motion as Motion, AnimatePresence } from "framer-motion";
+import { motion as Motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 
 const gorilla = "/assets/images/gorilla.png";
 
@@ -15,6 +15,10 @@ const Header = () => {
   const [videoReady, setVideoReady] = useState(false);
   const lastScrollY = useRef(0);
 
+  // Parallax hooks must be top-level
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 800], [0, 300]);
+
   const isHomePage = location.pathname === "/";
 
   // Navigation items
@@ -22,8 +26,8 @@ const Header = () => {
     { to: "/", label: "Home" },
     { to: "/about", label: "About Us" },
     { to: "/travel-with-us", label: "Travel With Us" },
+    { to: "/short-escapes", label: "Short Escape Tours" },
     { to: "/gallery", label: "Gallery" },
-    { to: "/stories", label: "Upcoming Tours" },
     { to: "/contact", label: "Contact" },
   ];
 
@@ -123,7 +127,7 @@ const Header = () => {
                   <img
                     src="/assets/images/logo.jpeg"
                     alt="Zoravia Terra Journeys"
-                    className={`w-auto object-contain transition-all duration-500 ${scrolled ? "h-9 md:h-10" : "h-10 md:h-12"
+                    className={`w-auto object-contain transition-all duration-500 rounded-lg ${scrolled ? "h-8 md:h-10" : "h-9 md:h-12"
                       }`}
                     style={{
                       filter: "drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3))",
@@ -135,8 +139,9 @@ const Header = () => {
                       e.target.style.display = "none";
                       const parent = e.target.parentElement;
                       const fallback = document.createElement("div");
-                      fallback.className = "text-base md:text-lg font-bold text-white tracking-wider";
-                      fallback.textContent = "ZORAVIA TERRA";
+                      fallback.className = `text-sm md:text-lg font-bold text-[#D4A574] tracking-wider ${scrolled ? "h-8 md:h-10" : "h-9 md:h-12"} flex items-center`;
+                      fallback.style.fontFamily = "var(--title-font)";
+                      fallback.textContent = "ZORAVIA";
                       parent.appendChild(fallback);
                     }}
                   />
@@ -248,116 +253,99 @@ const Header = () => {
         </Motion.nav>
       </Motion.div>
 
-      {/* Mobile Navigation - Immersive Full Screen */}
+      {/* Mobile Navigation - Sidebar Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <Motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.3 }}
             className="fixed inset-0 z-[60] lg:hidden"
           >
-            {/* Immersive Background Blur & Gradient */}
-            <div className="absolute inset-0 bg-[#021732]/95 backdrop-blur-2xl" />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#D4A574]/5 via-transparent to-[#021732]/80 pointer-events-none" />
-
-            {/* Animated Ambient Glows */}
-            <Motion.div
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.1, 0.2, 0.1],
-                x: [0, 50, 0],
-                y: [0, -50, 0]
-              }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-              className="absolute -top-[10%] -right-[10%] w-[60%] aspect-square bg-[#D4A574]/20 rounded-full blur-[120px]"
-            />
-            <Motion.div
-              animate={{
-                scale: [1.2, 1, 1.2],
-                opacity: [0.05, 0.15, 0.05],
-                x: [0, -50, 0],
-                y: [0, 50, 0]
-              }}
-              transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-              className="absolute -bottom-[10%] -left-[10%] w-[60%] aspect-square bg-[#C4A57B]/20 rounded-full blur-[120px]"
+            {/* Backdrop */}
+            <div
+              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+              onClick={() => setMobileMenuOpen(false)}
             />
 
-            {/* Menu Header (Logo & Close) */}
-            <div className="relative flex items-center justify-between px-6 py-6 border-b border-white/5">
-              <Link to="/" onClick={() => setMobileMenuOpen(false)}>
-                <img src="/assets/images/logo.jpeg" alt="Logo" className="h-8 w-auto object-contain" />
-              </Link>
-              <button
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white"
-              >
-                <X size={20} />
-              </button>
-            </div>
+            {/* Sidebar Menu */}
+            <Motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="absolute right-0 top-0 h-full w-[85%] max-w-sm bg-[#021732] shadow-2xl flex flex-col"
+              style={{
+                background: "linear-gradient(135deg, rgba(1, 15, 28, 0.98) 0%, rgba(2, 23, 50, 0.98) 50%, rgba(1, 15, 28, 0.98) 100%)",
+                backdropFilter: "blur(20px)",
+                WebkitBackdropFilter: "blur(20px)",
+                border: "1px solid rgba(255, 255, 255, 0.08)",
+                boxShadow: "-10px 0 40px rgba(0, 0, 0, 0.5)"
+              }}
+            >
+              {/* Menu Header */}
+              <div className="flex items-center justify-between p-6 border-b border-white/5">
+                <Link to="/" onClick={() => setMobileMenuOpen(false)}>
+                  <img src="/assets/images/logo.jpeg" alt="Zoravia Terra Journeys" className="h-8 w-auto object-contain" />
+                </Link>
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200"
+                  aria-label="Close menu"
+                >
+                  <X size={18} />
+                </button>
+              </div>
 
-            {/* Navigation Content */}
-            <div className="relative h-[calc(100vh-80px)] overflow-y-auto px-6 py-12 flex flex-col items-center justify-center">
-              <div className="w-full max-w-sm space-y-8">
-                <nav className="space-y-4">
-                  {navItems.map((item, index) => {
+              {/* Navigation Items */}
+              <nav className="flex-1 p-6 overflow-y-auto">
+                <ul className="space-y-2">
+                  {navItems.map((item) => {
                     const isActive = location.pathname === item.to;
                     return (
-                      <Motion.div
-                        key={item.to}
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.1 + index * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                      >
+                      <li key={item.to}>
                         <Link
                           to={item.to}
-                          className="group relative block text-center"
+                          className={`flex items-center px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 ${isActive
+                            ? "bg-gradient-to-r from-[#D4A574] to-[#C4A57B] text-white shadow-lg"
+                            : "text-white/70 hover:text-white hover:bg-white/5"
+                            }`}
                           onClick={() => setMobileMenuOpen(false)}
                         >
-                          <span className={`block text-3xl font-light tracking-tight transition-all duration-500 ${isActive ? "text-[#D4A574] italic" : "text-white/80 group-hover:text-white"
-                            }`}
-                            style={isActive ? { fontFamily: 'var(--title-font)' } : {}}
-                          >
-                            {item.label}
-                          </span>
-
-                          {/* Active Indicator Dot */}
+                          {item.label}
                           {isActive && (
-                            <Motion.span
-                              layoutId="activeDot"
-                              className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 bg-[#D4A574] rounded-full shadow-[0_0_10px_#D4A574]"
-                            />
+                            <span className="ml-auto w-2 h-2 bg-white rounded-full shadow-[0_0_8px_#ffffff]"></span>
                           )}
                         </Link>
-                      </Motion.div>
+                      </li>
                     );
                   })}
-                </nav>
+                </ul>
+              </nav>
 
-                <Motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6, duration: 0.8 }}
-                  className="pt-12 text-center"
+              {/* CTA Button */}
+              <div className="p-6 border-t border-white/5">
+                <Link
+                  to="/booking"
+                  className="w-full flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-gradient-to-r from-[#D4A574] to-[#C4A57B] text-[#021732] text-base font-bold tracking-wide shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
-                  <Link
-                    to="/booking"
-                    className="inline-flex items-center gap-4 px-10 py-4 rounded-full bg-gradient-to-r from-[#D4A574] to-[#C4A57B] text-[#021732] text-xs font-bold tracking-[0.3em] uppercase shadow-2xl transition-all hover:scale-105 active:scale-95"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <span>Book Your Journey</span>
-                    <ArrowRight size={16} />
-                  </Link>
+                  <span>Book Your Journey</span>
+                  <ArrowRight size={18} />
+                </Link>
 
-                  <div className="mt-12 flex items-center justify-center gap-6 text-white/30 text-[10px] font-bold tracking-[0.4em] uppercase">
-                    <span className="h-[1px] w-8 bg-white/10" />
-                    Zoravia
-                    <span className="h-[1px] w-8 bg-white/10" />
-                  </div>
-                </Motion.div>
+                {/* Optional: Add contact info */}
+                <div className="mt-4 text-center">
+                  <p className="text-xs text-white/40">
+                    Need help?
+                    <Link to="/contact" className="text-[#D4A574] hover:text-[#C4A57B] font-medium ml-1 transition-colors">
+                      Contact Us
+                    </Link>
+                  </p>
+                </div>
               </div>
-            </div>
+            </Motion.div>
           </Motion.div>
         )}
       </AnimatePresence>
@@ -365,13 +353,19 @@ const Header = () => {
 
       {/* Hero Section - Only on Home Page */}
       {isHomePage && (
-        <header className="relative min-h-screen w-full overflow-hidden">
-          {/* Background Video */}
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#021732]/80 via-transparent to-[#021732]" />
+        <header className="relative h-[100svh] w-full overflow-hidden">
+          {/* Background Video with Parallax */}
+          <Motion.div
+            style={{
+              y: heroY,
+              height: "120%"
+            }}
+            className="absolute -top-[10%] inset-x-0 bottom-0 z-0"
+          >
+            <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#021732]/80 via-transparent to-[#021732] opacity-80" />
             <video
               ref={videoRef}
-              className="absolute inset-0 h-full w-full object-cover scale-105"
+              className="absolute inset-0 h-full w-full object-cover object-center"
               autoPlay
               loop
               muted
@@ -386,13 +380,13 @@ const Header = () => {
                 className="h-full w-full object-cover"
               />
             </video>
-            {/* Loading overlay */}
+            {/* Loading overlay inside parallax div to keep it synced */}
             {!videoReady && (
               <div className="absolute inset-0 z-20 flex items-center justify-center bg-[#021732]">
                 <div className="h-10 w-10 animate-spin rounded-full border-t-2 border-b-2 border-[#D4A574]"></div>
               </div>
             )}
-          </div>
+          </Motion.div>
 
           {/* Hero Content */}
           <div className="relative z-10 flex min-h-screen items-center justify-center pt-28">
@@ -443,7 +437,7 @@ const Header = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.1, duration: 0.8 }}
-                    className="text-xl md:text-2xl font-light italic text-[#D4A574]/80"
+                    className="text-lg md:text-2xl font-light italic text-[#D4A574]/80"
                     style={{ fontFamily: "var(--title-font)" }}
                   >
                     Let Us Help You Create Yours
@@ -456,7 +450,7 @@ const Header = () => {
                   transition={{ delay: 1.3, duration: 0.8 }}
                   className="max-w-xl mx-auto pt-6 border-t border-white/10"
                 >
-                  <p className="text-xl md:text-2xl leading-relaxed font-light text-white uppercase tracking-[0.2em]">
+                  <p className="text-lg md:text-2xl leading-relaxed font-light text-white uppercase tracking-[0.2em]">
                     Book Your Dream Trip Today!
                   </p>
                 </Motion.div>
@@ -467,7 +461,7 @@ const Header = () => {
       )}
 
       {/* For non-home pages, add padding */}
-      {!isHomePage && <div className="pt-28"></div>}
+      {!isHomePage && <div className="pt-20 md:pt-28"></div>}
     </>
   );
 };

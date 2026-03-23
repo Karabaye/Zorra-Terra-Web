@@ -3,8 +3,7 @@ import { motion as Motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
-  Plus,
-  Minus,
+  ChevronDown,
   Check,
   Sparkles,
   MapPin,
@@ -31,8 +30,7 @@ const PremiumDropdown = ({ section, isOpen, onToggle }) => {
 
         <div className={`relative flex items-center justify-center w-5 h-5 rounded-full border transition-all duration-300 ${isOpen ? "bg-[#D4A574] border-[#D4A574] text-[#021732]" : "border-white/10 text-white/30 group-hover:border-white/40"
           }`}>
-          <Plus size={10} className={`absolute transition-transform duration-300 ${isOpen ? "rotate-90 opacity-0" : "opacity-100"}`} />
-          <Minus size={10} className={`absolute transition-transform duration-300 ${isOpen ? "opacity-100" : "-rotate-90 opacity-0"}`} />
+          <ChevronDown size={14} className={`transition-transform duration-300 ${isOpen ? "rotate-180" : "rotate-0"}`} />
         </div>
       </button>
 
@@ -71,7 +69,7 @@ const JourneyBlueprint = ({ blueprint, index }) => {
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start max-w-6xl mx-auto">
         {/* Compact Image Column - Alternate order */}
         <div className={`${index % 2 === 0 ? 'order-1 lg:order-2' : 'order-1'} relative group`}>
-          <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-xl aspect-[4/5] max-w-[420px] mx-auto lg:mx-0">
+          <div className="relative rounded-3xl overflow-hidden border border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.3)] aspect-[4/3] lg:aspect-[4/5] max-w-[500px] mx-auto lg:mx-0 group">
             <Motion.img
               src={blueprint.image}
               alt={blueprint.title}

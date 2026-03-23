@@ -95,12 +95,12 @@ const CinematicTheater = ({ chapter }) => {
             {/* Stage Overlay Content */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#021732]/80 via-transparent to-transparent opacity-60" />
 
-            <div className="absolute bottom-6 left-8 text-left">
+            <div className="absolute bottom-6 left-6 md:left-8 text-left">
               <div className="flex items-center gap-2 text-[#D4A574] mb-2">
-                <MapPin size={12} />
-                <span className="text-[9px] uppercase tracking-[0.3em] font-bold">{activeItem.location || 'Rwanda'}</span>
+                <MapPin size={10} md:size={12} />
+                <span className="text-[8px] md:text-[9px] uppercase tracking-[0.3em] font-bold">{activeItem.location || 'Rwanda'}</span>
               </div>
-              <h3 className="text-3xl md:text-4xl font-script text-white">{activeItem.title}</h3>
+              <h3 className="text-2xl md:text-4xl font-script text-white">{activeItem.title}</h3>
             </div>
 
             {/* Nav Arrows */}
@@ -125,12 +125,12 @@ const CinematicTheater = ({ chapter }) => {
       </div>
 
       {/* Thumbnail Navigation Rack */}
-      <div className="grid grid-cols-5 gap-3 max-w-lg w-full">
+      <div className="flex overflow-x-auto md:grid md:grid-cols-5 gap-3 max-w-full md:max-w-lg w-full px-4 md:px-0 scrollbar-hide no-scrollbar">
         {chapter.items.map((item, idx) => (
           <button
             key={item.id}
             onClick={() => setActiveIndex(idx)}
-            className={`relative rounded-xl overflow-hidden h-14 md:h-16 transition-all duration-300 border-2 
+            className={`relative rounded-xl overflow-hidden h-14 md:h-16 w-20 md:w-auto flex-shrink-0 transition-all duration-300 border-2 
               ${activeIndex === idx ? 'border-[#D4A574] scale-105' : 'border-transparent opacity-40 hover:opacity-100'}`}
           >
             <img
@@ -161,26 +161,27 @@ export default function Gallery() {
         <motion.header
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-center mb-24"
+          className="text-center mb-16 md:mb-24"
         >
-          <h1 className="text-5xl md:text-7xl tracking-tighter mb-6">
-            <span className="font-semibold inline-block mr-4">Moments</span>
+          <h1 className="text-4xl md:text-7xl tracking-tighter mb-4 md:mb-6 leading-tight">
+            <span className="font-semibold inline-block mr-2 md:mr-4">Moments</span>
             <span className="text-[#D4A574] font-script italic"> & Experience</span>
           </h1>
         </motion.header>
 
         {/* Chapters */}
-        <div className="space-y-48">
+        <div className="space-y-32 md:space-y-48">
           {chapters.map((chapter) => (
             <motion.section
               key={chapter.id}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="space-y-12"
+              className="space-y-8 md:space-y-12"
             >
-              <div className="flex flex-col items-start gap-4 border-l-2 border-[#D4A574]/50 pl-6">
-                <h2 className="text-4xl md:text-5xl font-script text-white">{chapter.title}</h2>
+              <div className="flex flex-col items-start gap-3 md:gap-4 border-l-2 border-[#D4A574]/50 pl-4 md:pl-6">
+                <h2 className="text-3xl md:text-5xl font-script text-white">{chapter.title}</h2>
+                <p className="text-white/40 font-light text-xs md:text-sm max-w-md">{chapter.description}</p>
               </div>
 
               <CinematicTheater chapter={chapter} />

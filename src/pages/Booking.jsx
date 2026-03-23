@@ -17,9 +17,38 @@ import {
 import { useLocation } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
+const ALL_COUNTRIES = [
+    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
+    "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
+    "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia (Czech Republic)",
+    "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
+    "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia",
+    "Fiji", "Finland", "France",
+    "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
+    "Haiti", "Holy See", "Honduras", "Hungary",
+    "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Ivory Coast",
+    "Jamaica", "Japan", "Jordan",
+    "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan",
+    "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
+    "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)",
+    "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway",
+    "Oman",
+    "Pakistan", "Palau", "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal",
+    "Qatar",
+    "Romania", "Russia", "Rwanda",
+    "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria",
+    "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu",
+    "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States of America", "Uruguay", "Uzbekistan",
+    "Vanuatu", "Venezuela", "Vietnam",
+    "Yemen",
+    "Zambia", "Zimbabwe"
+];
+
 const Booking = () => {
     const location = useLocation();
     const [step, setStep] = useState(1);
+    const [showCountryList, setShowCountryList] = useState(false);
+    const [countrySearch, setCountrySearch] = useState("");
     const [formData, setFormData] = useState({
         title: "Mr",
         name: "",
@@ -52,32 +81,103 @@ const Booking = () => {
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
-    const nextStep = () => setStep((prev) => Math.min(prev + 1, totalSteps));
+    const validateStep = () => {
+        if (step === 1) {
+            const { name, email, phone, nationality } = formData;
+            if (!name || !email || !phone || !nationality) {
+                toast.error("Please fill in all guest details before continuing.");
+                return false;
+            }
+            // Block simple "fake" email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                toast.error("Please enter a valid, real email address.");
+                return false;
+            }
+        } else if (step === 2) {
+            const { activities, arrivalDate, departureDate } = formData;
+            if (!activities || !arrivalDate || !departureDate) {
+                toast.error("Please select your activities and dates.");
+                return false;
+            }
+
+            // Check if departure is after arrival
+            if (new Date(departureDate) < new Date(arrivalDate)) {
+                toast.error("Departure date cannot be before arrival date.");
+                return false;
+            }
+        }
+        return true;
+    };
+
+    const nextStep = () => {
+        if (validateStep()) {
+            setStep((prev) => Math.min(prev + 1, totalSteps));
+        }
+    };
+
     const prevStep = () => setStep((prev) => Math.max(prev - 1, 1));
 
-    const handleSubmit = (e) => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsSubmitting(true);
 
-        // Premium personalized toast
-        toast.success((t) => (
-            <div className="flex flex-col gap-1 py-1">
-                <div className="flex items-center gap-2">
-                    <span className="text-[#D4A574] font-bold text-sm tracking-wide">Submission Successful</span>
+        const loadingToast = toast.loading('Preparing your journey request...');
+
+        try {
+            const response = await fetch('https://formspree.io/f/xbdzkrwn', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || 'Something went wrong');
+            }
+
+            toast.dismiss(loadingToast);
+
+            // Premium personalized toast
+            toast.success((t) => (
+                <div className="flex flex-col gap-1 py-1">
+                    <div className="flex items-center gap-2">
+                        <span className="text-[#D4A574] font-bold text-sm tracking-wide">Submission Successful</span>
+                    </div>
+                    <p className="text-white/80 text-xs font-light leading-relaxed">
+                        Thank you, <span className="text-[#D4A574] font-medium">{formData.name}</span>! <br />
+                        Your journey request has been sent to our inbox.
+                    </p>
                 </div>
-                <p className="text-white/80 text-xs font-light leading-relaxed">
-                    Thank you, <span className="text-[#D4A574] font-medium">{formData.name}</span>! <br />
-                    Your journey request has been sent. We'll contact you shortly.
-                </p>
-            </div>
-        ), {
-            duration: 5000,
-            icon: '✨',
-        });
+            ), {
+                duration: 6000,
+                icon: '✨',
+            });
 
-        // Delay redirect to allow user to see the message
-        setTimeout(() => {
-            window.location.href = "/";
-        }, 3000);
+            // Delay redirect to allow user to see the message
+            setTimeout(() => {
+                window.location.href = "/";
+            }, 3000);
+
+        } catch (error) {
+            toast.dismiss(loadingToast);
+            toast.error(error.message || 'Payment/Submission failed. Please check your connection.', {
+                duration: 6000,
+                style: {
+                    background: '#2a1a1a',
+                    color: '#ff8a8a',
+                    border: '1px solid #ff4b4b'
+                }
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const slideVariants = {
@@ -129,8 +229,8 @@ const Booking = () => {
                             />
                             <span className="text-[10px] font-bold uppercase text-[#D4A574] tracking-[0.6em] select-none">Begin Your Journey</span>
 
-                            <h1 className="text-6xl md:text-8xl font-light tracking-tight leading-none">
-                                Booking <span className="text-[#D4A574] italic" style={{ fontFamily: 'var(--title-font)' }}>Form</span>
+                            <h1 className="text-5xl md:text-8xl font-light tracking-tight leading-none">
+                                <span className="text-[#D4A574] italic" style={{ fontFamily: 'var(--title-font)' }}> Booking </span>
                             </h1>
                         </div>
 
@@ -142,7 +242,7 @@ const Booking = () => {
                 </section>
 
                 {/* Progress Bar - Elegant "Route" Design */}
-                <div className="max-w-2xl mx-auto mb-20 px-6">
+                <div className="max-w-2xl mx-auto mb-12 md:mb-20 px-2 md:px-6">
                     <div className="flex items-center justify-between relative">
                         {/* Background Path */}
                         <div className="absolute left-0 top-[18px] w-full h-[2px] bg-white/5" />
@@ -164,16 +264,16 @@ const Booking = () => {
                                         backgroundColor: step >= s ? "#D4A574" : "rgba(255,255,255,0.05)",
                                         borderColor: step >= s ? "rgba(74, 222, 128, 0.5)" : "rgba(255,255,255,0.1)"
                                     }}
-                                    className={`w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-500 ${step >= s ? "text-[#021732]" : "text-white/20"
+                                    className={`w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center border transition-all duration-500 ${step >= s ? "text-[#021732]" : "text-white/20"
                                         }`}
                                     style={{
                                         boxShadow: step === s ? "0 0 25px rgba(74, 222, 128, 0.4)" : "none"
                                     }}
                                 >
                                     {step > s ? (
-                                        <Check size={16} strokeWidth={3} />
+                                        <Check size={14} strokeWidth={3} />
                                     ) : (
-                                        <span className="text-[12px] font-bold">{s}</span>
+                                        <span className="text-[11px] md:text-[12px] font-bold">{s}</span>
                                     )}
                                 </Motion.div>
 
@@ -198,7 +298,7 @@ const Booking = () => {
                 {/* Form Card */}
                 <Motion.div
                     layout
-                    className="max-w-2xl mx-auto bg-[#031d3d]/40 backdrop-blur-3xl border border-white/5 rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative overflow-hidden"
+                    className="max-w-2xl mx-auto bg-[#031d3d]/40 backdrop-blur-3xl border border-white/5 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 shadow-2xl relative overflow-hidden"
                 >
                     {/* Decorative Ambient Glow */}
                     <div className="absolute -top-24 -right-24 w-48 h-48 bg-[#D4A574]/5 rounded-full blur-[80px]" />
@@ -207,14 +307,14 @@ const Booking = () => {
                         <AnimatePresence mode="wait" custom={step}>
                             {/* Step 1: Guest Information */}
                             {step === 1 && (
-                                <Motion.div key={1} variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.5 }} className="space-y-10">
-                                    <div className="flex items-center gap-4 pb-6 border-b border-white/5">
-                                        <div className="w-12 h-12 rounded-2xl bg-[#D4A574]/10 flex items-center justify-center text-[#D4A574] border border-[#D4A574]/20">
-                                            <User size={20} />
+                                <Motion.div key={1} variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.5 }} className="space-y-10 pb-20">
+                                    <div className="flex items-center gap-3 md:gap-4 pb-6 border-b border-white/5">
+                                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#D4A574]/10 flex items-center justify-center text-[#D4A574] border border-[#D4A574]/20">
+                                            <User size={18} />
                                         </div>
                                         <div>
-                                            <h3 className="text-xl font-light">Guest Information</h3>
-                                            <p className="text-[9px] text-[#D4A574]/40 uppercase tracking-[0.3em] font-bold mt-1">Primary Traveler Details</p>
+                                            <h3 className="text-lg md:text-xl font-light">Guest Information</h3>
+                                            <p className="text-[8px] md:text-[9px] text-[#D4A574]/40 uppercase tracking-[0.3em] font-bold mt-1">Primary Traveler Details</p>
                                         </div>
                                     </div>
 
@@ -245,15 +345,79 @@ const Booking = () => {
 
                                         <div className="space-y-2">
                                             <label className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Phone / WhatsApp *</label>
-                                            <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] placeholder:text-white/10" placeholder="+250..." />
+                                            <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] placeholder:text-white/10" placeholder="+250 783 482 368" />
                                         </div>
 
-                                        <div className="space-y-2 md:col-span-2">
+                                        <div className="space-y-2 md:col-span-2 relative">
                                             <label className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Nationality *</label>
                                             <div className="relative group">
-                                                <Globe size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-hover:text-white/40 transition-colors" />
-                                                <input required type="text" name="nationality" value={formData.nationality} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] placeholder:text-white/10" placeholder="Country of Residence" />
+                                                <div
+                                                    onClick={() => setShowCountryList(!showCountryList)}
+                                                    className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-10 py-3 text-xs focus:border-[#D4A574]/50 hover:bg-white/[0.07] transition-all cursor-pointer flex items-center justify-between"
+                                                >
+                                                    <Globe size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-hover:text-white/40 transition-colors z-10" />
+                                                    <span className={formData.nationality ? "text-white/70" : "text-white/20"}>
+                                                        {formData.nationality || "Select your country"}
+                                                    </span>
+                                                    <ChevronDown size={14} className={`text-white/20 transition-transform duration-300 ${showCountryList ? "rotate-180" : ""}`} />
+                                                </div>
+
+                                                <AnimatePresence>
+                                                    {showCountryList && (
+                                                        <Motion.div
+                                                            initial={{ opacity: 0, scaleY: 0.9, originY: 0 }}
+                                                            animate={{ opacity: 1, scaleY: 1 }}
+                                                            exit={{ opacity: 0, scaleY: 0.9 }}
+                                                            className="absolute left-0 right-0 top-full mt-2 z-[100] bg-[#031d3d] border border-white/10 rounded-xl shadow-2xl overflow-hidden backdrop-blur-3xl"
+                                                            style={{ maxHeight: "300px" }}
+                                                        >
+                                                            {/* Search Bar */}
+                                                            <div className="p-3 border-b border-white/5 bg-white/[0.02]">
+                                                                <input
+                                                                    type="text"
+                                                                    placeholder="Search country..."
+                                                                    value={countrySearch}
+                                                                    onChange={(e) => setCountrySearch(e.target.value)}
+                                                                    className="w-full bg-white/5 border border-white/5 rounded-lg px-3 py-2 text-[11px] outline-none focus:border-[#D4A574]/30"
+                                                                    onClick={(e) => e.stopPropagation()}
+                                                                />
+                                                            </div>
+
+                                                            {/* Country List */}
+                                                            <div className="overflow-y-auto max-h-[220px] custom-scrollbar">
+                                                                {ALL_COUNTRIES
+                                                                    .filter(c => c.toLowerCase().includes(countrySearch.toLowerCase()))
+                                                                    .map((country) => (
+                                                                        <div
+                                                                            key={country}
+                                                                            onClick={() => {
+                                                                                setFormData(prev => ({ ...prev, nationality: country }));
+                                                                                setShowCountryList(false);
+                                                                                setCountrySearch("");
+                                                                            }}
+                                                                            className="px-4 py-2.5 text-[11px] text-white/60 hover:text-white hover:bg-white/5 cursor-pointer transition-all border-b border-white/[0.02] last:border-0"
+                                                                        >
+                                                                            {country}
+                                                                        </div>
+                                                                    ))}
+                                                                {ALL_COUNTRIES.filter(c => c.toLowerCase().includes(countrySearch.toLowerCase())).length === 0 && (
+                                                                    <div className="px-4 py-8 text-center text-white/20 text-[10px] italic">
+                                                                        No countries found matching your search
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                        </Motion.div>
+                                                    )}
+                                                </AnimatePresence>
                                             </div>
+
+                                            {/* Click outside to close (Invisible layer) */}
+                                            {showCountryList && (
+                                                <div
+                                                    className="fixed inset-0 z-[90]"
+                                                    onClick={() => setShowCountryList(false)}
+                                                />
+                                            )}
                                         </div>
                                     </div>
                                 </Motion.div>
@@ -262,13 +426,13 @@ const Booking = () => {
                             {/* Step 2: Adventure Details */}
                             {step === 2 && (
                                 <Motion.div key={2} variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.5 }} className="space-y-10">
-                                    <div className="flex items-center gap-4 pb-6 border-b border-white/5">
-                                        <div className="w-12 h-12 rounded-2xl bg-[#D4A574]/10 flex items-center justify-center text-[#D4A574] border border-[#D4A574]/20">
-                                            <Calendar size={20} />
+                                    <div className="flex items-center gap-3 md:gap-4 pb-6 border-b border-white/5">
+                                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#D4A574]/10 flex items-center justify-center text-[#D4A574] border border-[#D4A574]/20">
+                                            <Calendar size={18} />
                                         </div>
                                         <div>
-                                            <h3 className="text-xl font-light">Adventure Details</h3>
-                                            <p className="text-[9px] text-[#D4A574]/40 uppercase tracking-[0.3em] font-bold mt-1">Journey Preferences</p>
+                                            <h3 className="text-lg md:text-xl font-light">Adventure Details</h3>
+                                            <p className="text-[8px] md:text-[9px] text-[#D4A574]/40 uppercase tracking-[0.3em] font-bold mt-1">Journey Preferences</p>
                                         </div>
                                     </div>
 
@@ -323,13 +487,13 @@ const Booking = () => {
                             {/* Step 3: Special Requests & Review */}
                             {step === 3 && (
                                 <Motion.div key={3} variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.5 }} className="space-y-10">
-                                    <div className="flex items-center gap-4 pb-6 border-b border-white/5">
-                                        <div className="w-12 h-12 rounded-2xl bg-[#D4A574]/10 flex items-center justify-center text-[#D4A574] border border-[#D4A574]/20">
-                                            <ClipboardList size={20} />
+                                    <div className="flex items-center gap-3 md:gap-4 pb-6 border-b border-white/5">
+                                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#D4A574]/10 flex items-center justify-center text-[#D4A574] border border-[#D4A574]/20">
+                                            <ClipboardList size={18} />
                                         </div>
                                         <div>
-                                            <h3 className="text-xl font-light">Final Details</h3>
-                                            <p className="text-[9px] text-[#D4A574]/40 uppercase tracking-[0.3em] font-bold mt-1">Review & Preferences</p>
+                                            <h3 className="text-lg md:text-xl font-light">Final Details</h3>
+                                            <p className="text-[8px] md:text-[9px] text-[#D4A574]/40 uppercase tracking-[0.3em] font-bold mt-1">Review & Preferences</p>
                                         </div>
                                     </div>
 
@@ -393,11 +557,12 @@ const Booking = () => {
                                 <button
                                     type={step === totalSteps ? "submit" : "button"}
                                     onClick={step === totalSteps ? null : nextStep}
-                                    className="relative flex items-center gap-6 px-10 py-4 rounded-full bg-gradient-to-r from-[#D4A574] to-[#C4A57B] text-[#021732] text-[10px] font-bold tracking-[0.3em] uppercase overflow-hidden shadow-xl transition-all duration-500 hover:scale-105 active:scale-95"
+                                    disabled={isSubmitting && step === totalSteps}
+                                    className={`relative flex items-center gap-4 md:gap-6 px-8 md:px-10 py-3.5 md:py-4 rounded-full bg-gradient-to-r from-[#D4A574] to-[#C4A57B] text-[#021732] text-[9px] md:text-[10px] font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase overflow-hidden shadow-xl transition-all duration-500 hover:scale-105 active:scale-95 ${(isSubmitting && step === totalSteps) ? 'opacity-70 cursor-not-allowed' : ''}`}
                                 >
-                                    <span className="relative z-10 flex items-center gap-3">
-                                        {step === totalSteps ? "Submit Request" : "Continue"}
-                                        {step === totalSteps ? <Send size={16} strokeWidth={2.5} /> : <ChevronRight size={16} strokeWidth={2.5} className="group-hover:translate-x-1.5 transition-transform duration-300" />}
+                                    <span className="relative z-10 flex items-center gap-2 md:gap-3">
+                                        {step === totalSteps ? (isSubmitting ? "Processing..." : "Submit Request") : "Continue"}
+                                        {step === totalSteps ? <Send size={14} md:size={16} strokeWidth={2.5} className={(isSubmitting && step === totalSteps) ? 'animate-pulse' : ''} /> : <ChevronRight size={14} md:size={16} strokeWidth={2.5} className="group-hover:translate-x-1.5 transition-transform duration-300" />}
                                     </span>
                                     {/* Premium Shine Overlay */}
                                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />

@@ -118,6 +118,10 @@ const Preloader = ({ onComplete }) => {
                                     src="/assets/images/logo.jpeg"
                                     alt="Logo"
                                     className="h-32 md:h-44 w-auto rounded-full"
+                                    onError={(e) => {
+                                      e.target.onerror = null;
+                                      e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='80' fill='%23D4A574'/%3E%3Ctext x='100' y='100' text-anchor='middle' dy='.3em' fill='white' font-family='Arial' font-size='24' font-weight='bold'%3EZTJ%3C/text%3E%3C/svg%3E";
+                                    }}
                                 />
                                 <Motion.div
                                     animate={{ left: ["-150%", "300%"] }}
@@ -179,4 +183,4 @@ const Preloader = ({ onComplete }) => {
     );
 };
 
-export default Preloader;
+export default Preloader;                    

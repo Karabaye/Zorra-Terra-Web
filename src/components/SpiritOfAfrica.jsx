@@ -8,10 +8,9 @@ const SpiritOfAfrica = () => {
     <section className="relative py-32 overflow-hidden min-h-[450px] flex items-center">
       {/* Background with fixed parallax effect */}
       <div
-        className="absolute inset-0 z-0 bg-fixed bg-center bg-cover"
+        className="absolute inset-0 z-0 bg-center bg-cover bg-scroll lg:bg-fixed"
         style={{
           backgroundImage: `url('${bg_image}')`,
-          backgroundAttachment: 'fixed',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover'

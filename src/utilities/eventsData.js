@@ -1,0 +1,62 @@
+export const eventsData = [
+    {
+        id: 1,
+        title: "Adventure in Nyungwe National Park",
+        subtitle: "Zoravia Terra Journeys Presents",
+        description: "Experience the thrill of the rainforest! Choose between an exhilarating Zipline Experience or a challenging Rope Course, combined with the world-famous Canopy Walk, Nature Walks, and Birdwatching.",
+        date: "20th Dec. 2025",
+        time: "Pickup at 5:00 AM",
+        fees: "Rwandans & EAC: 70,000 Rwf | Residents: $240 | Non-Residents: $300",
+        lunch: "Lunch & Soft Drinks Included",
+        transport: "+250 783 482 368",
+        accommodation: "Transport, Entrance & Permit Fees Included",
+        image: "/assets/Events/event1.jpeg",
+        accent: "Adventure",
+        whatsapp: "250783482368"
+    },
+    {
+        id: 2,
+        title: "Explore Nature at MuHazi Gikomero!",
+        subtitle: "It's time for hiking",
+        description: "Hike through lush forests, rolling hills, and vibrant local communities with stunning panoramic views of Lake Muhazi. A perfect escape into Rwanda's natural beauty.",
+        date: "13 Dec 2025",
+        time: "7:00 AM (Pickup @Stop 15, Legacy Hospital)",
+        fees: "Free Hiking Entry",
+        lunch: "Inyanja Resort (Self-payment)",
+        transport: "+250 783 482 368",
+        accommodation: "On-site stays with special discounts available",
+        image: "/assets/Events/event2.jpeg",
+        accent: "Nature",
+        whatsapp: "250783482368"
+    },
+    {
+        id: 3,
+        title: "Adventure Unlocked: December Specials",
+        subtitle: "December with Zoravia Terra Journeys",
+        description: "Double the adventure this season! Join us for a Free Hike at Gasabo-Gikomero on Dec 13th, or embark on a Nyungwe Adventure on Dec 20th. Choose your thrill and unlock the beauty of Rwanda.",
+        date: "December 2025",
+        time: "Multiple Dates available",
+        fees: "See specific event for pricing",
+        lunch: "Varies by Experience",
+        transport: "+250 783 482 368",
+        accommodation: "Limited slots available - Book early!",
+        image: "/assets/Events/event3.jpeg",
+        accent: "Season",
+        whatsapp: "250783482368"
+    },
+    {
+        id: 4,
+        title: "Bisoke Mountain Hiking",
+        subtitle: "Reach New Heights",
+        description: "Explore the wild and conquer the summit of the volcanic Bisoke Mountain. Whether you're a beginner or a seasoned hiker, this crater-lake adventure offers breathtaking views and a soul-stirring experience.",
+        date: "20th Sept 2025",
+        time: "Departure at 3:00 AM @Remera BK Gisimenti",
+        fees: "Rwandan: 50K | EAC: 85$ | Foreigner: 120$",
+        lunch: "Dinner & Refreshments included",
+        transport: "+250 783 482 368 / 250 785 098 628",
+        accommodation: "Entrance Fee & Guidance Included",
+        image: "/assets/Events/event4.jpeg",
+        accent: "Hiking",
+        whatsapp: "250783482368"
+    }
+];
