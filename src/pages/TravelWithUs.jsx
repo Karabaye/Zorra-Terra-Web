@@ -55,6 +55,8 @@ const PremiumDropdown = ({ section, isOpen, onToggle }) => {
   );
 };
 
+import PageHero from "../components/PageHero";
+
 const JourneyBlueprint = ({ blueprint, index }) => {
   const [openSection, setOpenSection] = useState(0);
 
@@ -544,43 +546,15 @@ const TravelWithUs = () => {
   return (
     <div className="min-h-screen bg-[#021732] text-white selection:bg-[#D4A574]/30 selection:text-white pb-24">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-8 text-center overflow-hidden">
-        {/* Subtle Background Glow */}
-        <Motion.div
-          animate={{ opacity: [0.05, 0.1, 0.05] }}
-          transition={{ duration: 5, repeat: Infinity }}
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-64 bg-[#D4A574] blur-[100px] pointer-events-none"
-        />
-
-        <div className="container mx-auto px-4 relative z-10 max-w-4xl">
-          <Motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="space-y-6"
-          >
-            <div className="flex flex-col items-center gap-3">
-              <Motion.span
-                initial={{ letterSpacing: "0.2em", opacity: 0 }}
-                animate={{ letterSpacing: "0.4em", opacity: 0.8 }}
-                transition={{ duration: 1.5 }}
-                className="text-[9px] font-bold uppercase text-[#D4A574] select-none"
-              >
-                Travel With Us
-              </Motion.span>
-              <h1 className="text-4xl md:text-6xl font-light italic" style={{ fontFamily: 'var(--title-font)' }}>
-                Journey&nbsp;<span className="text-white/20 not-italic font-sans">Blueprints</span>
-              </h1>
-            </div>
-            <div className="max-w-2xl mx-auto space-y-4 pt-2">
-              <h2 className="text-xl md:text-2xl font-light text-white/90">Itineraries Designed Around You</h2>
-              <p className="max-w-xl mx-auto text-white/40 font-light leading-relaxed text-xs md:text-sm">
-                Discover Rwanda beyond the usual highlights. Our flexible journey blueprints are designed around your pace, interests, and purpose connecting you with real communities, authentic experiences, and unhurried moments. Travel with Zoravia Terra Journeys to experience Rwanda as it truly feels, safely, privately, and memorably.
-              </p>
-            </div>
-          </Motion.div>
+      <PageHero 
+        title="Journey Blueprints" 
+        subtitle="Travel With Us" 
+        description="Discover Rwanda beyond the usual highlights. Our flexible journey blueprints are designed around your pace, interests, and purpose connecting you with real communities, authentic experiences, and unhurried moments."
+      >
+        <div className="mt-4">
+           <h2 className="text-xl md:text-2xl font-light text-white/90">Itineraries Designed Around You</h2>
         </div>
-      </section>
+      </PageHero>
 
       <div className="container mx-auto px-4 max-w-5xl pt-12">
         {journeys.map((j, i) => (

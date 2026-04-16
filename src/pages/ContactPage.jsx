@@ -3,6 +3,8 @@ import { motion as Motion } from "framer-motion";
 import { Send, Instagram, Facebook, Linkedin } from "lucide-react";
 import { toast } from "react-hot-toast";
 
+import PageHero from "../components/PageHero";
+
 export default function ContactPage() {
     const [formData, setFormData] = useState({
         name: "",
@@ -76,20 +78,9 @@ export default function ContactPage() {
 
     return (
         <div className="min-h-screen bg-[#021732] text-white selection:bg-[#D4A574]/30 selection:text-white overflow-x-hidden">
-
-            <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+            
+            <section className="pb-12 px-4 sm:px-6 lg:px-8">
                 <div className="container mx-auto max-w-6xl">
-
-                    {/* Simple Title Above The Card */}
-                    <Motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mb-8 text-center"
-                    >
-                        <h1 className="text-4xl md:text-5xl font-light italic text-white" style={{ fontFamily: "var(--title-font)" }}>
-                            Contact <span className="text-[#D4A574]">Us</span>
-                        </h1>
-                    </Motion.div>
 
                     <Motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -119,8 +110,8 @@ export default function ContactPage() {
                                 {/* Compact Header for the form side */}
                                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/5">
                                     <div className="space-y-1">
-                                        <h2 className="text-2xl font-light">
-                                            Direct <span className="text-[#D4A574] italic" style={{ fontFamily: "var(--title-font)" }}>Details</span>
+                                        <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">
+                                            Direct <span className="text-white">Details</span>
                                         </h2>
                                         <p className="text-[9px] font-bold uppercase tracking-widest text-white/20">Connect with Zoravia</p>
                                     </div>

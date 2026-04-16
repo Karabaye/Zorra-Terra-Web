@@ -56,18 +56,14 @@ const WhyZoravia = () => {
                             className="space-y-8"
                         >
                             <div className="space-y-4">
-                                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#D4A574]/60">The Zoravia Standard</span>
                                 <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">
                                     Why Travel with <br />
-                                    <span className="text-[#D4A574] italic" style={{ fontFamily: "var(--title-font)" }}>Zoravia Terra Journeys</span>
+                                    <span className="text-white">Zoravia Terra Journeys</span>
                                 </h2>
                             </div>
 
                             <div className="h-px w-20 bg-[#D4A574]/40" />
 
-                            <p className="text-xl text-white/70 font-light italic leading-relaxed">
-                                "Because seamless travel is <span className="text-white">intentional</span>."
-                            </p>
                         </Motion.div>
                     </div>
 
@@ -106,14 +102,7 @@ const WhyZoravia = () => {
                             transition={{ delay: 0.5, duration: 1.5 }}
                             className="mt-24 pt-16 border-t border-white/5 flex flex-col items-center md:items-start text-center md:text-left space-y-4"
                         >
-                            <div className="flex items-center gap-3 text-[#D4A574]/60 uppercase text-[10px] tracking-[0.5em] mb-2">
-                                <Sparkles size={12} />
-                                Quiet Precision
-                            </div>
-                            <p className="text-2xl md:text-3xl text-white/20 font-light italic leading-tight" style={{ fontFamily: "var(--title-font)" }}>
-                                "When travel is planned properly, <br />
-                                it feels <span className="text-white/40">natural</span>."
-                            </p>
+
                         </Motion.div>
                     </div>
 

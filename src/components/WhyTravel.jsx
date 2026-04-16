@@ -18,7 +18,7 @@ const benefits = [
     number: "03",
     title: "Transparent & Honest Service",
     description:
-      "Clear pricing, upfront information, and open communication ensure confidence at every step.",
+      "Clear pricing, upfront information, and open communication ensure your comfort.",
   },
   {
     number: "04",
@@ -63,11 +63,8 @@ const WhyTravel = () => {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="mx-auto max-w-4xl mb-12 text-center space-y-3">
-          <h2
-            className="text-3xl md:text-4xl font-light italic text-[#D4A574]"
-            style={{ fontFamily: "var(--title-font)" }}
-          >
-            Why travel with us
+          <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">
+            Why travel with <span className="text-white">us</span>
           </h2>
           <p className="text-white/70 font-light text-sm md:text-base">
             Here's what sets us apart:

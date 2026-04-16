@@ -173,9 +173,9 @@ const UpcomingEvents = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-6xl font-light text-white"
+                        className="text-4xl md:text-5xl font-light text-white leading-tight"
                     >
-                        Upcoming <span className="text-[#D4A574]">Journeys</span>
+                        Upcoming <span className="text-white">Journeys</span>
                     </Motion.h2>
                 </div>
 
@@ -209,7 +209,7 @@ const UpcomingEvents = () => {
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.2 }}
-                                        className="text-3xl md:text-5xl font-bold text-white leading-[1.1] tracking-tight"
+                                        className="text-4xl md:text-5xl font-light text-white leading-tight"
                                     >
                                         {event.title}
                                     </Motion.h3>
@@ -304,7 +304,7 @@ const UpcomingEvents = () => {
                                         animate={{ opacity: 1, scale: 1 }}
                                         exit={{ opacity: 0, scale: 0.98 }}
                                         transition={{ duration: 0.6, ease: "easeOut" }}
-                                        className="w-full h-full object-contain transition-transform duration-500 group-hover/img:scale-105"
+                                        className="w-full h-full object-contain transition-transform duration-[5s] group-hover/img:scale-105"
                                     />
                                 </AnimatePresence>
 
@@ -428,11 +428,13 @@ const UpcomingEvents = () => {
 // MAIN SHORT ESCAPE TOURS COMPONENT
 // ============================================================================
 
+import PageHero from "../components/PageHero";
+
 const ShortEscapeTours = () => {
     const [selectedTour, setSelectedTour] = useState(null);
     const [activeFilter, setActiveFilter] = useState("All");
 
-    const filters = ["All", "1-Day Tours", "2-Day Tours"];
+    const filters = ["1-Day Tours", "2-Day Tours", "All"];
 
     const filteredTours = activeFilter === "All"
         ? shortEscapeTours
@@ -472,81 +474,19 @@ const ShortEscapeTours = () => {
             <div
                 className="min-h-screen bg-[#021732] text-white selection:bg-white/10 overflow-x-hidden relative"
             >
-                {/* --- HERO SECTION --- */}
-                <section className="relative h-[90vh] w-full flex items-center justify-center overflow-hidden">
-                    {/* Hero image and simple overlay */}
-                    <div className="absolute inset-0 z-0">
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#021732]/80 via-transparent to-[#021732] z-10" />
-                        <img
-                            src="/assets/images/tura.PNG"
-                            className="w-full h-full object-cover scale-110"
-                            alt="Hero Background"
-                        />
-                    </div>
-
-                    <div className="container mx-auto px-6 relative z-20 text-center">
-                        <div className="space-y-8 max-w-5xl mx-auto">
-                            <Motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 1 }}
-                                className="flex justify-center items-center gap-4 mb-4"
-                            >
-                                <div className="h-[1px] w-12 bg-white/20" />
-                                <span className="text-[11px] font-medium uppercase tracking-[0.1em] text-white/50">
-                                    CURATED EXPERIENCES
-                                </span>
-                                <div className="h-[1px] w-12 bg-white/20" />
-                            </Motion.div>
-
-                            <div className="overflow-hidden py-2">
-                                <Motion.h1
-                                    initial={{ y: "100%" }}
-                                    animate={{ y: 0 }}
-                                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-                                    className="text-4xl md:text-7xl lg:text-9xl font-light leading-[1.1] md:leading-[0.9] tracking-tighter"
-                                >
-                                    Short <span className="text-white">Escapes</span>
-                                </Motion.h1>
-                            </div>
-
-                            <Motion.p
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 0.6 }}
-                                transition={{ duration: 1.5, delay: 0.8 }}
-                                className="text-lg md:text-xl text-white/40 font-light max-w-3xl mx-auto leading-relaxed"
-                            >
-                                Discover moments that transform your perspective.
-                            </Motion.p>
-
-                            <Motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 1.2 }}
-                                className="pt-10"
-                            >
-                                <Motion.div
-                                    animate={{ y: [0, 12, 0] }}
-                                    transition={{ duration: 2.5, repeat: Infinity }}
-                                    className="w-[1px] h-20 bg-gradient-to-b from-white/20 via-white/10 to-transparent mx-auto"
-                                />
-                            </Motion.div>
-                        </div>
-                    </div>
-                </section>
-
+                
                 {/* --- TOURS SHOWCASE SECTION --- */}
-                <section className="relative z-20 -mt-24 pb-32">
+                <section className="relative z-20 pb-32 pt-20">
                     <div className="container mx-auto px-6">
                         {/* Section Header */}
-                        <div className="mb-16 text-center">
+                        <div className="mb-16 mx-auto max-w-4xl">
                             <Motion.p
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                className="text-xs uppercase tracking-[0.2em] text-white/40 mb-4"
+                                className="text-xs md:text-sm uppercase tracking-[0.2em] text-[#D4A574] font-medium mb-4 whitespace-nowrap"
                             >
-                                Our Collection
+                                Big experiences. Little time. Moments that tell a story.
                             </Motion.p>
 
                             {/* Introduction Section */}
@@ -555,46 +495,98 @@ const ShortEscapeTours = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.1 }}
-                                className="max-w-4xl mx-auto mb-12 space-y-6"
+                                className="max-w-4xl mb-12 space-y-8"
                             >
-                                <p className="text-sm md:text-base text-white/60 leading-relaxed font-light">
-                                    We design private, experience-led safaris in Rwanda for international travelers seeking quality, comfort, and authenticity. All experiences are operated with licensed local guides and curated for travelers who value thoughtful pacing over mass tourism.
-                                </p>
-                                <p className="text-sm md:text-base text-white/60 leading-relaxed font-light">
-                                    All activities are scheduled according to park regulations and permit availability to ensure safety, conservation compliance, and the best possible experience.
-                                </p>
-                                <div className="pt-4 pb-2">
-                                    <Motion.div
+                                {/* Main Intro Text */}
+                                <div className="space-y-4">
+                                    <Motion.p 
+                                        initial={{ opacity: 0, y: 10 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: 0.1 }}
+                                        className="text-sm md:text-base text-white/60 leading-relaxed font-light"
+                                    >
+                                        Not everyone has weeks to travel but that doesn't mean you should miss out on Rwanda's magic.
+                                    </Motion.p>
+                                    
+                                    <Motion.p 
                                         initial={{ opacity: 0, y: 10 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: 0.2 }}
-                                        className="inline-flex flex-col gap-2 p-6 rounded-lg bg-white/[0.02] border border-white/10"
+                                        className="text-sm md:text-base text-white/60 leading-relaxed font-light"
                                     >
-                                        <p className="text-xs md:text-sm text-[#D4A574] font-medium">
-                                            Want this experience tailored to your travel dates, interests, or accommodation style?
-                                        </p>
-                                        <p className="text-xs md:text-sm text-white/70 font-light">
-                                            We customize all itineraries. Check availability for your dates.
-                                        </p>
-                                    </Motion.div>
+                                        At Zoravia Terra Journeys, we design private, experience-led safaris and short escape tours in Rwanda for travelers who value comfort, authenticity, and meaningful connection.
+                                    </Motion.p>
+                                    
+                                    <Motion.p 
+                                        initial={{ opacity: 0, y: 10 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: 0.3 }}
+                                        className="text-sm md:text-base text-white/60 leading-relaxed font-light"
+                                    >
+                                        Whether you have one day or a full weekend, our journeys are crafted to give you deep, unhurried experiences not rushed itineraries. From wildlife safaris to mountain hikes and peaceful nature retreats, each escape is designed to feel personal and unforgettable.
+                                    </Motion.p>
+                                    
+                                    <Motion.p 
+                                        initial={{ opacity: 0, y: 10 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: 0.4 }}
+                                        className="text-sm md:text-base text-white/60 leading-relaxed font-light"
+                                    >
+                                        Every experience is led by licensed local guides and carefully planned around park regulations and permit availability; ensuring a seamless, safe, and responsible travel experience.
+                                    </Motion.p>
                                 </div>
+
+                                {/* Perfect For Section */}
+                                <Motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.5 }}
+                                    className="pt-6"
+                                >
+                                    <div className="inline-block">
+                                        <p className="text-xs md:text-sm text-[#D4A574] font-medium uppercase tracking-[0.2em] mb-4">
+                                            Perfect For
+                                        </p>
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                            {[
+                                                "Busy professionals",
+                                                "Weekend adventurers", 
+                                                "Friends & couples",
+                                                "Travelers adding Rwanda to a bigger Africa trip"
+                                            ].map((item, index) => (
+                                                <Motion.div
+                                                    key={index}
+                                                    initial={{ opacity: 0, x: -10 }}
+                                                    whileInView={{ opacity: 1, x: 0 }}
+                                                    viewport={{ once: true }}
+                                                    transition={{ delay: 0.6 + index * 0.1 }}
+                                                    className="flex items-center gap-3 p-3 rounded-lg bg-white/[0.02] border border-white/5 hover:bg-white/[0.03] transition-all duration-300"
+                                                >
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-[#D4A574]" />
+                                                    <span className="text-sm text-white/50 font-light">{item}</span>
+                                                </Motion.div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </Motion.div>
                             </Motion.div>
 
-                            <Motion.h2
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.2 }}
-                                className="text-3xl md:text-5xl font-light text-white"
-                            >
-                                Featured Tours
-                            </Motion.h2>
-                        </div>
-
-                        {/* Filters */}
-                        <div className="sticky top-24 z-50 mb-16">
-                            <div className="container mx-auto px-6">
+                            {/* Featured Tours Title - Separate Centered Section */}
+                            <div className="mb-16 text-center">
+                                <Motion.h2
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.2 }}
+                                    className="text-4xl md:text-5xl font-light text-white leading-tight mb-8"
+                                >
+                                    Featured <span className="text-white">Tours</span>
+                                </Motion.h2>
                                 <div className="max-w-fit mx-auto p-2 bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-full flex gap-2 overflow-x-auto">
                                     {filters.map((filter) => (
                                         <button

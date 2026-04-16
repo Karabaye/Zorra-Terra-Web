@@ -370,22 +370,17 @@ const Header = () => {
               loop
               muted
               playsInline
-              onCanPlay={() => setVideoReady(true)}
-              preload="metadata"
+              onLoadedData={() => setVideoReady(true)}
+              preload="auto"
+              poster={gorilla}
             >
-              <source src="/assets/videos/hero-video.mp4" type="video/mp4" />
+              <source src="/assets/videos/hero2.mp4" type="video/mp4" />
               <img
                 src={gorilla}
                 alt="Rwanda landscape"
                 className="h-full w-full object-cover"
               />
             </video>
-            {/* Loading overlay inside parallax div to keep it synced */}
-            {!videoReady && (
-              <div className="absolute inset-0 z-20 flex items-center justify-center bg-[#021732]">
-                <div className="h-10 w-10 animate-spin rounded-full border-t-2 border-b-2 border-[#D4A574]"></div>
-              </div>
-            )}
           </Motion.div>
 
           {/* Hero Content */}
@@ -397,63 +392,27 @@ const Header = () => {
                 transition={{ delay: 0.5, duration: 1, ease: [0.22, 1, 0.36, 1] }}
                 className="mx-auto max-w-3xl space-y-8 text-center"
               >
-                <div className="flex justify-center items-center gap-3 mb-2">
-                  <Motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: "24px" }}
-                    transition={{ delay: 0.7, duration: 0.8 }}
-                    className="h-[1px] bg-[#D4A574]/40"
-                  />
-                  <Motion.span
-                    initial={{ opacity: 0, letterSpacing: "0.2em" }}
-                    animate={{ opacity: 1, letterSpacing: "0.5em" }}
-                    transition={{ delay: 0.8, duration: 0.8 }}
-                    className="text-[9px] font-bold uppercase text-[#D4A574]"
-                  >
-                    TRAVEL MORE, SPEND LESS.
-                  </Motion.span>
-                  <Motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: "24px" }}
-                    transition={{ delay: 0.7, duration: 0.8 }}
-                    className="h-[1px] bg-[#D4A574]/40"
-                  />
-                </div>
-
                 <div className="space-y-4">
                   <Motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.9, duration: 0.8 }}
-                    className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-white uppercase px-4 leading-tight"
+                    className="text-4xl md:text-6xl lg:text-5xl font-light tracking-tight text-[#FFFFFF] uppercase px-4 leading-tight"
+                    
                   >
-                    Every Journey <br />
-                    <span className="text-[#D4A574] italic" style={{ fontFamily: "var(--title-font)" }}>
-                      Tells a Story
-                    </span>
+                    Every Journey Tells a Story
                   </Motion.h1>
 
                   <Motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.1, duration: 0.8 }}
-                    className="text-lg md:text-2xl font-light italic text-[#D4A574]/80"
-                    style={{ fontFamily: "var(--title-font)" }}
+                    className="text-lg md:text-2xl font-light italic text-[#FFFFFF]/80"
+                    
                   >
                     Let Us Help You Create Yours
                   </Motion.p>
                 </div>
-
-                <Motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.3, duration: 0.8 }}
-                  className="max-w-xl mx-auto pt-6 border-t border-white/10"
-                >
-                  <p className="text-lg md:text-2xl leading-relaxed font-light text-white uppercase tracking-[0.2em]">
-                    Book Your Dream Trip Today!
-                  </p>
-                </Motion.div>
               </Motion.div>
             </div>
           </div>

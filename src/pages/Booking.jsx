@@ -44,6 +44,8 @@ const ALL_COUNTRIES = [
     "Zambia", "Zimbabwe"
 ];
 
+import PageHero from "../components/PageHero";
+
 const Booking = () => {
     const location = useLocation();
     const [step, setStep] = useState(1);
@@ -213,33 +215,11 @@ const Booking = () => {
             </div>
 
             <div className="container mx-auto px-4 relative z-10">
-                {/* Header - High-End Aesthetic */}
-                <section className="relative pt-24 pb-16 text-center">
-                    <Motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="space-y-6"
-                    >
-                        <div className="flex flex-col items-center gap-4">
-                            <Motion.div
-                                initial={{ width: 0 }}
-                                animate={{ width: "60px" }}
-                                transition={{ duration: 1, delay: 0.5 }}
-                                className="h-[1px] bg-[#D4A574]/40"
-                            />
-                            <span className="text-[10px] font-bold uppercase text-[#D4A574] tracking-[0.6em] select-none">Begin Your Journey</span>
-
-                            <h1 className="text-5xl md:text-8xl font-light tracking-tight leading-none">
-                                <span className="text-[#D4A574] italic" style={{ fontFamily: 'var(--title-font)' }}> Booking </span>
-                            </h1>
-                        </div>
-
-                        <p className="max-w-xl mx-auto text-white/40 font-light text-sm md:text-base italic leading-relaxed px-6">
-                            Tell us about your dream trip, and we'll craft a personalized <br className="hidden md:block" />
-                            itinerary just for you.
-                        </p>
-                    </Motion.div>
-                </section>
+            <PageHero 
+                title="Booking" 
+                subtitle="Begin Your Journey" 
+                description="Tell us about your dream trip, and we'll craft a personalized itinerary just for you." 
+            />
 
                 {/* Progress Bar - Elegant "Route" Design */}
                 <div className="max-w-2xl mx-auto mb-12 md:mb-20 px-2 md:px-6">

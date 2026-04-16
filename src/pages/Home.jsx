@@ -16,22 +16,26 @@ const Home = () => {
       <WhyTravel />
       <ParallaxDivider
         image="/assets/images/tura.PNG"
-        quote="Every journey into the wild is a step towards understanding our planet's soul."
+        quote="I believe as human beings we are out of balance, out of sync with the earth."
+        author="Kevin Richardson"
       />
       <CoreOfferings />
       <ParallaxDivider
         image="/assets/images/intare.PNG"
-        quote="Every journey into the wild is a step towards understanding our planet's soul."
+        quote="Climb mountains not so the world can see you, but so you can see the world."
+        author="David McCullough Jr."
       />
       <WhyZoravia />
       <ParallaxDivider
         image="/assets/images/The Heart of Rwanda.png"
-        quote="A thoughtful process replaces uncertainty."
+        quote="Travel is about the gorgeous feeling of teetering in the unknown—and finding connection."
+        author="Anthony Bourdain"
       />
       <PlanningApproach />
       <ParallaxDivider
         image="/assets/images/Nature .jpg"
-        quote="Seamless travel is designed with quiet precision."
+        quote="The world is a book, and those who do not travel read only one page."
+        author="Saint Augustine"
       />
       <ClientValue />
       {/* <SpiritOfAfrica /> */}

@@ -35,16 +35,10 @@ const PlanningApproach = () => {
             <div className="container mx-auto px-6">
 
                 {/* Compact Header */}
-                <div className="mb-20 text-center lg:text-left lg:flex lg:items-end lg:justify-between lg:gap-10">
-                    <div className="space-y-3">
-                        <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#D4A574]/60">The Process</span>
-                        <h2 className="text-3xl md:text-4xl font-light text-white leading-tight">
-                            Our <span className="text-[#D4A574] italic" style={{ fontFamily: "var(--title-font)" }}>Planning Approach</span>
-                        </h2>
-                    </div>
-                    <p className="mt-4 lg:mt-0 text-white/30 text-sm md:text-base font-light italic">
-                        "A thoughtful process replaces uncertainty."
-                    </p>
+                <div className="mb-20 text-center">
+                    <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">
+                        Our <span className="text-white">Planning Approach</span>
+                    </h2>
                 </div>
 
                 {/* The Creative Horizontal Strip */}

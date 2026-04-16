@@ -24,54 +24,44 @@ const HomeIntro = () => {
           >
             <div className="space-y-3">
               <h2
-                className="text-4xl md:text-5xl font-light italic text-white leading-tight"
-                style={{ fontFamily: "var(--title-font)"}}
+                className="text-4xl md:text-5xl font-light text-white leading-tight"
               >
-                What <span className="text-white">we do</span>
+                What <span className="text-white">We Do</span>
               </h2>
             </div>
 
-            <div className="space-y-6">
-              
-                <p className="text-lg md:text-xl leading-relaxed text-white font-light">
-                  Zoravia Terra Journeys creates carefully designed travel experiences in Rwanda for travelers who want clarity, reliability, and authenticity.
-                </p>
-                
-                <p className="text-base leading-relaxed text-white/80 font-light">
-                  We specialize in private and tailor-made journeys that remove the uncertainty of planning travel in a new destination, especially for first-time visitors to the region.
-                </p>
+    <div className="space-y-3">
+  <p className="text-base leading-relaxed text-white/90 font-light">
+    Zoravia Terra Journeys creates carefully designed travel experiences in Rwanda for travelers who want clarity, reliability, and authenticity.
+  </p>
 
-                <div className="space-y-4 pt-2">
-                  <div>
-                    <p className="text-sm text-white/70 leading-relaxed">
-                      Planning a trip to Rwanda can feel overwhelming: permits, logistics, timing, safety, and choosing the right experiences. We simplify the process by guiding you from the first conversation to your return home.
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <p className="text-sm text-white/70 leading-relaxed">
-                      We design experiences that balance wildlife encounters, nature, culture, and comfort—from gorilla trekking and chimpanzee tracking to safaris, volcanic landscapes, and meaningful cultural interactions.
-                    </p>
-                  </div>
+  <p className="text-base leading-relaxed text-white/80 font-light">
+    We specialize in private and tailor-made journeys that remove the uncertainty of planning travel in a new destination, especially for first-time visitors to the region.
+  </p>
 
-                  <div>
-                    <p className="text-sm text-white/70 leading-relaxed">
-                      We work with trusted local partners to ensure smooth execution while promoting responsible tourism that respects communities and protects natural ecosystems.
-                    </p>
-                  </div>
-                </div>
-            </div>
+  <p className="text-base text-white/70 leading-relaxed">
+    Planning a trip to Rwanda can feel overwhelming: permits, logistics, timing, safety, and choosing the right experiences. We simplify the process by guiding you from the first conversation to your return home.
+  </p>
+
+  <p className="text-base text-white/70 leading-relaxed">
+    We design experiences that balance wildlife encounters, nature, culture, and comfort—from gorilla trekking and chimpanzee tracking to safaris, volcanic landscapes, and meaningful cultural interactions.
+  </p>
+
+  <p className="text-base text-white/70 leading-relaxed">
+    We work with trusted local partners to ensure smooth execution while promoting responsible tourism that respects communities and protects natural ecosystems.
+  </p>
+</div>
 
             <div className="pt-8">
               <Link
                 to="/about"
-                className="group relative inline-flex items-center gap-6 px-10 py-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-[10px] font-bold tracking-[0.3em] uppercase overflow-hidden transition-all duration-500 hover:bg-white/10 hover:border-[#D4A574]/30 hover:scale-105 active:scale-95"
+                className="group relative inline-flex items-center gap-6 px-10 py-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white hover:text-[#021732] text-[10px] font-bold tracking-[0.3em] uppercase overflow-hidden transition-all duration-500 hover:border-[#D4A574] hover:scale-105 active:scale-95"
               >
                 <span className="relative z-10 flex items-center gap-3">
                   Our Story
                   <ArrowRight size={16} strokeWidth={2.5} className="group-hover:translate-x-1.5 transition-transform duration-300" />
                 </span>
-                <div className="absolute inset-0 bg-white/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#D4A574] to-[#C4A57B] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
               </Link>
             </div>
           </Motion.div>

@@ -7,7 +7,7 @@ const videoMap = {
   "nyungwevideoforexchangedisplayonhomepage": "/assets/video/Nyungwe Video for exchange display on home page.mp4",
   "safarizebra": "/assets/video/safari zebra.mp4",
   "videobisoke": "/assets/video/video bisoke.mp4",
-  "hero-video": "/videos/hero-video.mp4"
+  "hero-video": "/videos/hero2.mp4"
 };
 
 export default videoMap;

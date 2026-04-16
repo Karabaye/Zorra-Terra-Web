@@ -206,15 +206,11 @@ const CoreOfferings = () => {
           viewport={{ once: true }}
           className="space-y-4"
         >
-          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#D4A574]/80">Zoravia Terra Journeys</span>
-          <h2 className="text-3xl md:text-5xl font-light text-white tracking-tight">
-            Signature Ways to Experience Rwanda <br />
-            <span className="text-[#D4A574] italic" style={{ fontFamily: "var(--title-font)" }}>Our Core Offering</span>
+
+          <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">
+            Our Core <span className="text-white">Offering</span>
           </h2>
           <div className="mt-6 w-16 h-[1.5px] bg-[#D4A574]/60 mx-auto rounded-full" />
-          <p className="mt-8 text-white/50 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
-            "Each journey is shaped around how you want to experience the country."
-          </p>
         </Motion.div>
       </div>
 
