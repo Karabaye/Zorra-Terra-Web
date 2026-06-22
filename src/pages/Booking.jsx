@@ -147,7 +147,7 @@ const Booking = () => {
             toast.dismiss(loadingToast);
 
             // Premium personalized toast
-            toast.success((t) => (
+            toast.success(() => (
                 <div className="flex flex-col gap-1 py-1">
                     <div className="flex items-center gap-2">
                         <span className="text-[#D4A574] font-bold text-sm tracking-wide">Submission Successful</span>

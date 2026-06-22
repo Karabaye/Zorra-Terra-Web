@@ -2,85 +2,63 @@ export const shortEscapeTours = [
     // 1-DAY TOURS
     {
         id: "akagera-1day-bigfive-safari",
-        title: "1-Day Akagera Safari â Big Five Experience",
+        title: "1-Day Akagera Safari – Big Five Experience",
         location: "Akagera National Park, Rwanda",
         duration: "Full Day",
-        tagline: "Big Five Safari | Private Guide | Lake Ihema Optional",
+        tagline: "Guided Safari | Pickup from Kigali | Private or Group Experience",
         image: "/assets/Akagera/13.jpg",
         highlight: "Experience Rwanda's Big Five in a single day with a private guided safari through Akagera's savannah landscapes.",
-        price: "International: $450 | Africans: $400 | Rwandans: $380",
+        price: "International from: $450, Africans: from: $400, and Rwandans: $380",
+        cardPrice: "From $380",
         quickFacts: {
-            duration: "Full Day (Approx. 12-14 hours)",
-            travelStyle: "Private 4x4 safari vehicle with professional driver-guide",
-            groupSize: "Private or Group (1-7 people)",
-            availability: "Daily (book at least 4 days in advance)",
-            idealFor: "Wildlife lovers, first-time safari travelers, short-stay visitors, couples, families",
-            activityLevel: "Easy to Moderate (game drives only, minimal walking)"
+            duration: "Full Day",
+            pickup: "Kigali (Hotel/Home)",
+            travelStyle: "Guided safari in a comfortable 4x4 safari vehicle",
+            groupSize: "Private or Group (from 1-7 people)",
+            availability: "Book at least 4 days before travel",
+            idealFor: "Wildlife lovers, short-stay travelers, couples, friends, families, and weekend adventurers",
+            activityLevel: "Easy to Moderate"
         },
         inclusions: [
             "Private 4x4 safari vehicle",
             "Professional safari guide",
             "Akagera National Park entry permits",
             "Drinking water",
-            "Lunch",
-            "Company staff accompaniment for on-ground support"
+            "Lunch"
         ],
         exclusions: [
             "Tips & personal expenses",
-            "Optional activities (Lake Ihema boat safari)",
-            "Items not mentioned in inclusions"
+            "Optional activities unless specified"
         ],
         itinerary: [
-            { time: "05:30 AM", activity: "Pickup in Kigali (Hotel/Home)" },
+            { time: "05:30 AM", activity: "Pickup in Kigali - Early departure for the best wildlife viewing" },
             { time: "07:00 AM", activity: "Coffee & Restroom stop" },
             { time: "08:30 AM", activity: "Enter Akagera National Park - Briefing + start game drive" },
-            { time: "Morning", activity: "Morning Game Drive - Spot big five, giraffes, zebras, etc" },
+            { time: "Morning", activity: "Morning Game Drive - Spot the Big Five, giraffes, zebras, and more" },
             { time: "12:30 PM", activity: "Lunch Break at Mihindi Restaurant (Picnic area)" },
-            { time: "Afternoon", activity: "Afternoon Game Drive - Explore northern part (best for Big Five sightings)" },
-            { time: "Evening", activity: "Return to Kigali (Flexible exit depending on wildlife movement)" }
+            { time: "Afternoon", activity: "Afternoon Game Drive - Explore the northern part, best for Big Five sightings" },
+            { time: "Evening", activity: "Return to Kigali - Flexible exit depending on wildlife movement" }
         ],
+        expectations: [
+            "Licensed professional safari guide",
+            "Company staff accompanied for on-ground support",
+            "Comfortable 4x4 safari vehicle",
+            "Adventurous route based on wildlife movement (African massage route)",
+            "Safe and regulated park experience"
+        ],
+        goodToKnow: [
+            "Payments inside the park are cashless",
+            "Wear neutral colors like nudes and avoid bright, red, or blue clothing",
+            "Bring sunscreen and insect repellent",
+            "Carry a light jacket because mornings can be cold",
+            "Bring an aluminum flask or reusable water bottle because the park discourages plastic use"
+        ],
+        optionalAddOns: [
+            "Boat Safari on Lake Ihema (time recommended: 09:00 AM)"
+        ],
+        bookingNote: "Book at least 4 days before your travel.",
         category: "1-Day Tours",
-        description: "Experience Rwanda's Big Five in a single day with a private guided safari through Akagera's savannah landscapes. With a private professional guide, you start your day before sunrise in Kigali and journey into Rwanda's only savannah park. As the landscapes shift from rolling hills to open plains, your safari begins offering chances to spot elephants, giraffes, buffalo, rhinos, and even lions and drive through lake shores for chance of spotting Hippopotamus, birds, etc. As you continue the game drive, you explore deeper into Akagera's northern part, where wildlife sightings are at their best and the hill views are especially scenic."
-    },
-    {
-        id: "akagera-1day-safari",
-        title: "1-Day Akagera National Park Safari – Big Five Experience",
-        location: "Akagera National Park, Rwanda",
-        duration: "Full Day",
-        tagline: "Private 4×4 Safari | Big Five Wildlife",
-        image: "/assets/short/1-dayAkagera_Big Five.jpeg",
-        highlight: "A complete Big Five experience in Rwanda's only savannah national park within a single day.",
-        price: "Request Quote",
-        quickFacts: {
-            duration: "Full Day (Approx. 12–14 hours)",
-            travelStyle: "Private 4×4 safari vehicle with professional driver-guide",
-            groupSize: "Private safari (up to 6 guests per vehicle)",
-            availability: "Daily (subject to park permits)",
-            idealFor: "First-time safari travelers, families, short-stay visitors, couples, and weekend adventurers",
-            activityLevel: "Easy to Moderate (game drives only, minimal walking)"
-        },
-        inclusions: [
-            "Private 4×4 safari vehicle",
-            "Professional local driver-guide",
-            "Akagera National Park entry permits",
-            "Drinking water"
-        ],
-        exclusions: [
-            "Meals unless specified",
-            "Tips & personal expenses",
-            "Optional activities"
-        ],
-        itinerary: [
-            { time: "Early Morning", activity: "Departure from Kigali" },
-            { time: "Morning", activity: "Park entry and game drive begins" },
-            { time: "Midday", activity: "Game drive through northern sector" },
-            { time: "Lunch", activity: "Picnic lunch in the park" },
-            { time: "Afternoon", activity: "Continue game drive" },
-            { time: "Optional", activity: "Lake Ihema boat safari (add-on)" },
-            { time: "Evening", activity: "Return to Kigali" }
-        ],
-        category: "1-Day Tours",
-        description: "This 1-day Akagera safari is designed for travelers who want a complete Big Five experience in Rwanda within a single day. By entering the park early, you explore during peak wildlife activity through open savannah plains, rolling hills, and lakeside ecosystems in the northern sector—renowned for lions, elephants, giraffes, buffalo, and rhinos."
+        description: "With a private professional guide, you start your day before sunrise in Kigali and journey into Rwanda's only savannah park. As the landscapes shift from rolling hills to open plains, your safari begins with chances to spot elephants, giraffes, buffalo, rhinos, and even lions, while the lakeshore route offers opportunities to see hippopotamuses, birds, and more. As you continue deeper into Akagera's northern part, wildlife sightings are often at their best and the hill views are especially scenic. Nature always has its own surprises, so no two game drives are ever the same. After an unforgettable wildlife experience, you return to Kigali the same day, making this the perfect safari escape for travelers seeking a complete adventure in just one day."
     },
     {
         id: "nyungwe-gisakura-1day",
@@ -213,7 +191,7 @@ export const shortEscapeTours = [
         duration: "2 Days / 1 Night",
         tagline: "Rainforest Immersion | Canopy Walk & Waterfall | Chimpanzee Tracking",
         image: "/assets/short/2-day Nyungwe.jpeg",
-        highlight: "Experience the rainforest from multiple perspectivesâabove the canopy, along forest trails, and deep within chimpanzee habitat.",
+        highlight: "Experience the rainforest from multiple perspectives—above the canopy, along forest trails, and deep within chimpanzee habitat.",
         price: "Request Quote",
         quickFacts: {
             duration: "2 Days / 1 Night",
@@ -250,7 +228,7 @@ export const shortEscapeTours = [
     },
     {
         id: "volcanoes-2day-gorilla",
-        title: "2-Day Volcanoes National Park Gorilla Experience â Musanze",
+        title: "2-Day Volcanoes National Park Gorilla Experience – Musanze",
         location: "Volcanoes National Park, Rwanda",
         duration: "2 Days / 1 Night",
         tagline: "Mountain Gorilla Trekking | Golden Monkeys (Optional) | Musanze Caves",
@@ -280,7 +258,7 @@ export const shortEscapeTours = [
         ],
         itinerary: [
             { Day: 1, activity: "Morning departure from Kigali to Musanze" },
-            { Day: 1, activity: "Mountain gorilla trekking (2â6 hours)" },
+            { Day: 1, activity: "Mountain gorilla trekking (2–6 hours)" },
             { Day: 1, activity: "Afternoon rest and recovery" },
             { Day: 1, activity: "Overnight in Musanze" },
             { Day: 2, activity: "Optional golden monkey tracking or Musanze caves" },
@@ -288,6 +266,6 @@ export const shortEscapeTours = [
             { Day: 2, activity: "Return to Kigali" }
         ],
         category: "2-Day Tours",
-        description: "This 2-day gorilla trekking experience is carefully designed with gorilla trekkingâthe most demanding activityâon day one, followed by an overnight stay for rest and recovery. Day two offers lighter optional activities like golden monkey tracking, Musanze caves, or community visits, creating a flexible, private, and well-paced journey."
+        description: "This 2-day gorilla trekking experience is carefully designed with gorilla trekking—the most demanding activity—on day one, followed by an overnight stay for rest and recovery. Day two offers lighter optional activities like golden monkey tracking, Musanze caves, or community visits, creating a flexible, private, and well-paced journey."
     }
 ];

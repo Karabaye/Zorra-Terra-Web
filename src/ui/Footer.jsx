@@ -1,134 +1,163 @@
-import { Instagram, Facebook, Mail, Phone, Linkedin, MapPin } from "lucide-react";
+import React from "react";
 import { Link } from "react-router-dom";
+import { Mail, Phone } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const socialLinks = [
-    { icon: Instagram, href: "https://instagram.com/zoraviaterrajourneys", label: "Instagram" },
-    { icon: Facebook, href: "https://facebook.com/zoraviaterrajourneys", label: "Facebook" },
-    { icon: Linkedin, href: "https://linkedin.com/company/zoraviaterrajourneys", label: "LinkedIn" }
+  const navLinks = [
+    { to: "/", label: "Home" },
+    { to: "/about", label: "About" },
+    { to: "/travel-with-us", label: "Travel With Us" },
+    { to: "/short-escapes", label: "Short Escape Tours" },
+    { to: "/gallery", label: "Gallery" },
+    { to: "/contact", label: "Contact" },
   ];
 
   return (
-    <footer className="bg-[#0a1628]">
-      <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-        <div className="md:flex md:justify-between md:items-start">
-          {/* Logo and Social Icons */}
-          <div className="mb-6 md:mb-0 flex items-center gap-6">
-            <Link to="/" className="flex-shrink-0">
-              <img
-                src="/assets/images/logo.jpeg"
-                className="h-16 w-16 rounded-lg object-cover shadow-lg"
-                alt="Zoravia Terra Journeys Logo"
+    <footer className="hidden md:block w-full px-4 lg:px-16 py-6" style={{ background: "#021732" }}>
+      <div
+        className="max-w-screen-xl mx-auto rounded-2xl overflow-hidden"
+        style={{
+          background: "linear-gradient(160deg, #061220 0%, #020c18 60%, #010a14 100%)",
+          border: "0.5px solid rgba(255,255,255,0.07)",
+          boxShadow: "0 8px 40px rgba(0,0,0,0.5)",
+        }}
+      >
+        {/* Top section */}
+        <div
+          className="flex flex-col lg:flex-row items-center justify-between gap-10 px-8 lg:px-12 py-10"
+          style={{ borderBottom: "0.5px solid rgba(255,255,255,0.06)" }}
+        >
+          {/* Logo */}
+          <Link to="/" className="shrink-0 flex items-center justify-center lg:justify-start">
+            <img
+              src="/assets/images/logo.jpeg"
+              alt="Zoravia Terra Journeys"
+              className="h-14 w-auto object-contain rounded-xl"
+              style={{ filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.4))" }}
+            />
+          </Link>
+
+          {/* Nav Links */}
+          <nav className="flex flex-wrap items-center justify-center gap-x-1 gap-y-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className="px-3.5 py-[7px] rounded-lg text-[13px] tracking-wide transition-all duration-200"
                 style={{
-                  filter: "drop-shadow(0 4px 8px rgba(212, 165, 116, 0.15))"
+                  fontFamily: "Georgia, serif",
+                  color: "rgba(255,255,255,0.48)",
+                  border: "0.5px solid transparent",
+                  letterSpacing: "0.04em",
                 }}
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23D4A574'/%3E%3Ctext x='50' y='50' text-anchor='middle' dy='.3em' fill='white' font-family='Arial' font-size='12' font-weight='bold'%3EZTJ%3C/text%3E%3C/svg%3E";
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "#D4A574";
+                  e.currentTarget.style.background = "rgba(212,165,116,0.07)";
+                  e.currentTarget.style.borderColor = "rgba(212,165,116,0.14)";
                 }}
-              />
-            </Link>
-            {/* Social Media Icons */}
-            <div className="flex gap-4">
-              {socialLinks.map((social, idx) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={idx}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-[#D4A574] transition-colors transform hover:scale-110 duration-200"
-                    aria-label={social.label}
-                  >
-                    <Icon className="w-6 h-6" />
-                  </a>
-                );
-              })}
-            </div>
-          </div>
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "rgba(255,255,255,0.48)";
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.borderColor = "transparent";
+                }}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
 
-          {/* Navigation Grid */}
-          <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-            {/* Quick Links */}
-            <div>
-              <h2 className="mb-6 text-sm font-semibold text-white uppercase">Quick Links</h2>
-              <ul className="text-gray-400 font-medium">
-                <li className="mb-4">
-                  <Link to="/" className="hover:text-[#D4A574] transition-colors">Home</Link>
-                </li>
-                <li className="mb-4">
-                  <Link to="/about" className="hover:text-[#D4A574] transition-colors">About Us</Link>
-                </li>
-                <li>
-                  <Link to="/gallery" className="hover:text-[#D4A574] transition-colors">Gallery</Link>
-                </li>
-              </ul>
-            </div>
+          {/* Contact */}
+          <div className="flex flex-col gap-3 items-center lg:items-end shrink-0">
+            <a
+              href="mailto:zoraviaterrajourneys@gmail.com"
+              className="flex items-center gap-3 group transition-all duration-200"
+              style={{ textDecoration: "none" }}
+            >
+              <div
+                className="flex items-center justify-center transition-all duration-200 group-hover:bg-[rgba(212,165,116,0.1)] group-hover:border-[rgba(212,165,116,0.2)]"
+                style={{
+                  width: "34px",
+                  height: "34px",
+                  borderRadius: "50%",
+                  border: "0.5px solid rgba(255,255,255,0.1)",
+                  background: "rgba(255,255,255,0.03)",
+                  flexShrink: 0,
+                }}
+              >
+                <Mail size={14} color="#D4A574" />
+              </div>
+              <span
+                className="text-[13px] tracking-wide transition-colors duration-200 group-hover:text-white/80"
+                style={{ fontFamily: "Georgia, serif", color: "rgba(255,255,255,0.45)", letterSpacing: "0.03em" }}
+              >
+                zoraviaterrajourneys@gmail.com
+              </span>
+            </a>
 
-            {/* Services */}
-            <div>
-              <h2 className="mb-6 text-sm font-semibold text-white uppercase">Services</h2>
-              <ul className="text-gray-400 font-medium">
-                <li className="mb-4">
-                  <Link to="/travel-with-us" className="hover:text-[#D4A574] transition-colors">Travel With Us</Link>
-                </li>
-                <li className="mb-4">
-                  <Link to="/short-escapes" className="hover:text-[#D4A574] transition-colors">Short Escapes</Link>
-                </li>
-                <li>
-                  <Link to="/contact" className="hover:text-[#D4A574] transition-colors">Contact</Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Contact Info */}
-            <div>
-              <h2 className="mb-6 text-sm font-semibold text-white uppercase">Contact</h2>
-              <ul className="text-gray-400 font-medium">
-                <li className="mb-4">
-                  <a
-                    href="mailto:zoraviaterrajourneys@gmail.com"
-                    className="hover:text-[#D4A574] transition-colors flex items-start gap-2"
-                  >
-                    <Mail size={16} className="mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">zoraviaterrajourneys@gmail.com</span>
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a
-                    href="tel:+250783482368"
-                    className="hover:text-[#D4A574] transition-colors flex items-center gap-2"
-                  >
-                    <Phone size={16} className="flex-shrink-0" />
-                    <span>+250 783 482 368</span>
-                  </a>
-                </li>
-                <li>
-                  <div className="flex items-start gap-2 text-gray-400">
-                    <MapPin size={16} className="mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">Remera, KG 17 Ave, Kigali</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+            <a
+              href="tel:+250783482368"
+              className="flex items-center gap-3 group transition-all duration-200"
+              style={{ textDecoration: "none" }}
+            >
+              <div
+                className="flex items-center justify-center transition-all duration-200 group-hover:bg-[rgba(212,165,116,0.1)] group-hover:border-[rgba(212,165,116,0.2)]"
+                style={{
+                  width: "34px",
+                  height: "34px",
+                  borderRadius: "50%",
+                  border: "0.5px solid rgba(255,255,255,0.1)",
+                  background: "rgba(255,255,255,0.03)",
+                  flexShrink: 0,
+                }}
+              >
+                <Phone size={14} color="#D4A574" />
+              </div>
+              <span
+                className="text-[13px] tracking-wide transition-colors duration-200 group-hover:text-white/80"
+                style={{ fontFamily: "Georgia, serif", color: "rgba(255,255,255,0.45)", letterSpacing: "0.03em" }}
+              >
+                +250 783 482 368
+              </span>
+            </a>
           </div>
         </div>
 
-        {/* Divider */}
-        <hr className="my-6 border-gray-700 sm:mx-auto lg:my-8" />
-
-        {/* Bottom Section */}
-        <div className="sm:flex sm:items-center sm:justify-center">
-          <span className="text-sm text-gray-400 text-center">
+        {/* Bottom bar */}
+        <div className="flex items-center justify-center px-8 py-5">
+          <p
+            className="text-center"
+            style={{
+              fontFamily: "Georgia, serif",
+              fontSize: "11px",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.22)",
+            }}
+          >
             © {currentYear}{" "}
-            <Link to="/" className="hover:text-[#D4A574] transition-colors">
+            <Link
+              to="/"
+              style={{ color: "rgba(255,255,255,0.4)", textDecoration: "none", transition: "color 0.2s" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#D4A574")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
+            >
               Zoravia Terra Journeys
             </Link>
-            . All Rights Reserved.
-          </span>
+            <span
+              style={{
+                display: "inline-block",
+                width: "3px",
+                height: "3px",
+                borderRadius: "50%",
+                background: "rgba(255,255,255,0.2)",
+                verticalAlign: "middle",
+                margin: "0 10px",
+              }}
+            />
+            All rights reserved
+          </p>
         </div>
       </div>
     </footer>

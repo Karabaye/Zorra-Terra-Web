@@ -72,7 +72,7 @@ const WhyTravel = () => {
         </div>
 
         <div className="mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-          {benefits.map((benefit, index) => (
+          {benefits.map((benefit) => (
             <BenefitItem key={benefit.number} {...benefit} />
           ))}
         </div>

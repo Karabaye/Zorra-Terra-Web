@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion as Motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Play, MapPin, Camera, ChevronRight, ChevronLeft, ArrowRight } from 'lucide-react';
 import assetMap from "../utilities/assetMap";
@@ -117,14 +117,14 @@ const CinematicTheater = ({ chapter }) => {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [chapter.items?.length]);
+  }, [chapter.items]);
 
   return (
     <div className="flex flex-col items-center space-y-6">
       {/* Main Image Display */}
       <div className="w-full max-w-6xl relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/10 shadow-2xl bg-[#031d3d]">
         <AnimatePresence mode="wait">
-          <motion.div
+          <Motion.div
             key={activeItem?.id || 0}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -148,7 +148,7 @@ const CinematicTheater = ({ chapter }) => {
                 className="w-full h-full object-cover"
               />
             )}
-          </motion.div>
+          </Motion.div>
         </AnimatePresence>
       </div>
 
@@ -194,7 +194,7 @@ export default function Gallery() {
         {/* Chapters */}
         <div className="space-y-32 md:space-y-48">
           {chapters.map((chapter) => (
-            <motion.section
+            <Motion.section
               key={chapter.id}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -207,7 +207,7 @@ export default function Gallery() {
               </div>
 
               <CinematicTheater chapter={chapter} />
-            </motion.section>
+            </Motion.section>
           ))}
         </div>  
         <br />

@@ -545,16 +545,27 @@ const TravelWithUs = () => {
 
   return (
     <div className="min-h-screen bg-[#021732] text-white selection:bg-[#D4A574]/30 selection:text-white pb-24">
-      {/* Hero Section */}
-      <PageHero 
-        title="Journey Blueprints" 
-        subtitle="Travel With Us" 
-        description="Discover Rwanda beyond the usual highlights. Our flexible journey blueprints are designed around your pace, interests, and purpose connecting you with real communities, authentic experiences, and unhurried moments."
-      >
-        <div className="mt-4">
-           <h2 className="text-xl md:text-2xl font-light text-white/90">Itineraries Designed Around You</h2>
+      {/* Intro Section */}
+      <section className="relative z-20 pb-10 pt-24 md:pt-28">
+        <div className="container mx-auto px-6 md:px-10 lg:px-16 max-w-4xl">
+          <Motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex flex-col items-center text-center space-y-6"
+          >
+              {/* Title */}
+              <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">
+                  Journey <span className="text-white">Blueprints</span>
+              </h2>
+
+              {/* Description */}
+              <p className="text-sm md:text-[15px] text-white/50 leading-[1.8] font-light max-w-2xl mx-auto mt-2">
+                  Discover Rwanda beyond the usual highlights. Our flexible journey blueprints are designed around your pace, interests, and purpose connecting you with real communities, authentic experiences, and unhurried moments.
+              </p>
+          </Motion.div>
         </div>
-      </PageHero>
+      </section>
 
       <div className="container mx-auto px-4 max-w-5xl pt-12">
         {journeys.map((j, i) => (
@@ -573,25 +584,29 @@ const TravelWithUs = () => {
           viewport={{ once: true }}
           className="container mx-auto px-4 relative z-10"
         >
-          <div className="space-y-10">
-            <h3 className="text-3xl md:text-4xl font-light italic" style={{ fontFamily: 'var(--title-font)' }}>Ready to Begin Your Story?</h3>
+          <div className="space-y-10 flex flex-col items-center">
+            <h2 className="text-4xl md:text-5xl font-light text-white leading-tight text-center">
+              Ready to Begin Your Story?
+            </h2>
 
-            <div className="inline-block relative group">
-              {/* Button Outer Glow */}
-              <div className="absolute -inset-6 bg-[#D4A574]/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-
+            <Motion.div
+              whileHover={{ scale: 1.04, y: -1 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+              className="inline-block"
+            >
               <Link
                 to="/booking"
-                className="relative flex items-center gap-6 px-10 py-4 rounded-full bg-gradient-to-r from-[#D4A574] to-[#C4A57B] text-[#021732] text-[10px] font-bold tracking-[0.3em] uppercase overflow-hidden shadow-2xl transition-all duration-500 hover:scale-105 active:scale-95"
+                className="relative flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl text-[16px] md:text-[17px] font-bold tracking-wide transition-all duration-400 group shadow-[0_2px_12px_rgba(212,165,116,0.2)] hover:shadow-[0_4px_16px_rgba(212,165,116,0.3)]"
+                style={{
+                  background: "linear-gradient(135deg, #D4A574 0%, #C4A57B 100%)",
+                  color: "#021732",
+                }}
               >
-                <span className="relative z-10 flex items-center gap-3">
-                  Start Your Custom Experience
-                  <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform duration-300" />
-                </span>
-                {/* Premium Shine Overlay */}
-                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+                <span>Start Your Custom Experience</span>
+                <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
-            </div>
+            </Motion.div>
           </div>
         </Motion.div>
       </section>

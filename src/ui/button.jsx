@@ -28,31 +28,28 @@ const getButtonClasses = (
   return `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();
 };
 
-const Button = React.forwardRef(
-  (
-    {
-      className,
-      variant = "default",
-      size = "default",
-      asChild = false,
-      ...props
-    },
-    ref,
-  ) => {
-    const buttonClasses = getButtonClasses(variant, size, className);
+const Button = ({
+  className,
+  variant = "default",
+  size = "default",
+  asChild = false,
+  ref,
+  ...props
+}) => {
+  const buttonClasses = getButtonClasses(variant, size, className);
 
-    if (asChild && React.isValidElement(props.children)) {
-      return React.cloneElement(props.children, {
-        className:
-          `${props.children.props.className || ""} ${buttonClasses}`.trim(),
-        ref,
-        ...props.children.props,
-      });
-    }
+  if (asChild && React.isValidElement(props.children)) {
+    // eslint-disable-next-line react-hooks/refs
+    return React.cloneElement(props.children, {
+      ...props.children.props,
+      className:
+        `${props.children.props.className || ""} ${buttonClasses}`.trim(),
+      ref,
+    });
+  }
 
-    return <button className={buttonClasses} ref={ref} {...props} />;
-  },
-);
+  return <button className={buttonClasses} ref={ref} {...props} />;
+};
 Button.displayName = "Button";
 
 export { Button };

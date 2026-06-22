@@ -40,7 +40,7 @@ export default function ContactPage() {
             toast.dismiss(loadingToast);
 
             // Premium personalized toast
-            toast.success((t) => (
+            toast.success(() => (
                 <div className="flex flex-col gap-1 py-1">
                     <div className="flex items-center gap-2">
                         <span className="text-[#D4A574] font-bold text-sm tracking-wide">Message Delivered</span>
@@ -198,12 +198,6 @@ export default function ContactPage() {
                     </Motion.div>
                 </div>
             </section>
-
-            {/* Branded Footer Micro-Detail */}
-            <section className="py-12 text-center opacity-30">
-                <p className="text-[10px] font-bold uppercase tracking-[1em] text-white">Zoravia Terra Journeys Ltd </p>
-            </section>
-
         </div>
     );
 }

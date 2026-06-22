@@ -17,9 +17,6 @@ import { eventsData } from "../utilities/eventsData";
 import { Link } from "react-router-dom";
 
 
-
-
-
 // ============================================================================
 // REFINED 3D CARD COMPONENT
 // ============================================================================
@@ -40,7 +37,6 @@ const RefinedTourCard3D = ({ tour, onClick, index }) => {
             onMouseLeave={() => setIsHovered(false)}
             className="group cursor-pointer w-full h-full"
         >
-            {/* CLEAN MINIMAL CARD - ENFORCED TALLER UNIFORM HEIGHT */}
             <Motion.div
                 className="w-full h-full flex flex-col lg:flex-row overflow-hidden rounded-xl bg-[#031d3d] border border-white/[0.08] lg:h-[320px]"
                 animate={isHovered ? { y: -5 } : { y: 0 }}
@@ -50,7 +46,7 @@ const RefinedTourCard3D = ({ tour, onClick, index }) => {
                         : '0 10px 20px -10px rgba(0, 0, 0, 0.4)'
                 }}
             >
-                {/* IMAGE - 50% with fixed ratio/height */}
+                {/* IMAGE */}
                 <div className="relative h-64 lg:h-full lg:w-5/12 overflow-hidden shrink-0">
                     <Motion.div
                         className="absolute inset-0"
@@ -66,7 +62,6 @@ const RefinedTourCard3D = ({ tour, onClick, index }) => {
 
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
-                    {/* Badges */}
                     <div className="absolute top-3 left-3 flex flex-col gap-1.5">
                         <div className="px-2.5 py-1 rounded bg-white/5 backdrop-blur-xl border border-white/10 text-white text-[8px] font-semibold uppercase tracking-wider">
                             {tour.category || 'Experience'}
@@ -77,7 +72,7 @@ const RefinedTourCard3D = ({ tour, onClick, index }) => {
                     </div>
                 </div>
 
-                {/* CONTENT - Fixed padding and flexible height within container */}
+                {/* CONTENT */}
                 <div className="flex-1 p-5 lg:p-6 flex flex-col justify-between overflow-hidden">
                     <div className="space-y-3">
                         <h3 className="text-lg lg:text-xl font-light text-white leading-tight line-clamp-2 h-[3.5rem] lg:h-[3rem]">
@@ -90,9 +85,7 @@ const RefinedTourCard3D = ({ tour, onClick, index }) => {
                         )}
                     </div>
 
-                    {/* Details & Price */}
                     <div className="space-y-4 pt-4 border-t border-white/5 mt-auto">
-                        {/* Details */}
                         <div className="flex items-center gap-6">
                             <div className="flex items-center gap-2">
                                 <Calendar size={13} className="text-white/30" />
@@ -104,11 +97,10 @@ const RefinedTourCard3D = ({ tour, onClick, index }) => {
                             </div>
                         </div>
 
-                        {/* Price & CTA */}
                         <div className="flex items-center justify-between">
                             <div>
                                 <p className="text-[9px] text-white/30 uppercase font-bold tracking-wider mb-1">Pricing</p>
-                                <p className="text-xl lg:text-2xl font-light text-white">{tour.price}</p>
+                                <p className="text-xl lg:text-2xl font-light text-white">{tour.cardPrice || tour.price}</p>
                             </div>
                             <div className="w-10 h-10 rounded-lg bg-[#D4A574] flex items-center justify-center text-black transition-transform group-hover:scale-110 shadow-lg shadow-[#D4A574]/10">
                                 <ArrowUpRight size={18} strokeWidth={2.5} />
@@ -122,10 +114,7 @@ const RefinedTourCard3D = ({ tour, onClick, index }) => {
 };
 
 // ============================================================================
-
 // UPCOMING EVENTS COMPONENT
-// ============================================================================
-// REDESIGNED UPCOMING EVENTS COMPONENT
 // ============================================================================
 
 const UpcomingEvents = () => {
@@ -133,17 +122,15 @@ const UpcomingEvents = () => {
     const [viewedImage, setViewedImage] = useState(null);
     const event = eventsData[currentEventIndex];
 
-    // Synchronized Auto-switch: Always changes Flyer + Text together
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentEventIndex((prev) => (prev + 1) % eventsData.length);
-        }, 10000); // 10 seconds per flyer
+        }, 10000);
         return () => clearInterval(timer);
     }, []);
 
     return (
         <section className="py-20 relative overflow-hidden bg-[#021732]">
-            {/* Dynamic Background Image */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <AnimatePresence mode="wait">
                     <Motion.div
@@ -165,8 +152,7 @@ const UpcomingEvents = () => {
                 </AnimatePresence>
             </div>
 
-            <div className="container mx-auto px-6 relative z-10">
-                {/* Section Header */}
+            <div className="container mx-auto px-6 md:px-10 lg:px-16 max-w-7xl relative z-10">
                 <div className="mb-16 text-center">
                     <Motion.h2
                         initial={{ opacity: 0, y: 20 }}
@@ -180,7 +166,6 @@ const UpcomingEvents = () => {
                 </div>
 
                 <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-12 items-start">
-                    {/* Event Content - Left side (7 cols) */}
                     <div className="lg:col-span-7 space-y-8 relative z-10">
                         <AnimatePresence mode="wait">
                             <Motion.div
@@ -191,7 +176,6 @@ const UpcomingEvents = () => {
                                 transition={{ duration: 0.6, ease: "easeOut" }}
                                 className="space-y-8"
                             >
-                                {/* Title Area */}
                                 <div className="space-y-3">
                                     <Motion.div
                                         initial={{ opacity: 0, x: -20 }}
@@ -215,7 +199,6 @@ const UpcomingEvents = () => {
                                     </Motion.h3>
                                 </div>
 
-                                {/* Description */}
                                 <Motion.p
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -225,7 +208,6 @@ const UpcomingEvents = () => {
                                     {event.description}
                                 </Motion.p>
 
-                                {/* Redesigned Info Specs - Editorial Clean Look */}
                                 <Motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -252,7 +234,6 @@ const UpcomingEvents = () => {
                                     ))}
                                 </Motion.div>
 
-                                {/* CTA Section */}
                                 <Motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -278,7 +259,6 @@ const UpcomingEvents = () => {
                         </AnimatePresence>
                     </div>
 
-                    {/* Enhanced Image Showcase - Right side (5 cols) */}
                     <div className="lg:col-span-5 relative">
                         <Motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
@@ -287,10 +267,8 @@ const UpcomingEvents = () => {
                             transition={{ duration: 0.6 }}
                             className="relative"
                         >
-                            {/* Decorative glow behind image */}
                             <div className="absolute inset-0 bg-gradient-to-br from-[#D4A574]/20 via-[#4a9eff]/10 to-transparent blur-3xl -z-10 scale-110" />
 
-                            {/* Small image container with zoom on click */}
                             <div
                                 className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-xl border border-white/10 bg-white/[0.02] cursor-pointer group/img"
                                 onClick={() => setViewedImage(event.image)}
@@ -313,7 +291,6 @@ const UpcomingEvents = () => {
                                 </div>
                             </div>
 
-                            {/* Enhanced Event Selector Dots */}
                             <div className="absolute -bottom-6 sm:bottom-auto sm:-right-6 lg:-right-10 sm:top-1/2 sm:-translate-y-1/2 flex sm:flex-col gap-3 justify-center w-full sm:w-auto">
                                 {eventsData.map((_, idx) => (
                                     <Motion.button
@@ -338,7 +315,6 @@ const UpcomingEvents = () => {
                             </div>
                         </Motion.div>
 
-                        {/* Floating accent element */}
                         <Motion.div
                             className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-gradient-to-br from-[#D4A574]/20 to-transparent blur-2xl pointer-events-none"
                             animate={{
@@ -355,7 +331,6 @@ const UpcomingEvents = () => {
                 </div>
             </div>
 
-            {/* Professional Image Lightbox - Minimalist Design */}
             <AnimatePresence>
                 {viewedImage && (
                     <Motion.div
@@ -364,13 +339,11 @@ const UpcomingEvents = () => {
                         exit={{ opacity: 0 }}
                         className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8"
                     >
-                        {/* Immersive Dark Backdrop */}
                         <Motion.div
                             className="absolute inset-0 bg-black/98 backdrop-blur-2xl"
                             onClick={() => setViewedImage(null)}
                         />
 
-                        {/* Full Resolution Image Component */}
                         <Motion.div
                             initial={{ scale: 0.98, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
@@ -385,7 +358,6 @@ const UpcomingEvents = () => {
                             />
                         </Motion.div>
 
-                        {/* Top-Right Action Control */}
                         <Motion.button
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -401,20 +373,16 @@ const UpcomingEvents = () => {
                 )}
             </AnimatePresence>
 
-            {/* Enhanced Custom Styles */}
             <style dangerouslySetInnerHTML={{
                 __html: `
                 @keyframes shimmer {
                     0% { background-position: -1000px 0; }
                     100% { background-position: 1000px 0; }
                 }
-
                 @keyframes pulse-glow {
                     0%, 100% { opacity: 0.5; }
                     50% { opacity: 1; }
                 }
-
-                /* Smooth transitions for all interactive elements */
                 button, a {
                     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 }
@@ -440,7 +408,6 @@ const ShortEscapeTours = () => {
         ? shortEscapeTours
         : shortEscapeTours.filter(tour => tour.category === activeFilter);
 
-    // Close detail view on escape key
     useEffect(() => {
         const handleEsc = (event) => {
             if (event.keyCode === 27) setSelectedTour(null);
@@ -449,7 +416,6 @@ const ShortEscapeTours = () => {
         return () => window.removeEventListener("keydown", handleEsc);
     }, []);
 
-    // Prevent scroll when detail view is open
     useEffect(() => {
         if (selectedTour) {
             document.body.style.overflow = "hidden";
@@ -468,144 +434,128 @@ const ShortEscapeTours = () => {
 
     return (
         <div className="bg-[#021732]">
+            <div className="min-h-screen bg-[#021732] text-white selection:bg-white/10 overflow-x-hidden relative">
 
-
-            {/* Main Content */}
-            <div
-                className="min-h-screen bg-[#021732] text-white selection:bg-white/10 overflow-x-hidden relative"
-            >
-                
                 {/* --- TOURS SHOWCASE SECTION --- */}
                 <section className="relative z-20 pb-32 pt-20">
-                    <div className="container mx-auto px-6">
-                        {/* Section Header */}
-                        <div className="mb-16 mx-auto max-w-4xl">
-                            <Motion.p
+                    {/*
+                      FIX: Added max-w-7xl + tighter responsive padding.
+                      Old: container mx-auto px-6  → no max-width, content hugged left on wide screens.
+                      New: container mx-auto px-6 md:px-10 lg:px-16 max-w-7xl
+                    */}
+                    <div className="container mx-auto px-6 md:px-10 lg:px-16 max-w-7xl">
+
+                       
+                        <div className="mb-16">
+
+                            {/* Tagline row — centered, full width */}
+                            <Motion.h2
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                className="text-xs md:text-sm uppercase tracking-[0.2em] text-[#D4A574] font-medium mb-4 whitespace-nowrap"
+                                className="text-4xl md:text-5xl font-light text-white leading-tight mb-8 text-center"
                             >
-                                Big experiences. Little time. Moments that tell a story.
-                            </Motion.p>
+                                Big experiences. Little time. <br className="hidden md:block" /> Moments that tell a story.
+                            </Motion.h2>
 
-                            {/* Introduction Section */}
-                            <Motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.1 }}
-                                className="max-w-4xl mb-12 space-y-8"
-                            >
-                                {/* Main Intro Text */}
-                                <div className="space-y-4">
-                                    <Motion.p 
-                                        initial={{ opacity: 0, y: 10 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: 0.1 }}
-                                        className="text-sm md:text-base text-white/60 leading-relaxed font-light"
-                                    >
-                                        Not everyone has weeks to travel but that doesn't mean you should miss out on Rwanda's magic.
-                                    </Motion.p>
-                                    
-                                    <Motion.p 
-                                        initial={{ opacity: 0, y: 10 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: 0.2 }}
-                                        className="text-sm md:text-base text-white/60 leading-relaxed font-light"
-                                    >
-                                        At Zoravia Terra Journeys, we design private, experience-led safaris and short escape tours in Rwanda for travelers who value comfort, authenticity, and meaningful connection.
-                                    </Motion.p>
-                                    
-                                    <Motion.p 
-                                        initial={{ opacity: 0, y: 10 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: 0.3 }}
-                                        className="text-sm md:text-base text-white/60 leading-relaxed font-light"
-                                    >
-                                        Whether you have one day or a full weekend, our journeys are crafted to give you deep, unhurried experiences not rushed itineraries. From wildlife safaris to mountain hikes and peaceful nature retreats, each escape is designed to feel personal and unforgettable.
-                                    </Motion.p>
-                                    
-                                    <Motion.p 
-                                        initial={{ opacity: 0, y: 10 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: 0.4 }}
-                                        className="text-sm md:text-base text-white/60 leading-relaxed font-light"
-                                    >
-                                        Every experience is led by licensed local guides and carefully planned around park regulations and permit availability; ensuring a seamless, safe, and responsible travel experience.
-                                    </Motion.p>
-                                </div>
+                            {/* Full-width divider */}
+                            <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#D4A574]/30 to-transparent mb-10" />
 
-                                {/* Perfect For Section */}
+                            {/* Two-column body — copy left, Perfect For right */}
+                            <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 lg:gap-20 items-start">
+
+                                {/* Left: intro paragraphs */}
+                                <Motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.1 }}
+                                    className="space-y-4"
+                                >
+                                    {[
+                                        "Not everyone has weeks to travel but that doesn't mean you should miss out on Rwanda's magic.",
+                                        "At Zoravia Terra Journeys, we design private, experience-led safaris and short escape tours in Rwanda for travelers who value comfort, authenticity, and meaningful connection.",
+                                        "Whether you have one day or a full weekend, our journeys are crafted to give you deep, unhurried experiences not rushed itineraries. From wildlife safaris to mountain hikes and peaceful nature retreats, each escape is designed to feel personal and unforgettable.",
+                                        "Every experience is led by licensed local guides and carefully planned around park regulations and permit availability; ensuring a seamless, safe, and responsible travel experience.",
+                                    ].map((text, i) => (
+                                        <Motion.p
+                                            key={i}
+                                            initial={{ opacity: 0, y: 10 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: 0.1 + i * 0.1 }}
+                                            className="text-sm md:text-base text-white/60 leading-relaxed font-light"
+                                        >
+                                            {text}
+                                        </Motion.p>
+                                    ))}
+                                </Motion.div>
+
+                                {/* Right: Perfect For */}
                                 <Motion.div
                                     initial={{ opacity: 0, y: 10 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: 0.5 }}
-                                    className="pt-6"
+                                    transition={{ delay: 0.4 }}
+                                    className="lg:pt-1"
                                 >
-                                    <div className="inline-block">
-                                        <p className="text-xs md:text-sm text-[#D4A574] font-medium uppercase tracking-[0.2em] mb-4">
-                                            Perfect For
-                                        </p>
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                            {[
-                                                "Busy professionals",
-                                                "Weekend adventurers", 
-                                                "Friends & couples",
-                                                "Travelers adding Rwanda to a bigger Africa trip"
-                                            ].map((item, index) => (
-                                                <Motion.div
-                                                    key={index}
-                                                    initial={{ opacity: 0, x: -10 }}
-                                                    whileInView={{ opacity: 1, x: 0 }}
-                                                    viewport={{ once: true }}
-                                                    transition={{ delay: 0.6 + index * 0.1 }}
-                                                    className="flex items-center gap-3 p-3 rounded-lg bg-white/[0.02] border border-white/5 hover:bg-white/[0.03] transition-all duration-300"
-                                                >
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-[#D4A574]" />
-                                                    <span className="text-sm text-white/50 font-light">{item}</span>
-                                                </Motion.div>
-                                            ))}
-                                        </div>
+                                    <p className="text-xs md:text-sm text-[#D4A574] font-medium uppercase tracking-[0.2em] mb-5">
+                                        Perfect For
+                                    </p>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
+                                        {[
+                                            "Busy professionals",
+                                            "Weekend adventurers",
+                                            "Friends & couples",
+                                            "Travelers adding Rwanda to a bigger Africa trip"
+                                        ].map((item, index) => (
+                                            <Motion.div
+                                                key={index}
+                                                initial={{ opacity: 0, x: -10 }}
+                                                whileInView={{ opacity: 1, x: 0 }}
+                                                viewport={{ once: true }}
+                                                transition={{ delay: 0.5 + index * 0.08 }}
+                                                className="flex items-center gap-3 p-3.5 rounded-lg bg-white/[0.03] border border-white/[0.07] hover:bg-white/[0.05] transition-all duration-300"
+                                            >
+                                                <div className="w-1.5 h-1.5 rounded-full bg-[#D4A574] shrink-0" />
+                                                <span className="text-sm text-white/55 font-light">{item}</span>
+                                            </Motion.div>
+                                        ))}
                                     </div>
                                 </Motion.div>
-                            </Motion.div>
 
-                            {/* Featured Tours Title - Separate Centered Section */}
-                            <div className="mb-16 text-center">
-                                <Motion.h2
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.2 }}
-                                    className="text-4xl md:text-5xl font-light text-white leading-tight mb-8"
-                                >
-                                    Featured <span className="text-white">Tours</span>
-                                </Motion.h2>
-                                <div className="max-w-fit mx-auto p-2 bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-full flex gap-2 overflow-x-auto">
-                                    {filters.map((filter) => (
-                                        <button
-                                            key={filter}
-                                            onClick={() => setActiveFilter(filter)}
-                                            className={`relative px-6 md:px-8 py-2.5 md:py-3 text-[9px] md:text-[10px] font-medium uppercase tracking-[0.1em] transition-all duration-500 rounded-full flex-shrink-0 ${activeFilter === filter ? "text-[#021732]" : "text-white/40 hover:text-white/60"
-                                                }`}
-                                        >
-                                            <span className="relative z-10">{filter}</span>
-                                            {activeFilter === filter && (
-                                                <Motion.div
-                                                    layoutId="activeFilterBg"
-                                                    className="absolute inset-0 bg-white/10 rounded-full"
-                                                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                                                />
-                                            )}
-                                        </button>
-                                    ))}
-                                </div>
+                            </div>
+                        </div>
+
+                        {/* Featured Tours Title + Filter */}
+                        <div className="mb-16 text-center">
+                            <Motion.h2
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                                className="text-4xl md:text-5xl font-light text-white leading-tight mb-8"
+                            >
+                                Featured <span className="text-white">Tours</span>
+                            </Motion.h2>
+                            <div className="max-w-fit mx-auto p-2 bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-full flex gap-2 overflow-x-auto">
+                                {filters.map((filter) => (
+                                    <button
+                                        key={filter}
+                                        onClick={() => setActiveFilter(filter)}
+                                        className={`relative px-6 md:px-8 py-2.5 md:py-3 text-[9px] md:text-[10px] font-medium uppercase tracking-[0.1em] transition-all duration-500 rounded-full flex-shrink-0 ${activeFilter === filter ? "text-[#021732]" : "text-white/40 hover:text-white/60"
+                                            }`}
+                                    >
+                                        <span className="relative z-10">{filter}</span>
+                                        {activeFilter === filter && (
+                                            <Motion.div
+                                                layoutId="activeFilterBg"
+                                                className="absolute inset-0 bg-white/10 rounded-full"
+                                                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                            />
+                                        )}
+                                    </button>
+                                ))}
                             </div>
                         </div>
 
@@ -710,6 +660,12 @@ const ShortEscapeTours = () => {
                                             {selectedTour.quickFacts && (
                                                 <div className="p-8 rounded-lg bg-white/[0.02] border border-white/5 space-y-6">
                                                     <div className="grid grid-cols-1 gap-6">
+                                                        {selectedTour.quickFacts.pickup && (
+                                                            <div className="space-y-2">
+                                                                <p className="text-[8px] font-medium text-white/20 uppercase tracking-[0.1em]">Pickup</p>
+                                                                <p className="text-sm text-white/60">{selectedTour.quickFacts.pickup}</p>
+                                                            </div>
+                                                        )}
                                                         <div className="space-y-2">
                                                             <p className="text-[8px] font-medium text-white/20 uppercase tracking-[0.1em]">Travel Style</p>
                                                             <p className="text-sm text-white/60">{selectedTour.quickFacts.travelStyle}</p>
@@ -755,6 +711,20 @@ const ShortEscapeTours = () => {
                                             </div>
 
                                             <div className="space-y-8 pt-6 border-t border-white/5">
+                                                {selectedTour.expectations && (
+                                                    <div>
+                                                        <h4 className="text-[11px] font-medium uppercase tracking-[0.2em] text-white/50 mb-4">What To Expect</h4>
+                                                        <ul className="space-y-3">
+                                                            {selectedTour.expectations.map((item, i) => (
+                                                                <li key={i} className="flex items-center gap-2 text-sm text-white/50 font-light">
+                                                                    <Sparkles size={14} className="text-white/30 flex-shrink-0" />
+                                                                    {item}
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                )}
+
                                                 <div>
                                                     <h4 className="text-[11px] font-medium uppercase tracking-[0.2em] text-white/50 mb-4">Included</h4>
                                                     <ul className="space-y-3">
@@ -780,9 +750,42 @@ const ShortEscapeTours = () => {
                                                         </ul>
                                                     </div>
                                                 )}
+
+                                                {selectedTour.optionalAddOns && (
+                                                    <div>
+                                                        <h4 className="text-[11px] font-medium uppercase tracking-[0.2em] text-white/50 mb-4">Optional Add-Ons</h4>
+                                                        <ul className="space-y-3">
+                                                            {selectedTour.optionalAddOns.map((item, i) => (
+                                                                <li key={i} className="flex items-center gap-2 text-sm text-white/40 font-light">
+                                                                    <Info size={14} className="text-white/20 flex-shrink-0" />
+                                                                    {item}
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                )}
+
+                                                {selectedTour.goodToKnow && (
+                                                    <div>
+                                                        <h4 className="text-[11px] font-medium uppercase tracking-[0.2em] text-white/50 mb-4">Good To Know</h4>
+                                                        <ul className="space-y-3">
+                                                            {selectedTour.goodToKnow.map((item, i) => (
+                                                                <li key={i} className="flex items-center gap-2 text-sm text-white/40 font-light">
+                                                                    <Info size={14} className="text-white/20 flex-shrink-0" />
+                                                                    {item}
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                )}
                                             </div>
 
                                             <div className="flex flex-col gap-3 pt-6 border-t border-white/5 pb-10">
+                                                {selectedTour.bookingNote && (
+                                                    <p className="text-sm text-white/40 font-light">
+                                                        {selectedTour.bookingNote}
+                                                    </p>
+                                                )}
                                                 <Link
                                                     to="/booking"
                                                     state={{ packageName: selectedTour.title }}
@@ -808,66 +811,51 @@ const ShortEscapeTours = () => {
                 </AnimatePresence>
 
                 {/* --- CUSTOM JOURNEY CTA --- */}
-                <section className="py-32 relative overflow-hidden">
-                    {/* Background Decorative Elements */}
+                <section className="py-28 relative overflow-hidden">
                     <div className="absolute inset-0 z-0">
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D4A574]/5 rounded-full blur-[120px] pointer-events-none" />
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#D4A574]/4 rounded-full blur-[100px] pointer-events-none" />
                         <div className="absolute inset-0 bg-gradient-to-b from-[#021732] via-transparent to-[#021732]" />
                     </div>
 
-                    <div className="container mx-auto px-6 relative z-10">
+                    <div className="container mx-auto px-6 md:px-10 lg:px-16 max-w-7xl relative z-10">
                         <Motion.div
                             initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
-                            className="max-w-5xl mx-auto rounded-3xl p-12 md:p-20 text-center border border-white/[0.05] bg-white/[0.02] backdrop-blur-sm"
+                            className="max-w-4xl mx-auto rounded-2xl p-10 md:p-16 text-center border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm"
                         >
-                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4A574]/10 border border-[#D4A574]/20 text-[#D4A574] text-[10px] font-semibold uppercase tracking-widest mb-8">
-                                <Sparkles size={12} />
-                                <span>Bespoke Experiences</span>
-                            </div>
 
-                            <h2 className="text-4xl md:text-6xl lg:text-7xl font-light text-white leading-[1.1] mb-8">
-                                Looking for <span className="text-[#D4A574]">Something Different?</span>
+                            <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-light text-white leading-[1.2] tracking-[-0.01em] mb-6">
+                                Looking for something different?
                             </h2>
 
-                            <p className="text-lg md:text-xl text-white/50 font-light max-w-3xl mx-auto leading-relaxed mb-12">
-                                Our collection represents our curated favorites. If you have specific travel dates, unique interests, or a preferred accommodation style in mind, we'd love to help create a journey that is entirely yours.
+                            <p className="text-sm md:text-[0.9375rem] text-white/45 font-light max-w-xl mx-auto leading-[1.8] mb-10">
+                                If you have specific travel dates, unique interests, or a preferred style in mind — we'll craft a journey that's entirely yours.
                             </p>
 
-                            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                                 <Link
                                     to="/contact"
-                                    className="group relative px-10 py-5 rounded-xl bg-[#D4A574] text-[#021732] text-xs font-bold uppercase tracking-[0.2em] transition-all duration-500 hover:scale-[1.05] hover:shadow-[0_20px_40px_-10px_rgba(212,165,116,0.3)] flex items-center gap-3"
+                                    className="group relative overflow-hidden px-10 py-4 rounded-lg bg-[#D4A574] text-[#021732] text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 hover:bg-[#D4A574]/90 hover:scale-[1.02] flex items-center gap-3 shadow-lg shadow-[#D4A574]/10"
                                 >
-                                    Design Your Bespoke Journey
-                                    <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
+                                    <span className="relative z-10">Design Your Journey</span>
+                                    <ArrowRight size={14} className="relative z-10 transition-transform duration-300 group-hover:translate-x-1" />
                                 </Link>
 
                                 <a
                                     href="tel:+250783482368"
-                                    className="px-8 py-5 rounded-xl border border-white/10 text-white/70 text-xs font-medium uppercase tracking-[0.15em] hover:bg-white/5 transition-all flex items-center gap-3"
+                                    className="px-10 py-4 rounded-lg border border-white/[0.08] text-white/50 text-[10px] font-medium uppercase tracking-[0.2em] transition-all duration-300 hover:border-white/15 hover:text-white/70 hover:scale-[1.02] flex items-center gap-3"
                                 >
-                                    <Phone size={16} />
-                                    Consult an Expert
+                                    <Phone size={13} />
+                                    Speak With Us
                                 </a>
                             </div>
 
-                            <p className="mt-12 text-[11px] text-white/30 uppercase tracking-[0.3em] font-medium">
-                                We customize all itineraries for
-                                <span className="text-white/50 mx-2">•</span>
-                                Individuals
-                                <span className="text-white/50 mx-2">•</span>
-                                Couples
-                                <span className="text-white/50 mx-2">•</span>
-                                Groups
-                            </p>
                         </Motion.div>
                     </div>
                 </section>
 
-                {/* Custom Styles */}
                 <style dangerouslySetInnerHTML={{
                     __html: `
                     .custom-scrollbar::-webkit-scrollbar {

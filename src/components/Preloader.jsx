@@ -1,5 +1,21 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { motion as Motion, AnimatePresence } from "framer-motion";
+
+// Generate static random data outside component to ensure purity
+const STATIC_STARS = [...Array(30)].map((_, i) => ({
+    id: i,
+    duration: 4 + Math.random() * 4,
+    delay: i * 0.2,
+    top: Math.random() * 50 + "%",
+    left: Math.random() * 100 + "%"
+}));
+
+const STATIC_CLOUDS = [...Array(3)].map((_, i) => ({
+    id: i,
+    duration: 40 + (i * 10),
+    delay: i * 5,
+    top: 10 + (i * 20) + "%"
+}));
 
 const Preloader = ({ onComplete }) => {
     const [isVisible, setIsVisible] = useState(true);
@@ -37,32 +53,32 @@ const Preloader = ({ onComplete }) => {
                             </linearGradient>
                         </defs>
                     </svg>
-
+ 
                     {/* 1. CREATIVE SKY: THE LUXURY ATMOSPHERE */}
                     <div className="absolute inset-0 pointer-events-none">
                         <div className="absolute bottom-[20%] inset-x-0 h-[60%] bg-[radial-gradient(ellipse_at_bottom,rgba(74,222,128,0.15)_0%,transparent_70%)] blur-3xl opacity-50 transition-opacity duration-1000" />
-
+ 
                         {/* 3D STAR FIELD */}
-                        {[...Array(30)].map((_, i) => (
+                        {STATIC_STARS.map((star) => (
                             <Motion.div
-                                key={i}
+                                key={star.id}
                                 initial={{ opacity: 0, scale: 0 }}
                                 animate={{ opacity: [0, 0.4, 0], scale: [0, 1, 0] }}
-                                transition={{ duration: 4 + Math.random() * 4, repeat: Infinity, delay: i * 0.2 }}
+                                transition={{ duration: star.duration, repeat: Infinity, delay: star.delay }}
                                 className="absolute w-1 h-1 bg-white rounded-full"
-                                style={{ top: Math.random() * 50 + "%", left: Math.random() * 100 + "%" }}
+                                style={{ top: star.top, left: star.left }}
                             />
                         ))}
-
+ 
                         {/* DRIFTING CLOUDS */}
-                        {[...Array(3)].map((_, i) => (
+                        {STATIC_CLOUDS.map((cloud) => (
                             <Motion.div
-                                key={`cloud-${i}`}
+                                key={`cloud-${cloud.id}`}
                                 initial={{ x: "-20vw", opacity: 0 }}
                                 animate={{ x: "120vw", opacity: [0, 0.1, 0] }}
-                                transition={{ duration: 40 + (i * 10), repeat: Infinity, delay: i * 5, ease: "linear" }}
+                                transition={{ duration: cloud.duration, repeat: Infinity, delay: cloud.delay, ease: "linear" }}
                                 className="absolute w-[50vw] h-40 bg-white/5 blur-[100px] rounded-full"
-                                style={{ top: 10 + (i * 20) + "%" }}
+                                style={{ top: cloud.top }}
                             />
                         ))}
                     </div>
