@@ -21,12 +21,23 @@ const Preloader = ({ onComplete }) => {
     const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
+        try {
+            if (typeof window !== "undefined" && window.sessionStorage?.getItem("ztj_visited")) {
+                setIsVisible(false);
+                if (onComplete) onComplete();
+                return;
+            }
+            window.sessionStorage?.setItem("ztj_visited", "true");
+        } catch {
+            // Ignore storage access errors
+        }
+
         const timer = setTimeout(() => {
             setIsVisible(false);
             setTimeout(() => {
                 if (onComplete) onComplete();
-            }, 800);
-        }, 5500);
+            }, 600);
+        }, 2200);
 
         return () => clearTimeout(timer);
     }, [onComplete]);
@@ -155,7 +166,7 @@ const Preloader = ({ onComplete }) => {
                                         key={i}
                                         initial={{ opacity: 0, y: 15 }}
                                         animate={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 1, delay: 1.5 + i * 0.2 }}
+                                        transition={{ duration: 0.8, delay: 0.5 + i * 0.08 }}
                                         className="text-white text-[14px] md:text-[20px] font-bold tracking-[1.2em] md:tracking-[1.8em] uppercase leading-none"
                                     >
                                         {word}
@@ -164,7 +175,7 @@ const Preloader = ({ onComplete }) => {
                                 {/* Scanner Light Effect */}
                                 <Motion.div
                                     animate={{ left: ["-10%", "110%"] }}
-                                    transition={{ duration: 2.5, repeat: Infinity, delay: 1 }}
+                                    transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
                                     className="absolute inset-y-0 w-32 bg-gradient-to-r from-transparent via-[#D4A574]/20 to-transparent skew-x-[-20deg]"
                                 />
                             </div>
@@ -172,14 +183,14 @@ const Preloader = ({ onComplete }) => {
                             <Motion.div
                                 initial={{ scaleX: 0 }}
                                 animate={{ scaleX: 1 }}
-                                transition={{ duration: 2, delay: 2.5 }}
+                                transition={{ duration: 1.2, delay: 1.1 }}
                                 className="h-[1px] w-64 bg-gradient-to-r from-transparent via-[#D4A574] to-transparent mx-auto mb-12"
                             />
 
                             <Motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ duration: 1.5, delay: 3.5 }}
+                                transition={{ duration: 1, delay: 1.4 }}
                                 className="space-y-4"
                             >
                                 <span className="block text-[#D4A574] text-[22px] md:text-[28px] font-black tracking-[0.8em] md:tracking-[1.2em] uppercase leading-none">

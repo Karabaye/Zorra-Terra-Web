@@ -31,26 +31,30 @@ const HomeIntro = () => {
             </div>
 
     <div className="space-y-3">
-  <p className="text-base leading-relaxed text-white/90 font-light">
-    Zoravia Terra Journeys creates carefully designed travel experiences in Rwanda for travelers who want clarity, reliability, and authenticity.
-  </p>
+      <p className="text-base leading-relaxed text-white/90 font-light">
+        Zoravia Terra Journeys creates private, carefully curated travel experiences in Rwanda for travelers seeking clarity, reliability, and authentic connection. We design tailor made journeys for private travelers, couples, families, small groups, solo explorers, honeymooners, and corporate retreats, each intentionally crafted to reflect its purpose, pace, and travel experience.
+      </p>
 
-  <p className="text-base leading-relaxed text-white/80 font-light">
-    We specialize in private and tailor-made journeys that remove the uncertainty of planning travel in a new destination, especially for first-time visitors to the region.
-  </p>
+      <p className="text-base leading-relaxed text-white/80 font-light">
+        We specialize in tailor made journeys that remove the complexity and uncertainty of planning travel in a new destination, especially for first-time visitors to Rwanda and the region.
+      </p>
 
-  <p className="text-base text-white/70 leading-relaxed">
-    Planning a trip to Rwanda can feel overwhelming: permits, logistics, timing, safety, and choosing the right experiences. We simplify the process by guiding you from the first conversation to your return home.
-  </p>
+      <p className="text-base text-white/70 leading-relaxed">
+        From permits and timing to logistics and on-ground coordination, we guide every step of your journey ensuring a seamless experience from your first conversation to your return home.
+      </p>
 
-  <p className="text-base text-white/70 leading-relaxed">
-    We design experiences that balance wildlife encounters, nature, culture, and comfort—from gorilla trekking and chimpanzee tracking to safaris, volcanic landscapes, and meaningful cultural interactions.
-  </p>
+      <p className="text-base text-white/70 leading-relaxed">
+        Our itineraries are thoughtfully designed to balance Rwanda’s most iconic experiences with deeper, more meaningful encounters. From gorilla trekking and chimpanzee tracking to Akagera safari adventures, volcano hikes, luxury and cozy staycations, and culturally immersive experiences, every journey is shaped with intention, rhythm, and flow.
+      </p>
 
-  <p className="text-base text-white/70 leading-relaxed">
-    We work with trusted local partners to ensure smooth execution while promoting responsible tourism that respects communities and protects natural ecosystems.
-  </p>
-</div>
+      <p className="text-base text-white/70 leading-relaxed">
+        We work with trusted local partners and experienced on-ground teams to ensure smooth execution, reliable service, and real-time support throughout your stay.
+      </p>
+
+      <p className="text-base text-white/70 leading-relaxed">
+        Every journey is built on responsible travel principle that respecting local communities, protecting natural ecosystems, and ensuring tourism creates lasting positive impact in Rwanda.
+      </p>
+    </div>
 
             <div className="pt-8">
               <Link

@@ -1,0 +1,88 @@
+# Zoravia Terra Journeys - Production Apache Configuration (cPanel)
+
+# Default index document
+DirectoryIndex index.html
+
+# Prevent directory listing
+Options -Indexes
+
+# Custom 404 error document (returns true HTTP 404 status)
+ErrorDocument 404 /404.html
+
+# ==============================================================================
+# Security Headers
+# ==============================================================================
+<IfModule mod_headers.c>
+  # 1. Clickjacking Protection: Prevent framing outside origin
+  Header set X-Frame-Options "SAMEORIGIN"
+
+  # 2. MIME Sniffing Protection: Disallow content-type sniffing
+  Header set X-Content-Type-Options "nosniff"
+
+  # 3. Referrer Policy: Send full URL on same-origin, domain-only on cross-origin
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # 4. Permissions Policy: Restrict unused browser device capabilities
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+
+  # 5. HTTP Strict Transport Security (HSTS): Enforce HTTPS (1 year)
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+
+  # 6. Content Security Policy (CSP): Explicitly crafted for Zoravia's needs
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https: blob:; media-src 'self' data: https: blob:; connect-src 'self' https://formspree.io https://www.google-analytics.com https://region1.google-analytics.com; frame-src 'self' https://www.google.com https://maps.google.com; frame-ancestors 'self'; form-action 'self' https://formspree.io; base-uri 'self';"
+</IfModule>
+
+# ==============================================================================
+# Block Sensitive & Hidden Files
+# ==============================================================================
+<FilesMatch "(^\.|\.(env|git|bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist))$">
+  Require all denied
+</FilesMatch>
+
+# ==============================================================================
+# Rewrite & Routing Rules
+# ==============================================================================
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. Enforce HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # 2. Enforce canonical www hostname (301 permanent redirect)
+  RewriteCond %{HTTP_HOST} ^zoraviaterrajourneys\.com$ [NC]
+  RewriteRule ^(.*)$ https://www.zoraviaterrajourneys.com/$1 [L,R=301]
+
+  # 3. Serve existing physical files directly (assets, images, scripts, robots.txt, sitemap.xml)
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # 4. Serve existing physical directories directly (e.g. /about/)
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 5. Serve prerendered route HTML for extensionless URLs (e.g. /about -> /about/index.html)
+  RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+  RewriteRule ^(.*)$ $1/index.html [L]
+
+  # 6. Legacy /stories route alias -> /short-escapes/index.html
+  RewriteRule ^stories/?$ short-escapes/index.html [L]
+</IfModule>
+
+# ==============================================================================
+# Browser Caching Headers
+# ==============================================================================
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>

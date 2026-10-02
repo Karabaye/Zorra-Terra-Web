@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { trackBookingSubmit } from "../utilities/analytics";
 
 const ALL_COUNTRIES = [
     "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
@@ -145,6 +146,10 @@ const Booking = () => {
             }
 
             toast.dismiss(loadingToast);
+            trackBookingSubmit({
+                packageType: formData.activities,
+                dates: `${formData.arrivalDate || ''} to ${formData.departureDate || ''}`
+            });
 
             // Premium personalized toast
             toast.success(() => (
@@ -284,6 +289,16 @@ const Booking = () => {
                     <div className="absolute -top-24 -right-24 w-48 h-48 bg-[#D4A574]/5 rounded-full blur-[80px]" />
 
                     <form onSubmit={handleSubmit}>
+                        {/* Invisible Honeypot for Bot Spam Prevention */}
+                        <input
+                            type="text"
+                            name="_gotcha"
+                            tabIndex={-1}
+                            autoComplete="off"
+                            style={{ display: "none" }}
+                            aria-hidden="true"
+                        />
+
                         <AnimatePresence mode="wait" custom={step}>
                             {/* Step 1: Guest Information */}
                             {step === 1 && (
@@ -300,9 +315,9 @@ const Booking = () => {
 
                                     <div className="grid md:grid-cols-2 gap-6">
                                         <div className="space-y-2">
-                                            <label className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Title *</label>
+                                            <label htmlFor="booking-title" className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Title *</label>
                                             <div className="relative group">
-                                                <select name="title" value={formData.title} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none appearance-none transition-all hover:bg-white/[0.07]">
+                                                <select id="booking-title" name="title" value={formData.title} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none appearance-none transition-all hover:bg-white/[0.07]">
                                                     <option value="Mr" className="bg-[#021732]">Mr</option>
                                                     <option value="Mrs" className="bg-[#021732]">Mrs</option>
                                                     <option value="Miss" className="bg-[#021732]">Miss</option>
@@ -314,18 +329,18 @@ const Booking = () => {
                                         </div>
 
                                         <div className="space-y-2">
-                                            <label className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Full Name *</label>
-                                            <input required type="text" name="name" value={formData.name} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] placeholder:text-white/10" placeholder="Identity" />
+                                            <label htmlFor="booking-name" className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Full Name *</label>
+                                            <input id="booking-name" required type="text" name="name" value={formData.name} onChange={handleChange} maxLength={100} aria-required="true" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] placeholder:text-white/10" placeholder="Identity" />
                                         </div>
 
                                         <div className="space-y-2">
-                                            <label className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Email *</label>
-                                            <input required type="email" name="email" value={formData.email} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] placeholder:text-white/10" placeholder="Connection" />
+                                            <label htmlFor="booking-email" className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Email *</label>
+                                            <input id="booking-email" required type="email" name="email" value={formData.email} onChange={handleChange} maxLength={120} aria-required="true" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] placeholder:text-white/10" placeholder="Connection" />
                                         </div>
 
                                         <div className="space-y-2">
-                                            <label className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Phone / WhatsApp *</label>
-                                            <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] placeholder:text-white/10" placeholder="+250 783 482 368" />
+                                            <label htmlFor="booking-phone" className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Phone / WhatsApp *</label>
+                                            <input id="booking-phone" required type="tel" name="phone" value={formData.phone} onChange={handleChange} maxLength={30} aria-required="true" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] placeholder:text-white/10" placeholder="+250 783 482 368" />
                                         </div>
 
                                         <div className="space-y-2 md:col-span-2 relative">

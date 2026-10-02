@@ -4,12 +4,6 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, Heart, MapPin, Shield, Sparkles, ArrowRight } from "lucide-react";
 import PageHero from "../components/PageHero";
 
-const FontLoader = () => (
-  <style>{`
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
-    .font-display { font-family: 'Cormorant Garant', Georgia, serif; }
-  `}</style>
-);
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -36,26 +30,29 @@ const SectionContainer = ({ children }) => (
 
 // Left column: label + large heading + divider stacked together
 // This prevents the left column from feeling empty
-const SectionHeader = ({ label, heading }) => (
-  <Motion.div
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true }}
-    className="flex flex-col items-start"
-  >
-    <Motion.div variants={fadeUp} custom={0}>
-      <Label>{label}</Label>
-    </Motion.div>
-    <Motion.h2
-      variants={fadeUp}
-      custom={1}
-      className="font-display text-[clamp(2.8rem,4.5vw,4.5rem)] font-light text-white leading-tight"
+const SectionHeader = ({ label, heading, isH1 = false }) => {
+  const HeadingTag = isH1 ? Motion.h1 : Motion.h2;
+  return (
+    <Motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className="flex flex-col items-start"
     >
-      {heading}
-    </Motion.h2>
-    <Divider />
-  </Motion.div>
-);
+      <Motion.div variants={fadeUp} custom={0}>
+        <Label>{label}</Label>
+      </Motion.div>
+      <HeadingTag
+        variants={fadeUp}
+        custom={1}
+        className="font-display text-[clamp(2.8rem,4.5vw,4.5rem)] font-light text-white leading-tight"
+      >
+        {heading}
+      </HeadingTag>
+      <Divider />
+    </Motion.div>
+  );
+};
 
 export default function About() {
   const founderRef = useRef(null);
@@ -64,7 +61,6 @@ export default function About() {
 
   return (
     <div className="bg-[#04192e] text-white overflow-x-hidden">
-      <FontLoader />
 
 
       {/* 1. OUR STORY */}
@@ -73,7 +69,7 @@ export default function About() {
           {/* Asymmetric grid: left column is slightly narrower to let content breathe */}
           <div className="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-16 lg:gap-24 items-start">
 
-            <SectionHeader label="Our Story" heading="Our Story" />
+            <SectionHeader label="Our Story" heading="Our Story" isH1={true} />
 
             <Motion.div
               initial="hidden" whileInView="visible" viewport={{ once: true }}

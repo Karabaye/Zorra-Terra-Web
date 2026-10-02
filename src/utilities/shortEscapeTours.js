@@ -66,7 +66,7 @@ export const shortEscapeTours = [
         location: "Nyungwe National Park, Rwanda",
         duration: "Full Day",
         tagline: "Rainforest Adventure | Rope Course & Waterfall Hike",
-        image: "/assets/short/Gisakura_Rainforest.jpeg",
+        image: "/assets/short/1dayGisakura.jpeg",
         highlight: "A gentle yet immersive introduction to one of Africa's oldest and most biodiverse rainforests.",
         price: "Request Quote",
         quickFacts: {
@@ -106,7 +106,7 @@ export const shortEscapeTours = [
         location: "Nyungwe National Park, Rwanda",
         duration: "Full Day",
         tagline: "Rainforest Adventure | Canopy Walk & Zipline",
-        image: "/assets/short/2-day Nyungwe.jpeg",
+        image: "/assets/short/1dayUwinka.jpeg",
         highlight: "An unforgettable above-the-forest experience with the iconic Nyungwe Canopy Walkway and zipline.",
         price: "Request Quote",
         quickFacts: {

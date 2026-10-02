@@ -17,11 +17,9 @@ import { eventsData } from "../utilities/eventsData";
 import { Link } from "react-router-dom";
 
 
-// ============================================================================
-// REFINED 3D CARD COMPONENT
-// ============================================================================
 
-const RefinedTourCard3D = ({ tour, onClick, index }) => {
+
+const RefinedTourCard3D = ({ tour, index }) => {
     const [isHovered, setIsHovered] = useState(false);
     const cardRef = useRef(null);
 
@@ -32,20 +30,24 @@ const RefinedTourCard3D = ({ tour, onClick, index }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.08 }}
-            onClick={onClick}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="group cursor-pointer w-full h-full"
+            className="w-full h-full"
         >
-            <Motion.div
-                className="w-full h-full flex flex-col lg:flex-row overflow-hidden rounded-xl bg-[#031d3d] border border-white/[0.08] lg:h-[320px]"
-                animate={isHovered ? { y: -5 } : { y: 0 }}
-                style={{
-                    boxShadow: isHovered
-                        ? '0 30px 60px -12px rgba(0, 0, 0, 0.6)'
-                        : '0 10px 20px -10px rgba(0, 0, 0, 0.4)'
-                }}
+            <Link
+                to={`/short-escapes/${tour.id}`}
+                className="group cursor-pointer w-full h-full block text-left"
+                aria-label={`View ${tour.title}`}
             >
+                <Motion.div
+                    className="w-full h-full flex flex-col lg:flex-row overflow-hidden rounded-xl bg-[#031d3d] border border-white/[0.08] lg:h-[320px]"
+                    animate={isHovered ? { y: -5 } : { y: 0 }}
+                    style={{
+                        boxShadow: isHovered
+                            ? '0 30px 60px -12px rgba(0, 0, 0, 0.6)'
+                            : '0 10px 20px -10px rgba(0, 0, 0, 0.4)'
+                    }}
+                >
                 {/* IMAGE */}
                 <div className="relative h-64 lg:h-full lg:w-5/12 overflow-hidden shrink-0">
                     <Motion.div
@@ -109,7 +111,8 @@ const RefinedTourCard3D = ({ tour, onClick, index }) => {
                     </div>
                 </div>
             </Motion.div>
-        </Motion.div>
+        </Link>
+    </Motion.div>
     );
 };
 
@@ -120,14 +123,33 @@ const RefinedTourCard3D = ({ tour, onClick, index }) => {
 const UpcomingEvents = () => {
     const [currentEventIndex, setCurrentEventIndex] = useState(0);
     const [viewedImage, setViewedImage] = useState(null);
-    const event = eventsData[currentEventIndex];
+    
+    // Automatically filter out expired events
+    const activeEvents = eventsData.filter(event => {
+        if (event.date?.includes("May")) {
+            return false;
+        }
+        const eventDate = new Date(event.date);
+        // If the date string is not a specific, parseable date (like "Upcoming Dates Available"), keep it
+        if (isNaN(eventDate.getTime())) {
+            return true;
+        }
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        return eventDate >= today;
+    });
+
+    const event = activeEvents.length > 0 ? activeEvents[currentEventIndex % activeEvents.length] : null;
 
     useEffect(() => {
+        if (activeEvents.length <= 1) return;
         const timer = setInterval(() => {
-            setCurrentEventIndex((prev) => (prev + 1) % eventsData.length);
+            setCurrentEventIndex((prev) => (prev + 1) % activeEvents.length);
         }, 10000);
         return () => clearInterval(timer);
-    }, []);
+    }, [activeEvents.length]);
+
+    if (!event) return null;
 
     return (
         <section className="py-20 relative overflow-hidden bg-[#021732]">
@@ -292,7 +314,7 @@ const UpcomingEvents = () => {
                             </div>
 
                             <div className="absolute -bottom-6 sm:bottom-auto sm:-right-6 lg:-right-10 sm:top-1/2 sm:-translate-y-1/2 flex sm:flex-col gap-3 justify-center w-full sm:w-auto">
-                                {eventsData.map((_, idx) => (
+                                {activeEvents.map((_, idx) => (
                                     <Motion.button
                                         key={idx}
                                         onClick={() => setCurrentEventIndex(idx)}
@@ -438,25 +460,20 @@ const ShortEscapeTours = () => {
 
                 {/* --- TOURS SHOWCASE SECTION --- */}
                 <section className="relative z-20 pb-32 pt-20">
-                    {/*
-                      FIX: Added max-w-7xl + tighter responsive padding.
-                      Old: container mx-auto px-6  → no max-width, content hugged left on wide screens.
-                      New: container mx-auto px-6 md:px-10 lg:px-16 max-w-7xl
-                    */}
                     <div className="container mx-auto px-6 md:px-10 lg:px-16 max-w-7xl">
 
                        
                         <div className="mb-16">
 
                             {/* Tagline row — centered, full width */}
-                            <Motion.h2
+                            <Motion.h1
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 className="text-4xl md:text-5xl font-light text-white leading-tight mb-8 text-center"
                             >
-                                Big experiences. Little time. <br className="hidden md:block" /> Moments that tell a story.
-                            </Motion.h2>
+                                Experience Rwanda Even in Just a Few Days
+                            </Motion.h1>
 
                             {/* Full-width divider */}
                             <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#D4A574]/30 to-transparent mb-10" />
@@ -809,52 +826,6 @@ const ShortEscapeTours = () => {
                         </Motion.div>
                     )}
                 </AnimatePresence>
-
-                {/* --- CUSTOM JOURNEY CTA --- */}
-                <section className="py-28 relative overflow-hidden">
-                    <div className="absolute inset-0 z-0">
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#D4A574]/4 rounded-full blur-[100px] pointer-events-none" />
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#021732] via-transparent to-[#021732]" />
-                    </div>
-
-                    <div className="container mx-auto px-6 md:px-10 lg:px-16 max-w-7xl relative z-10">
-                        <Motion.div
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, ease: "easeOut" }}
-                            className="max-w-4xl mx-auto rounded-2xl p-10 md:p-16 text-center border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm"
-                        >
-
-                            <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-light text-white leading-[1.2] tracking-[-0.01em] mb-6">
-                                Looking for something different?
-                            </h2>
-
-                            <p className="text-sm md:text-[0.9375rem] text-white/45 font-light max-w-xl mx-auto leading-[1.8] mb-10">
-                                If you have specific travel dates, unique interests, or a preferred style in mind — we'll craft a journey that's entirely yours.
-                            </p>
-
-                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                                <Link
-                                    to="/contact"
-                                    className="group relative overflow-hidden px-10 py-4 rounded-lg bg-[#D4A574] text-[#021732] text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 hover:bg-[#D4A574]/90 hover:scale-[1.02] flex items-center gap-3 shadow-lg shadow-[#D4A574]/10"
-                                >
-                                    <span className="relative z-10">Design Your Journey</span>
-                                    <ArrowRight size={14} className="relative z-10 transition-transform duration-300 group-hover:translate-x-1" />
-                                </Link>
-
-                                <a
-                                    href="tel:+250783482368"
-                                    className="px-10 py-4 rounded-lg border border-white/[0.08] text-white/50 text-[10px] font-medium uppercase tracking-[0.2em] transition-all duration-300 hover:border-white/15 hover:text-white/70 hover:scale-[1.02] flex items-center gap-3"
-                                >
-                                    <Phone size={13} />
-                                    Speak With Us
-                                </a>
-                            </div>
-
-                        </Motion.div>
-                    </div>
-                </section>
 
                 <style dangerouslySetInnerHTML={{
                     __html: `

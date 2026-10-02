@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion as Motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -11,8 +11,10 @@ import {
   Compass,
   Coffee,
   Calendar,
-  Zap
+  Zap,
+  X
 } from "lucide-react";
+import PageHero from "../components/PageHero";
 
 // --- Sub-components for specialized content layout ---
 
@@ -55,7 +57,274 @@ const PremiumDropdown = ({ section, isOpen, onToggle }) => {
   );
 };
 
-import PageHero from "../components/PageHero";
+// ─── REDESIGNED FixedFlyerModal ───────────────────────────────────────────────
+const FixedFlyerModal = ({ flyer, onClose }) => {
+  useEffect(() => {
+    if (!flyer) return;
+    const onKeyDown = (e) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKeyDown);
+    
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    
+    const navbar = document.getElementById("main-navbar");
+    const prevNavbarDisplay = navbar ? navbar.style.display : "";
+    if (navbar) {
+      navbar.style.display = "none";
+    }
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = prevOverflow;
+      if (navbar) {
+        navbar.style.display = prevNavbarDisplay;
+      }
+    };
+  }, [flyer, onClose]);
+
+  return (
+    <AnimatePresence>
+      {flyer && (
+        <Motion.div
+          className="fixed inset-0 z-[99999] flex items-center justify-center px-4 py-6 sm:px-6 sm:py-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          {/* Backdrop */}
+          <Motion.div
+            className="absolute inset-0 bg-black/85 backdrop-blur-sm"
+            onClick={onClose}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          />
+
+          {/* Modal shell */}
+          <Motion.div
+            role="dialog"
+            aria-modal="true"
+            className="relative w-full max-w-[92vw] lg:max-w-[960px] rounded-[28px] overflow-hidden bg-[#071E3D] border border-white/10 shadow-[0_36px_100px_rgba(0,0,0,0.65)]"
+            style={{ maxHeight: "calc(100vh - 3rem)" }}
+            initial={{ y: 24, opacity: 0, scale: 0.97 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            exit={{ y: 16, opacity: 0, scale: 0.97 }}
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="flex h-full min-h-[22rem] max-h-[calc(100vh-3rem)] flex-col overflow-hidden lg:flex-row">
+
+              {/* ── LEFT: Image (50%) ── */}
+              <div className="relative lg:w-1/2 shrink-0 bg-[#041124] flex items-center justify-center">
+                <div className="w-full h-64 sm:h-72 lg:h-full p-2 lg:p-4 flex items-center justify-center">
+                  <img
+                    src={flyer.image}
+                    alt={flyer.title}
+                    className="w-full h-full object-contain rounded-lg"
+                    loading="lazy"
+                  />
+                </div>
+
+                <div className="absolute top-4 left-4 flex flex-wrap gap-2 z-10">
+                  {flyer.badge && (
+                    <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md bg-white/10 text-white/80 border border-white/15">
+                      {flyer.badge}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              {/* ── RIGHT: Content (50%) ── */}
+              <div className="lg:w-1/2 flex min-h-0 flex-col overflow-hidden bg-[#071E3D]">
+                <div className="flex flex-col flex-1 overflow-y-auto px-5 py-5 sm:px-6 sm:py-6 lg:px-7 lg:py-7">
+                  <div className="flex justify-end mb-3 shrink-0">
+                    <Motion.button
+                      type="button"
+                      onClick={onClose}
+                      whileHover={{ scale: 1.08 }}
+                      whileTap={{ scale: 0.95 }}
+                      aria-label="Close modal"
+                      className="w-10 h-10 rounded-full border border-white/15 bg-white/[0.08] text-white/70 hover:text-white hover:bg-white/15 transition-colors flex items-center justify-center"
+                    >
+                      <X size={16} />
+                    </Motion.button>
+                  </div>
+
+                  <div className="mb-4 shrink-0">
+                    <h2 className="text-2xl md:text-3xl font-light text-white leading-tight tracking-tight">
+                      {flyer.title}
+                    </h2>
+                    {flyer.subtitle && (
+                      <p className="mt-2 text-sm text-white/55 font-light leading-relaxed">
+                        {flyer.subtitle}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="border-t border-white/[0.08] mb-4" />
+
+                {flyer.price && (
+                  <div className="mb-4 shrink-0">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-white/35 mb-2">
+                      Trip Price
+                    </p>
+                    <div className="flex flex-wrap items-baseline gap-3">
+                      <span className="text-4xl font-light text-[#D4A574] tracking-tight leading-none">
+                        {flyer.price}
+                      </span>
+                      {flyer.priceNote && (
+                        <span className="text-xs text-white/40 font-light">
+                          {flyer.priceNote}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                <div className="grid gap-3 mb-5 sm:grid-cols-2">
+                  {flyer.location && (
+                    <div className="rounded-2xl bg-white/[0.04] border border-white/[0.08] p-3 text-sm text-white/80">
+                      <p className="text-[9px] uppercase tracking-[0.18em] text-white/30 mb-1">Location</p>
+                      <p className="font-light">{flyer.location}</p>
+                    </div>
+                  )}
+                  {flyer.duration && (
+                    <div className="rounded-2xl bg-white/[0.04] border border-white/[0.08] p-3 text-sm text-white/80">
+                      <p className="text-[9px] uppercase tracking-[0.18em] text-white/30 mb-1">Duration</p>
+                      <p className="font-light">{flyer.duration}</p>
+                    </div>
+                  )}
+                  {flyer.type && (
+                    <div className="rounded-2xl bg-white/[0.04] border border-white/[0.08] p-3 text-sm text-white/80 sm:col-span-2">
+                      <p className="text-[9px] uppercase tracking-[0.18em] text-white/30 mb-1">Type</p>
+                      <p className="font-light">{flyer.type}</p>
+                    </div>
+                  )}
+                </div>
+
+                {flyer.description && (
+                  <div className="mb-5">
+                    <p className="text-[9px] font-bold uppercase tracking-[0.14em] text-white/30 mb-2">
+                      Overview
+                    </p>
+                    <p className="text-sm text-white/60 font-light leading-7">
+                      {flyer.description}
+                    </p>
+                  </div>
+                )}
+
+                {Array.isArray(flyer.details) && flyer.details.length > 0 && (
+                  <div className="mb-5">
+                    <p className="text-[9px] font-bold uppercase tracking-[0.14em] text-white/30 mb-3">
+                      What's Included
+                    </p>
+                    <ul className="space-y-3">
+                      {flyer.details.map((item, i) => (
+                        <li key={i} className="flex gap-3 items-start text-sm text-white/60 leading-6">
+                          <span className="mt-1 h-2 w-2 rounded-full bg-[#D4A574] flex-shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                <div className="mt-auto border-t border-white/[0.08] pt-4">
+                  <div className="flex flex-wrap gap-3">
+                    <Link
+                      to="/booking"
+                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-2xl text-sm font-semibold tracking-wide bg-[#D4A574] text-[#021732] transition hover:shadow-lg"
+                    >
+                      Book This Flyer
+                      <ArrowRight size={14} />
+                    </Link>
+
+                    <Motion.button
+                      type="button"
+                      onClick={onClose}
+                      whileHover={{ backgroundColor: "rgba(255,255,255,0.12)" }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ duration: 0.15 }}
+                      className="inline-flex items-center justify-center px-5 py-2.5 rounded-2xl text-sm font-semibold bg-white/[0.06] border border-white/10 text-white/70 hover:text-white"
+                    >
+                      Back to Flyers
+                    </Motion.button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </Motion.div>
+        </Motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+// ─────────────────────────────────────────────────────────────────────────────
+
+const FixedFlyerCard = ({ flyer, onClick }) => {
+  return (
+    <Motion.button
+      type="button"
+      onClick={onClick}
+      whileHover={{ y: -4 }}
+      whileTap={{ scale: 0.99 }}
+      transition={{ duration: 0.15 }}
+      className="group w-full text-left rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-colors"
+    >
+      <div className="relative aspect-[4/5] overflow-hidden">
+        <img
+          src={flyer.image}
+          alt={flyer.title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#021732]/80 via-[#021732]/10 to-transparent" />
+        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+          <span className="text-[9px] font-bold uppercase tracking-widest px-2 py-1 rounded bg-[#D4A574]/15 text-[#D4A574] border border-[#D4A574]/20">
+            Fixed Flyer
+          </span>
+          {flyer.badge && (
+            <span className="text-[9px] font-bold uppercase tracking-widest px-2 py-1 rounded bg-white/10 text-white/70 border border-white/10">
+              {flyer.badge}
+            </span>
+          )}
+        </div>
+      </div>
+
+      <div className="p-5">
+        <h4 className="text-base md:text-lg font-light text-white tracking-tight line-clamp-2">
+          {flyer.title}
+        </h4>
+        {flyer.subtitle && (
+          <p className="mt-1 text-xs text-white/50 font-light line-clamp-2">
+            {flyer.subtitle}
+          </p>
+        )}
+
+        <div className="mt-4 flex flex-wrap gap-3 text-[10px] uppercase tracking-wider text-white/50 font-bold">
+          {flyer.price && (
+            <span className="inline-flex items-center gap-1.5 text-white/80">
+              <Zap size={12} className="text-[#D4A574]/90" />
+              Trip Price: {flyer.price}
+            </span>
+          )}
+          {flyer.location && (
+            <span className="inline-flex items-center gap-1.5">
+              <MapPin size={12} className="text-[#D4A574]/80" />
+              {flyer.location}
+            </span>
+          )}
+        </div>
+
+        <div className="mt-4 inline-flex items-center gap-2 text-xs text-white/70 group-hover:text-white transition-colors">
+          View details
+          <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+        </div>
+      </div>
+    </Motion.button>
+  );
+};
 
 const JourneyBlueprint = ({ blueprint, index }) => {
   const [openSection, setOpenSection] = useState(0);
@@ -136,6 +405,8 @@ const JourneyBlueprint = ({ blueprint, index }) => {
 };
 
 const TravelWithUs = () => {
+  const [activeFlyer, setActiveFlyer] = useState(null);
+
   const journeys = [
     {
       title: "The Heart of Rwanda",
@@ -165,7 +436,7 @@ const TravelWithUs = () => {
                   },
                   {
                     title: "Kigali: Memory, Craft & Modern Life",
-                    desc: "Discover Kigali beyond the guidebooks. — Kigali Through Local Eyes, time for reflection at the Kigali Genocide Memorial, contemporary museums, arts centers, cafés, and dining that reveal Rwanda’s evolutional identity."
+                    desc: "Discover Kigali beyond the guidebooks. — Kigali Through Local Eyes, time for reflection at the Kigali Genocide Memorial, contemporary museums, arts centers, cafés, and dining that reveal Rwanda's evolutional identity."
                   },
                   {
                     title: "Lakeside Escape",
@@ -173,11 +444,11 @@ const TravelWithUs = () => {
                   },
                   {
                     title: "Primate Life & Forests",
-                    desc: "Trek through one of Africa’s oldest rainforests to observe habituated chimpanzees in Nyungwe National Park. Explore other activities in forest such as canopy walks, bird watching, waterfalls, guided forest trails, etc"
+                    desc: "Trek through one of Africa's oldest rainforests to observe habituated chimpanzees in Nyungwe National Park. Explore other activities in forest such as canopy walks, bird watching, waterfalls, guided forest trails, etc"
                   },
                   {
                     title: "Cultural Heritage: Huye & Nyanza",
-                    desc: "Discover the origins of Rwandan culture and kingship through immersive heritage experiences in Huye and Nyanza. Explore royal traditions, Inyambo, and cultural narratives that connect past and present, offering a deeper understanding of Rwanda’s identity beyond what is seen."
+                    desc: "Discover the origins of Rwandan culture and kingship through immersive heritage experiences in Huye and Nyanza. Explore royal traditions, Inyambo, and cultural narratives that connect past and present, offering a deeper understanding of Rwanda's identity beyond what is seen."
                   }
                 ].map((item, i) => (
                   <li key={i} className="flex gap-3">
@@ -320,7 +591,7 @@ const TravelWithUs = () => {
               {[
                 "Active mornings, slow afternoons",
                 "Travel days spaced for comfort",
-                "Short drive times due to Rwanda’s compact size"
+                "Short drive times due to Rwanda's compact size"
               ].map((item, i) => (
                 <li key={i} className="flex gap-2 items-center text-white/80 text-xs">
                   <div className="w-1 h-1 bg-[#D4A574] rounded-full" />
@@ -410,7 +681,7 @@ const TravelWithUs = () => {
                   },
                   {
                     title: "Royal Heritage & Cultural Memory",
-                    desc: "Cultural experiences at the Nyanza King’s Palace and Huye Museum. Visits highlighting Rwanda’s history, identity, and continuity rather than staged performances."
+                    desc: "Cultural experiences at the Nyanza King's Palace and Huye Museum. Visits highlighting Rwanda's history, identity, and continuity rather than staged performances."
                   },
                   {
                     title: "Rainforest & Biodiversity- Nyungwe National Park experiences",
@@ -512,7 +783,7 @@ const TravelWithUs = () => {
                   },
                   {
                     title: "Memory & Modern Rwanda",
-                    desc: "Guided reflective visit to the Kigali Genocide Memorial. Visits to modern museums and creative spaces shaping today’s Rwanda."
+                    desc: "Guided reflective visit to the Kigali Genocide Memorial. Visits to modern museums and creative spaces shaping today's Rwanda."
                   },
                   {
                     title: "Outdoor & Adventures",
@@ -543,6 +814,81 @@ const TravelWithUs = () => {
     }
   ];
 
+  /* const fixedFlyers = [
+    {
+      title: "Fixed Flyer: Signature Rwanda Moments",
+      subtitle: "A curated fixed itinerary designed for travelers who want clarity, structure, and standout highlights.",
+      badge: "Limited Seats",
+      image: "/assets/Events/newEvent.jpeg",
+      price: "$1,250",
+      priceNote: "Per person (sample)",
+      location: "Rwanda",
+      duration: "Multi-day",
+      type: "Fixed itinerary",
+      description:
+        "This flyer is a fixed, ready-to-book experience with a defined structure—ideal if you want a smooth trip without planning from scratch.",
+      details: [
+        "Set itinerary and fixed inclusions",
+        "Clear timeline and logistics support",
+        "Ideal for first-timers, busy travelers, and small groups",
+      ],
+    },
+    {
+      title: "Fixed Flyer: City + Culture Edition",
+      subtitle: "A focused experience built around Kigali stories, culture, and curated moments.",
+      badge: "Best Value",
+      image: "/assets/Events/newEvent2.jpeg",
+      price: "$390",
+      priceNote: "Per person (sample)",
+      location: "Kigali",
+      duration: "Short stay",
+      type: "Fixed itinerary",
+      description:
+        "A clean, fixed plan that keeps things simple—great if you're visiting Kigali for a few days and want meaningful experiences with local context.",
+      details: [
+        "Designed to fit limited time",
+        "Mix of culture, food, and city rhythm",
+        "Balanced pacing with room to breathe",
+      ],
+    },
+    {
+      title: "Fixed Flyer: Safari + Nature Highlight",
+      subtitle: "A direct, wildlife-forward itinerary for travelers who want a clear safari experience.",
+      badge: "Popular",
+      image: "/assets/Events/newEvent3.jpeg",
+      price: "$980",
+      priceNote: "Per person (sample)",
+      location: "Akagera",
+      duration: "Multi-day",
+      type: "Fixed itinerary",
+      description:
+        "A structured safari-focused flyer with a clear plan, so you know exactly what you're booking and what you'll experience.",
+      details: [
+        "Safari-first design with defined schedule",
+        "Comfort-forward with smooth transitions",
+        "Ideal for photographers and first-time safari travelers",
+      ],
+    },
+    {
+      title: "Fixed Flyer: Weekend Escape",
+      subtitle: "A short, fixed getaway designed for rest, scenic moments, and curated experiences.",
+      badge: "Weekend",
+      image: "/assets/Events/newEvent4.jpeg",
+      price: "$520",
+      priceNote: "Per person (sample)",
+      location: "Rwanda",
+      duration: "2–3 days",
+      type: "Fixed itinerary",
+      description:
+        "A compact option that feels premium—perfect for a quick escape without planning complexity.",
+      details: [
+        "Short and intentional itinerary",
+        "Relaxed pacing with curated highlights",
+        "Great for couples and friends",
+      ],
+    },
+  ]; */
+
   return (
     <div className="min-h-screen bg-[#021732] text-white selection:bg-[#D4A574]/30 selection:text-white pb-24">
       {/* Intro Section */}
@@ -554,14 +900,12 @@ const TravelWithUs = () => {
               viewport={{ once: true }}
               className="flex flex-col items-center text-center space-y-6"
           >
-              {/* Title */}
-              <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">
-                  Journey <span className="text-white">Blueprints</span>
-              </h2>
-
-              {/* Description */}
+              <h1 className="text-4xl md:text-5xl font-light text-white leading-tight">
+                   <span className="text-white">Extended Flexible Tours</span>
+              </h1>
               <p className="text-sm md:text-[15px] text-white/50 leading-[1.8] font-light max-w-2xl mx-auto mt-2">
-                  Discover Rwanda beyond the usual highlights. Our flexible journey blueprints are designed around your pace, interests, and purpose connecting you with real communities, authentic experiences, and unhurried moments.
+                  Our experiences are designed for travelers seeking both depth and flexibility while exploring Rwanda. Each journey is thoughtfully curated to ensure seamless travel, meaningful encounters, and personalized planning from start to finish.
+                  For extended signature itineraries, we offer carefully crafted experiences that balance comfort, discovery, and immersion across Rwanda—ensuring every moment feels intentional, well-paced, and effortlessly managed.
               </p>
           </Motion.div>
         </div>
@@ -573,9 +917,44 @@ const TravelWithUs = () => {
         ))}
       </div>
 
-      {/* Final CTA - Premium Refinement */}
+      {/* Fixed Flyers Section */}
+      {/* <section className="relative z-20 pb-16">
+        <div className="container mx-auto px-6 md:px-10 lg:px-16 max-w-6xl">
+          <Motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="flex flex-col items-center text-center"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 text-white/70">
+              <Sparkles size={14} className="text-[#D4A574]" />
+              <span className="text-[10px] font-bold uppercase tracking-widest">Fixed Flyers</span>
+            </div>
+            <h3 className="mt-5 text-2xl md:text-3xl font-light text-white tracking-tight">
+              Fixed Flyers
+            </h3>
+            <p className="mt-3 text-sm md:text-[15px] text-white/50 leading-[1.8] font-light max-w-3xl">
+              Prefer a ready-to-book plan? Fixed Flyers are structured experiences with a clear itinerary and defined inclusions—tap a flyer to view full details.
+            </p>
+          </Motion.div>
+
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {fixedFlyers.map((flyer) => (
+              <FixedFlyerCard
+                key={flyer.title}
+                flyer={flyer}
+                onClick={() => setActiveFlyer(flyer)}
+              />
+            ))}
+          </div>
+        </div>
+
+        <FixedFlyerModal flyer={activeFlyer} onClose={() => setActiveFlyer(null)} />
+      </section> */}
+
+      {/* Final CTA */}
       <section className="py-32 text-center relative overflow-hidden">
-        {/* Subtle Decorative Background Ring */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-white/5 rounded-full pointer-events-none" />
 
         <Motion.div
@@ -603,7 +982,7 @@ const TravelWithUs = () => {
                   color: "#021732",
                 }}
               >
-                <span>Start Your Custom Experience</span>
+                <span>Plan Your Custom Journey</span>
                 <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </Motion.div>

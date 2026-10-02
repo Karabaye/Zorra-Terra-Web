@@ -2,11 +2,11 @@ import React from "react";
 import { motion as Motion } from "framer-motion";
 
 const clientValues = [
-  "Confidence traveling in a new destination",
-  "A journey shaped around them, not the market",
-  "Reliable coordination without constant decision-making",
-  "Depth of experience without unnecessary complexity",
-  "Professional planning handled with discretion and care",
+  "Confidence in a New Destination: travel Rwanda with clarity, structure, and full support from the start.",
+  "Journeys Designed Around You: every experience is tailored to your pace, interests, and style—not predefined packages.",
+  "Seamless On-Ground Coordination: we manage details in real time, so you can focus on the experience, not the logistics.",
+  "Meaningful Depth, Not Complexity: thoughtfully designed journeys that feel rich, yet simple and effortless",
+  "Professional Planning with Discretion: every journey is handled with care, precision, and respect for your privacy.",
 ];
 
 const ClientValue = () => {

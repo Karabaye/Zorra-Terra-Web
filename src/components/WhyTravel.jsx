@@ -4,39 +4,39 @@ import { Link } from "react-router-dom";
 const benefits = [
   {
     number: "01",
-    title: "Seamless & Stress-Free Travel",
+    title: "Clarity from the Beginning",
     description:
-      "From planning to return, we handle the details so you can focus on the journey.",
+      "From your first conversation, you know exactly what to expect and how your journey will unfold; no uncertainty, no hidden surprises.",
   },
   {
     number: "02",
-    title: "Tailored Experiences",
+    title: "Designed Around You",
     description:
-      "Every itinerary is crafted around your interests, fits, pace, and preferences.",
+      "Every itinerary is tailored to your timing, interests, and pace, never a fixed or repetitive plan.",
   },
   {
     number: "03",
-    title: "Transparent & Honest Service",
+    title: "Proactive Local Expertise",
     description:
-      "Clear pricing, upfront information, and open communication ensure your comfort.",
+      "Our on-ground team manages every detail in real time, ensuring smooth transitions and effortless travel throughout your journey. ",
   },
   {
     number: "04",
-    title: "Reliable On-Ground Support",
+    title: "Balanced and Thoughtful Experiences",
     description:
-      "Experienced guides and coordinators are ready to solve challenges and adapt plans in real time.",
+      "We design days that feel complete and unhurried, giving you space to truly experience each moment.",
   },
   {
     number: "05",
-    title: "Responsible & Meaningful Travel",
+    title: "Private and Unique Experience",
     description:
-      "We design trips that respect local communities and ecosystems, letting you explore responsibly.",
+      "We prioritize quality and privacy throughout your journey, offering personalized service rather than mass tourism. Only thoughtfully designed experiences delivered with professionalism and a deep understanding of Rwanda. ",
   },
   {
     number: "06",
-    title: "Convenience & Digital Access",
+    title: "A Trusted Network",
     description:
-      "Easy online booking and real-time updates keep you informed wherever you are.",
+      " We work only with carefully selected partners who meet our standards of reliability, professionalism, and consistency.",
   },
 ];
 

@@ -1,12 +1,25 @@
+import { useState, useEffect } from "react";
 import { FaWhatsapp } from "react-icons/fa";
+import { trackWhatsAppClick, getStoredConsent } from "../utilities/analytics";
 
 const WhatsAppButton = () => {
+    const [hasConsent, setHasConsent] = useState(() => Boolean(getStoredConsent()));
+
+    useEffect(() => {
+        const handler = () => setHasConsent(true);
+        window.addEventListener("ztj-consent-updated", handler);
+        return () => window.removeEventListener("ztj-consent-updated", handler);
+    }, []);
+
+    const bottomClass = hasConsent ? "bottom-6" : "bottom-[260px] md:bottom-6";
+
     return (
         <a
             href="https://wa.me/250783482368?text=Hello%20Zoravia%20Terra%20Journeys!%20I%20want%20to%20inquire%20about%20safari%20packages."
             target="_blank"
             rel="noopener noreferrer"
-            className="group fixed right-6 bottom-6 z-[9999]"
+            onClick={() => trackWhatsAppClick("floating_button")}
+            className={`group fixed right-4 sm:right-6 ${bottomClass} z-[9999] transition-all duration-500`}
             aria-label="Chat on WhatsApp"
         >
             <div className="relative">

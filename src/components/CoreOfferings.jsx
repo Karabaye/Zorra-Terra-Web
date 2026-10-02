@@ -15,27 +15,27 @@ import {
 const signatureWays = [
   {
     title: "Wilderness & Conservation Encounters",
-    desc: "Carefully paced wildlife experiences that prioritize observation, comfort, and respect for Rwanda’s protected landscapes.",
+    desc: "Slow-paced, guided wildlife experiences designed for meaningful observation and once in lifetime experience. Every journey supports Rwanda’s conservation ethic while offering comfort, space, and expert guidance in protected landscapes. ",
     icon: Binoculars,
   },
   {
     title: "Primate & Rainforest Exploration",
-    desc: "Immersive time in ancient forests where movement, timing, and guidance are designed for meaningful encounters — not rushed schedules.",
+    desc: "Thoughtfully structured encounters in Rwanda’s ancient rainforests and mountain volcanoes, including gorilla trekking and chimpanzee tracking. Designed for depth, rare moments, and reflection, allowing guests to experience natural habitats and connect with nature in its purest form",
     icon: Leaf,
   },
   {
     title: "Scenic Rwanda & Lakeside Moments",
-    desc: "Space to absorb the country’s natural rhythm through its hills, waters, and quieter regions.",
+    desc: "Curated journeys through Rwanda’s rolling hills, Rift Valley landscapes, volcanic scenery, and serene lakeshores. These experiences are designed for reflection, photography, and quiet appreciation of Rwanda’s natural beauty. ",
     icon: Mountain,
   },
   {
     title: "Culture, Memory & Contemporary Life",
-    desc: "Experiences that connect travelers to Rwanda’s history, resilience, creativity, and everyday warmth — approached with sensitivity and authenticity.",
+    desc: "Authentic encounters that reveal Rwanda’s history, resilience, and evolving creative culture. From community engagements to curated city explorations, each experience is guided with respect, context, and cultural sensitivity. ",
     icon: Globe,
   },
   {
     title: "Private Retreats & Personal Celebrations",
-    desc: "Journeys created for couples, families, or small groups seeking privacy, reflection, or once-in-a-lifetime moments.",
+    desc: "Thoughtfully designed journeys for couples, families, and small groups seeking privacy, connection, and meaningful time together. Ideal for honeymoons, anniversaries, family escapes, and special milestonesEach experience is tailored to your pace and preferences, blending comfort, scenic locations, and discreet on-ground support to create effortless and memorable moments in Rwanda.",
     icon: Heart,
   },
 ];

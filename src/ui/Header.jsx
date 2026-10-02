@@ -13,8 +13,19 @@ const Header = () => {
   const videoRef = useRef(null);
   const lastScrollY = useRef(0);
 
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth < 768 : false
+  );
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const { scrollY } = useScroll();
-  const heroY = useTransform(scrollY, [0, 800], [0, 300]);
+  const heroYParallax = useTransform(scrollY, [0, 800], [0, 300]);
+  const heroY = isMobile ? 0 : heroYParallax;
 
   const isHomePage = location.pathname === "/";
 
@@ -58,6 +69,7 @@ const Header = () => {
     <>
       {/* Floating Navbar */}
       <Motion.div
+        id="main-navbar"
         className="fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out"
         animate={{
           paddingLeft: scrolled ? "0px" : "12px",
@@ -412,55 +424,93 @@ const Header = () => {
 
       {/* Hero Section - Only on Home Page */}
       {isHomePage && (
-        <header className="relative h-[100svh] w-full overflow-hidden">
-          <Motion.div
-            style={{ y: heroY, height: "120%" }}
-            className="absolute -top-[10%] inset-x-0 bottom-0 z-0"
-          >
-            <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#021732]/80 via-transparent to-[#021732] opacity-80" />
-            <video
-              ref={videoRef}
-              className="absolute inset-0 h-full w-full object-cover object-center"
-              autoPlay
-              loop
-              muted
-              playsInline
-              onLoadedData={() => {}}
-              preload="auto"
-            >
-              <source src="/assets/videos/hero2.mp4" type="video/mp4" />
-            </video>
-          </Motion.div>
-
-          <div className="relative z-10 flex min-h-screen items-center justify-center pt-28">
-            <div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
-              <Motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                className="mx-auto max-w-3xl space-y-8 text-center"
+        <header
+          style={{
+            position: "relative",
+            width: "100%",
+            height: "100dvh",
+            overflow: "hidden",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {/* Video background */}
+          {isMobile ? (
+            <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  zIndex: 1,
+                  background: "linear-gradient(to bottom, rgba(2,23,50,0.8) 0%, transparent 40%, rgba(2,23,50,0.9) 100%)",
+                }}
+              />
+              <video
+                ref={videoRef}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                poster="/assets/Akagera/13.jpg"
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  minWidth: "100%",
+                  minHeight: "100%",
+                  width: "auto",
+                  height: "auto",
+                  objectFit: "cover",
+                  objectPosition: "center center",
+                }}
               >
-                <div className="space-y-4">
-                  <Motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.9, duration: 0.8 }}
-                    className="text-4xl md:text-6xl lg:text-5xl font-light tracking-tight text-[#FFFFFF] uppercase px-4 leading-tight"
-                  >
-                    Every Journey Tells a Story
-                  </Motion.h1>
-
-                  <Motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.1, duration: 0.8 }}
-                    className="text-lg md:text-2xl font-light italic text-[#FFFFFF]/80"
-                  >
-                    Let Us Help You Create Yours
-                  </Motion.p>
-                </div>
-              </Motion.div>
+                <source src="/assets/videos/hero2.mp4" type="video/mp4" />
+              </video>
             </div>
+          ) : (
+            <Motion.div
+              style={{ y: heroY, position: "absolute", top: "-10%", left: 0, right: 0, height: "120%", zIndex: 0 }}
+            >
+              <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#021732]/80 via-transparent to-[#021732] opacity-80" />
+              <video
+                ref={videoRef}
+                style={{ minWidth: "100%", minHeight: "100%" }}
+                className="absolute inset-0 h-full w-full object-cover object-center"
+                autoPlay loop muted playsInline preload="metadata"
+                poster="/assets/Akagera/13.jpg"
+              >
+                <source src="/assets/videos/hero2.mp4" type="video/mp4" />
+              </video>
+            </Motion.div>
+          )}
+
+          {/* Content — centered in the hero */}
+          <div style={{ position: "relative", zIndex: 10, width: "100%", textAlign: "center", padding: "0 1rem" }}>
+            <Motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9, duration: 0.8 }}
+                className="text-4xl md:text-6xl lg:text-5xl font-light tracking-tight text-white uppercase leading-tight"
+              >
+                Every Journey Tells a Story
+              </Motion.h1>
+              <Motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.1, duration: 0.8 }}
+                className="mt-4 text-lg md:text-2xl font-light italic text-white/80"
+              >
+                Let Us Help You Create Yours
+              </Motion.p>
+            </Motion.div>
           </div>
         </header>
       )}
