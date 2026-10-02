@@ -219,15 +219,15 @@ const Booking = () => {
                     style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10c20 0 20 20 40 20s20-20 40-20 20 20 40 20 20-20 40-20' stroke='%234ade80' fill='none' fill-rule='evenodd' opacity='0.5'/%3E%3C/svg%3E")` }} />
             </div>
 
-            <div className="container mx-auto px-4 relative z-10">
             <PageHero 
-                title="Booking" 
+                title="Book Your Journey" 
                 subtitle="Begin Your Journey" 
                 description="Tell us about your dream trip, and we'll craft a personalized itinerary just for you." 
             />
 
+            <div className="container mx-auto px-4 relative z-10 pt-8 md:pt-12">
                 {/* Progress Bar - Elegant "Route" Design */}
-                <div className="max-w-2xl mx-auto mb-12 md:mb-20 px-2 md:px-6">
+                <div className="max-w-2xl mx-auto mb-10 md:mb-16 px-2 md:px-6">
                     <div className="flex items-center justify-between relative">
                         {/* Background Path */}
                         <div className="absolute left-0 top-[18px] w-full h-[2px] bg-white/5" />
@@ -283,7 +283,7 @@ const Booking = () => {
                 {/* Form Card */}
                 <Motion.div
                     layout
-                    className="max-w-2xl mx-auto bg-[#031d3d]/40 backdrop-blur-3xl border border-white/5 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 shadow-2xl relative overflow-hidden"
+                    className="max-w-2xl mx-auto bg-[#031d3d]/40 backdrop-blur-3xl border border-white/5 rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[2.5rem] p-4 sm:p-8 md:p-12 shadow-2xl relative overflow-hidden"
                 >
                     {/* Decorative Ambient Glow */}
                     <div className="absolute -top-24 -right-24 w-48 h-48 bg-[#D4A574]/5 rounded-full blur-[80px]" />
@@ -302,22 +302,22 @@ const Booking = () => {
                         <AnimatePresence mode="wait" custom={step}>
                             {/* Step 1: Guest Information */}
                             {step === 1 && (
-                                <Motion.div key={1} variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.5 }} className="space-y-10 pb-20">
-                                    <div className="flex items-center gap-3 md:gap-4 pb-6 border-b border-white/5">
+                                <Motion.div key={1} variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.5 }} className="space-y-6 sm:space-y-8">
+                                    <div className="flex items-center gap-3 md:gap-4 pb-5 border-b border-white/5">
                                         <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#D4A574]/10 flex items-center justify-center text-[#D4A574] border border-[#D4A574]/20">
                                             <User size={18} />
                                         </div>
                                         <div>
                                             <h3 className="text-lg md:text-xl font-light">Guest Information</h3>
-                                            <p className="text-[8px] md:text-[9px] text-[#D4A574]/40 uppercase tracking-[0.3em] font-bold mt-1">Primary Traveler Details</p>
+                                            <p className="text-[8px] md:text-[9px] text-[#D4A574]/60 uppercase tracking-[0.25em] font-bold mt-1">Primary Traveler Details</p>
                                         </div>
                                     </div>
 
-                                    <div className="grid md:grid-cols-2 gap-6">
+                                    <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                                         <div className="space-y-2">
-                                            <label htmlFor="booking-title" className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Title *</label>
+                                            <label htmlFor="booking-title" className="text-[9px] font-bold uppercase text-white/50 tracking-[0.2em] ml-1">Title *</label>
                                             <div className="relative group">
-                                                <select id="booking-title" name="title" value={formData.title} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none appearance-none transition-all hover:bg-white/[0.07]">
+                                                <select id="booking-title" name="title" value={formData.title} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-base md:text-sm min-h-[44px] focus:border-[#D4A574]/50 outline-none appearance-none transition-all hover:bg-white/[0.07]">
                                                     <option value="Mr" className="bg-[#021732]">Mr</option>
                                                     <option value="Mrs" className="bg-[#021732]">Mrs</option>
                                                     <option value="Miss" className="bg-[#021732]">Miss</option>
@@ -329,29 +329,29 @@ const Booking = () => {
                                         </div>
 
                                         <div className="space-y-2">
-                                            <label htmlFor="booking-name" className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Full Name *</label>
-                                            <input id="booking-name" required type="text" name="name" value={formData.name} onChange={handleChange} maxLength={100} aria-required="true" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] placeholder:text-white/10" placeholder="Identity" />
+                                            <label htmlFor="booking-name" className="text-[9px] font-bold uppercase text-white/50 tracking-[0.2em] ml-1">Full Name *</label>
+                                            <input id="booking-name" required type="text" name="name" value={formData.name} onChange={handleChange} maxLength={100} aria-required="true" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-base md:text-sm min-h-[44px] focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] placeholder:text-white/20" placeholder="Identity" />
                                         </div>
 
                                         <div className="space-y-2">
-                                            <label htmlFor="booking-email" className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Email *</label>
-                                            <input id="booking-email" required type="email" name="email" value={formData.email} onChange={handleChange} maxLength={120} aria-required="true" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] placeholder:text-white/10" placeholder="Connection" />
+                                            <label htmlFor="booking-email" className="text-[9px] font-bold uppercase text-white/50 tracking-[0.2em] ml-1">Email *</label>
+                                            <input id="booking-email" required type="email" name="email" value={formData.email} onChange={handleChange} maxLength={120} aria-required="true" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-base md:text-sm min-h-[44px] focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] placeholder:text-white/20" placeholder="Connection" />
                                         </div>
 
                                         <div className="space-y-2">
-                                            <label htmlFor="booking-phone" className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Phone / WhatsApp *</label>
-                                            <input id="booking-phone" required type="tel" name="phone" value={formData.phone} onChange={handleChange} maxLength={30} aria-required="true" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] placeholder:text-white/10" placeholder="+250 783 482 368" />
+                                            <label htmlFor="booking-phone" className="text-[9px] font-bold uppercase text-white/50 tracking-[0.2em] ml-1">Phone / WhatsApp *</label>
+                                            <input id="booking-phone" required type="tel" name="phone" value={formData.phone} onChange={handleChange} maxLength={30} aria-required="true" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-base md:text-sm min-h-[44px] focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] placeholder:text-white/20" placeholder="+250 783 482 368" />
                                         </div>
 
                                         <div className="space-y-2 md:col-span-2 relative">
-                                            <label className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Nationality *</label>
+                                            <label className="text-[9px] font-bold uppercase text-white/50 tracking-[0.2em] ml-1">Nationality *</label>
                                             <div className="relative group">
                                                 <div
                                                     onClick={() => setShowCountryList(!showCountryList)}
-                                                    className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-10 py-3 text-xs focus:border-[#D4A574]/50 hover:bg-white/[0.07] transition-all cursor-pointer flex items-center justify-between"
+                                                    className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-10 py-3 text-base md:text-sm min-h-[44px] focus:border-[#D4A574]/50 hover:bg-white/[0.07] transition-all cursor-pointer flex items-center justify-between"
                                                 >
                                                     <Globe size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-hover:text-white/40 transition-colors z-10" />
-                                                    <span className={formData.nationality ? "text-white/70" : "text-white/20"}>
+                                                    <span className={formData.nationality ? "text-white/80" : "text-white/30"}>
                                                         {formData.nationality || "Select your country"}
                                                     </span>
                                                     <ChevronDown size={14} className={`text-white/20 transition-transform duration-300 ${showCountryList ? "rotate-180" : ""}`} />
@@ -433,34 +433,34 @@ const Booking = () => {
 
                                     <div className="space-y-6">
                                         <div className="space-y-2">
-                                            <label className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Activities You're Interested In *</label>
-                                            <textarea required name="activities" value={formData.activities} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-xs focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] min-h-[100px] resize-none placeholder:text-white/10 leading-relaxed" placeholder="e.g. Gorilla Trekking, Safari, City Tours..." />
+                                            <label className="text-[9px] font-bold uppercase text-white/50 tracking-[0.2em] ml-1">Activities You're Interested In *</label>
+                                            <textarea required name="activities" value={formData.activities} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-base md:text-sm focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] min-h-[90px] resize-none placeholder:text-white/20 leading-relaxed" placeholder="e.g. Gorilla Trekking, Safari, City Tours..." />
                                         </div>
 
-                                        <div className="grid md:grid-cols-2 gap-6">
+                                        <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                                             <div className="space-y-2">
-                                                <label className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Arrival Date *</label>
-                                                <input required type="date" name="arrivalDate" value={formData.arrivalDate} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] text-white/70" />
+                                                <label className="text-[9px] font-bold uppercase text-white/50 tracking-[0.2em] ml-1">Arrival Date *</label>
+                                                <input required type="date" name="arrivalDate" value={formData.arrivalDate} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-base md:text-sm min-h-[44px] focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] text-white/80" />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Departure Date *</label>
-                                                <input required type="date" name="departureDate" value={formData.departureDate} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] text-white/70" />
+                                                <label className="text-[9px] font-bold uppercase text-white/50 tracking-[0.2em] ml-1">Departure Date *</label>
+                                                <input required type="date" name="departureDate" value={formData.departureDate} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-base md:text-sm min-h-[44px] focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] text-white/80" />
                                             </div>
                                         </div>
 
-                                        <div className="grid md:grid-cols-2 gap-6">
+                                        <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                                             <div className="space-y-2">
-                                                <label className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Number of Adults *</label>
+                                                <label className="text-[9px] font-bold uppercase text-white/50 tracking-[0.2em] ml-1">Number of Adults *</label>
                                                 <div className="relative group">
                                                     <Users size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-hover:text-white/40 transition-colors" />
-                                                    <input required type="number" name="adults" min="1" value={formData.adults} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07]" />
+                                                    <input required type="number" name="adults" min="1" value={formData.adults} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-base md:text-sm min-h-[44px] focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07]" />
                                                 </div>
                                             </div>
 
                                             <div className="space-y-2">
-                                                <label className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Prior Similar Travels?</label>
+                                                <label className="text-[9px] font-bold uppercase text-white/50 tracking-[0.2em] ml-1">Prior Similar Travels?</label>
                                                 <div className="relative group">
-                                                    <select name="similarExperience" value={formData.similarExperience} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none appearance-none transition-all hover:bg-white/[0.07]">
+                                                    <select name="similarExperience" value={formData.similarExperience} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-base md:text-sm min-h-[44px] focus:border-[#D4A574]/50 outline-none appearance-none transition-all hover:bg-white/[0.07]">
                                                         <option value="No" className="bg-[#021732]">No</option>
                                                         <option value="Yes" className="bg-[#021732]">Yes</option>
                                                     </select>
@@ -471,8 +471,8 @@ const Booking = () => {
 
                                         {formData.similarExperience === "Yes" && (
                                             <Motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="space-y-2 pt-2">
-                                                <label className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Short Experience Details</label>
-                                                <input type="text" name="experienceDetails" value={formData.experienceDetails} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] placeholder:text-white/10" placeholder="e.g. Previous Safaris in Kenya..." />
+                                                <label className="text-[9px] font-bold uppercase text-white/50 tracking-[0.2em] ml-1">Short Experience Details</label>
+                                                <input type="text" name="experienceDetails" value={formData.experienceDetails} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-base md:text-sm min-h-[44px] focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] placeholder:text-white/20" placeholder="e.g. Previous Safaris in Kenya..." />
                                             </Motion.div>
                                         )}
                                     </div>
@@ -481,23 +481,23 @@ const Booking = () => {
 
                             {/* Step 3: Special Requests & Review */}
                             {step === 3 && (
-                                <Motion.div key={3} variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.5 }} className="space-y-10">
-                                    <div className="flex items-center gap-3 md:gap-4 pb-6 border-b border-white/5">
+                                <Motion.div key={3} variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.5 }} className="space-y-6 sm:space-y-8">
+                                    <div className="flex items-center gap-3 md:gap-4 pb-5 border-b border-white/5">
                                         <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#D4A574]/10 flex items-center justify-center text-[#D4A574] border border-[#D4A574]/20">
                                             <ClipboardList size={18} />
                                         </div>
                                         <div>
                                             <h3 className="text-lg md:text-xl font-light">Final Details</h3>
-                                            <p className="text-[8px] md:text-[9px] text-[#D4A574]/40 uppercase tracking-[0.3em] font-bold mt-1">Review & Preferences</p>
+                                            <p className="text-[8px] md:text-[9px] text-[#D4A574]/60 uppercase tracking-[0.25em] font-bold mt-1">Review & Preferences</p>
                                         </div>
                                     </div>
 
-                                    <div className="space-y-8">
+                                    <div className="space-y-6">
                                         <div className="space-y-2">
-                                            <label className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Preferred Contact Method *</label>
+                                            <label className="text-[9px] font-bold uppercase text-white/50 tracking-[0.2em] ml-1">Preferred Contact Method *</label>
                                             <div className="relative group">
                                                 <MessageSquare size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-hover:text-white/40 transition-colors" />
-                                                <select name="preferredContact" value={formData.preferredContact} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-xs focus:border-[#D4A574]/50 outline-none appearance-none transition-all hover:bg-white/[0.07]">
+                                                <select name="preferredContact" value={formData.preferredContact} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-base md:text-sm min-h-[44px] focus:border-[#D4A574]/50 outline-none appearance-none transition-all hover:bg-white/[0.07]">
                                                     <option value="Email" className="bg-[#021732]">Email</option>
                                                     <option value="Phone" className="bg-[#021732]">Phone</option>
                                                     <option value="WhatsApp" className="bg-[#021732]">WhatsApp</option>
@@ -507,23 +507,23 @@ const Booking = () => {
                                         </div>
 
                                         <div className="space-y-2">
-                                            <label className="text-[9px] font-bold uppercase text-white/30 tracking-[0.2em] ml-1">Special Requests (Optional)</label>
-                                            <textarea name="specialRequests" value={formData.specialRequests} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-xs focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] min-h-[100px] resize-none placeholder:text-white/10 leading-relaxed" placeholder="Dietary needs, preferences, or questions..." />
+                                            <label className="text-[9px] font-bold uppercase text-white/50 tracking-[0.2em] ml-1">Special Requests (Optional)</label>
+                                            <textarea name="specialRequests" value={formData.specialRequests} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-base md:text-sm focus:border-[#D4A574]/50 outline-none transition-all hover:bg-white/[0.07] min-h-[90px] resize-none placeholder:text-white/20 leading-relaxed" placeholder="Dietary needs, preferences, or questions..." />
                                         </div>
 
-                                        <div className="p-6 bg-[#D4A574]/5 rounded-[1.5rem] border border-[#D4A574]/10">
-                                            <h4 className="text-[8px] font-bold text-[#D4A574] uppercase tracking-[0.4em] mb-4">Journey Summary</h4>
-                                            <div className="grid grid-cols-2 gap-x-8 gap-y-3 text-[10px] tracking-wide">
+                                        <div className="p-4 sm:p-6 bg-[#D4A574]/5 rounded-[1.25rem] sm:rounded-[1.5rem] border border-[#D4A574]/10">
+                                            <h4 className="text-[8px] font-bold text-[#D4A574] uppercase tracking-[0.3em] mb-3">Journey Summary</h4>
+                                            <div className="grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-3 text-[10px] tracking-wide">
                                                 <div>
-                                                    <div className="text-white/20 uppercase text-[7px] font-bold tracking-widest mb-1">Lead Guest</div>
+                                                    <div className="text-white/30 uppercase text-[7px] font-bold tracking-widest mb-0.5">Lead Guest</div>
                                                     <div className="text-white/80 font-medium">{formData.title} {formData.name || '---'}</div>
                                                 </div>
                                                 <div>
-                                                    <div className="text-white/20 uppercase text-[7px] font-bold tracking-widest mb-1">Group Size</div>
+                                                    <div className="text-white/30 uppercase text-[7px] font-bold tracking-widest mb-0.5">Group Size</div>
                                                     <div className="text-white/80 font-medium">{formData.adults} Adults</div>
                                                 </div>
                                                 <div className="col-span-2">
-                                                    <div className="text-white/20 uppercase text-[7px] font-bold tracking-widest mb-1">Selected Experiences</div>
+                                                    <div className="text-white/30 uppercase text-[7px] font-bold tracking-widest mb-0.5">Selected Experiences</div>
                                                     <div className="text-white/80 font-medium line-clamp-1">{formData.activities || 'Custom Adventure'}</div>
                                                 </div>
                                             </div>
@@ -533,34 +533,29 @@ const Booking = () => {
                             )}
                         </AnimatePresence>
 
-                        <div className="flex justify-between items-center mt-12 pt-8 border-t border-white/5">
+                        <div className="flex justify-between items-center gap-3 mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white/5">
                             {step > 1 ? (
                                 <button
                                     type="button"
                                     onClick={prevStep}
-                                    className="text-white/30 hover:text-white transition-all uppercase text-[9px] font-bold tracking-[0.3em] flex items-center gap-3 group"
+                                    className="text-white/50 hover:text-white transition-all uppercase text-[9px] sm:text-[10px] font-bold tracking-[0.2em] sm:tracking-[0.3em] flex items-center gap-1.5 sm:gap-3 group shrink-0 min-h-[44px] px-2"
                                 >
                                     <ChevronLeft size={16} className="transition-transform group-hover:-translate-x-1.5" />
                                     Back
                                 </button>
                             ) : <div />}
 
-                            <div className="relative group">
-                                {/* Button Shine Effect Layer */}
-                                <div className="absolute -inset-4 bg-[#D4A574]/5 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
+                            <div className="relative group shrink-0">
                                 <button
                                     type={step === totalSteps ? "submit" : "button"}
                                     onClick={step === totalSteps ? null : nextStep}
                                     disabled={isSubmitting && step === totalSteps}
-                                    className={`relative flex items-center gap-4 md:gap-6 px-8 md:px-10 py-3.5 md:py-4 rounded-full bg-gradient-to-r from-[#D4A574] to-[#C4A57B] text-[#021732] text-[9px] md:text-[10px] font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase overflow-hidden shadow-xl transition-all duration-500 hover:scale-105 active:scale-95 ${(isSubmitting && step === totalSteps) ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                    className={`relative flex items-center gap-2 sm:gap-4 md:gap-6 px-5 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 rounded-full bg-gradient-to-r from-[#D4A574] to-[#C4A57B] text-[#021732] text-[9px] sm:text-[10px] font-bold tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.3em] uppercase overflow-hidden shadow-xl transition-all duration-500 hover:scale-105 active:scale-95 min-h-[44px] ${(isSubmitting && step === totalSteps) ? 'opacity-70 cursor-not-allowed' : ''}`}
                                 >
-                                    <span className="relative z-10 flex items-center gap-2 md:gap-3">
+                                    <span className="relative z-10 flex items-center gap-2">
                                         {step === totalSteps ? (isSubmitting ? "Processing..." : "Submit Request") : "Continue"}
-                                        {step === totalSteps ? <Send size={14} md:size={16} strokeWidth={2.5} className={(isSubmitting && step === totalSteps) ? 'animate-pulse' : ''} /> : <ChevronRight size={14} md:size={16} strokeWidth={2.5} className="group-hover:translate-x-1.5 transition-transform duration-300" />}
+                                        {step === totalSteps ? <Send size={14} strokeWidth={2.5} className={(isSubmitting && step === totalSteps) ? 'animate-pulse' : ''} /> : <ChevronRight size={14} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform duration-300" />}
                                     </span>
-                                    {/* Premium Shine Overlay */}
-                                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
                                 </button>
                             </div>
                         </div>

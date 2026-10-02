@@ -77,11 +77,11 @@ const RefinedTourCard3D = ({ tour, index }) => {
                 {/* CONTENT */}
                 <div className="flex-1 p-5 lg:p-6 flex flex-col justify-between overflow-hidden">
                     <div className="space-y-3">
-                        <h3 className="text-lg lg:text-xl font-light text-white leading-tight line-clamp-2 h-[3.5rem] lg:h-[3rem]">
+                        <h3 className="text-lg lg:text-xl font-light text-white leading-tight line-clamp-2 min-h-[2.8rem] lg:min-h-[3rem]">
                             {tour.title}
                         </h3>
                         {tour.tagline && (
-                            <p className="text-xs text-white/40 font-light leading-relaxed line-clamp-2 h-[2.5rem]">
+                            <p className="text-xs text-white/40 font-light leading-relaxed line-clamp-2 min-h-[2.2rem]">
                                 {tour.tagline}
                             </p>
                         )}
@@ -386,10 +386,11 @@ const UpcomingEvents = () => {
                             whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.15)" }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => setViewedImage(null)}
-                            className="absolute top-8 right-8 w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white transition-all duration-300 backdrop-blur-xl z-[210] group"
+                            className="absolute top-4 right-4 sm:top-8 sm:right-8 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-black/60 sm:bg-white/5 border border-white/20 sm:border-white/10 flex items-center justify-center text-white/90 sm:text-white/70 hover:text-white transition-all duration-300 backdrop-blur-xl z-[210] group"
                             title="Close View"
                         >
-                            <X size={28} className="transition-transform duration-300 group-hover:rotate-90" />
+                            <X size={20} className="sm:hidden transition-transform duration-300 group-hover:rotate-90" />
+                            <X size={28} className="hidden sm:block transition-transform duration-300 group-hover:rotate-90" />
                         </Motion.button>
                     </Motion.div>
                 )}
@@ -459,27 +460,27 @@ const ShortEscapeTours = () => {
             <div className="min-h-screen bg-[#021732] text-white selection:bg-white/10 overflow-x-hidden relative">
 
                 {/* --- TOURS SHOWCASE SECTION --- */}
-                <section className="relative z-20 pb-32 pt-20">
-                    <div className="container mx-auto px-6 md:px-10 lg:px-16 max-w-7xl">
+                <section className="relative z-20 pb-16 md:pb-32 pt-6 md:pt-14">
+                    <div className="container mx-auto px-4 sm:px-6 md:px-10 lg:px-16 max-w-7xl">
 
                        
-                        <div className="mb-16">
+                        <div className="mb-12 md:mb-16">
 
                             {/* Tagline row — centered, full width */}
                             <Motion.h1
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                className="text-4xl md:text-5xl font-light text-white leading-tight mb-8 text-center"
+                                className="text-2xl sm:text-3xl md:text-5xl font-light text-white leading-tight mb-6 sm:mb-8 text-center"
                             >
                                 Experience Rwanda Even in Just a Few Days
                             </Motion.h1>
 
                             {/* Full-width divider */}
-                            <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#D4A574]/30 to-transparent mb-10" />
+                            <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#D4A574]/30 to-transparent mb-8 sm:mb-10" />
 
                             {/* Two-column body — copy left, Perfect For right */}
-                            <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 lg:gap-20 items-start">
+                            <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 md:gap-12 lg:gap-20 items-start">
 
                                 {/* Left: intro paragraphs */}
                                 <Motion.div
@@ -516,10 +517,10 @@ const ShortEscapeTours = () => {
                                     transition={{ delay: 0.4 }}
                                     className="lg:pt-1"
                                 >
-                                    <p className="text-xs md:text-sm text-[#D4A574] font-medium uppercase tracking-[0.2em] mb-5">
+                                    <p className="text-xs md:text-sm text-[#D4A574] font-medium uppercase tracking-[0.2em] mb-4 sm:mb-5">
                                         Perfect For
                                     </p>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5 sm:gap-3">
                                         {[
                                             "Busy professionals",
                                             "Weekend adventurers",
@@ -532,7 +533,7 @@ const ShortEscapeTours = () => {
                                                 whileInView={{ opacity: 1, x: 0 }}
                                                 viewport={{ once: true }}
                                                 transition={{ delay: 0.5 + index * 0.08 }}
-                                                className="flex items-center gap-3 p-3.5 rounded-lg bg-white/[0.03] border border-white/[0.07] hover:bg-white/[0.05] transition-all duration-300"
+                                                className="flex items-center gap-3 p-3 sm:p-3.5 rounded-lg bg-white/[0.03] border border-white/[0.07] hover:bg-white/[0.05] transition-all duration-300"
                                             >
                                                 <div className="w-1.5 h-1.5 rounded-full bg-[#D4A574] shrink-0" />
                                                 <span className="text-sm text-white/55 font-light">{item}</span>
@@ -545,29 +546,29 @@ const ShortEscapeTours = () => {
                         </div>
 
                         {/* Featured Tours Title + Filter */}
-                        <div className="mb-16 text-center">
+                        <div className="mb-12 md:mb-16 text-center">
                             <Motion.h2
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
-                                className="text-4xl md:text-5xl font-light text-white leading-tight mb-8"
+                                className="text-2xl sm:text-3xl md:text-5xl font-light text-white leading-tight mb-6 sm:mb-8"
                             >
                                 Featured <span className="text-white">Tours</span>
                             </Motion.h2>
-                            <div className="max-w-fit mx-auto p-2 bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-full flex gap-2 overflow-x-auto">
+                            <div className="max-w-fit mx-auto p-1.5 sm:p-2 bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-full flex gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar">
                                 {filters.map((filter) => (
                                     <button
                                         key={filter}
                                         onClick={() => setActiveFilter(filter)}
-                                        className={`relative px-6 md:px-8 py-2.5 md:py-3 text-[9px] md:text-[10px] font-medium uppercase tracking-[0.1em] transition-all duration-500 rounded-full flex-shrink-0 ${activeFilter === filter ? "text-[#021732]" : "text-white/40 hover:text-white/60"
+                                        className={`relative px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 text-[9px] md:text-[10px] font-semibold uppercase tracking-[0.1em] transition-all duration-300 rounded-full flex-shrink-0 ${activeFilter === filter ? "text-[#021732]" : "text-white/60 hover:text-white"
                                             }`}
                                     >
                                         <span className="relative z-10">{filter}</span>
                                         {activeFilter === filter && (
                                             <Motion.div
                                                 layoutId="activeFilterBg"
-                                                className="absolute inset-0 bg-white/10 rounded-full"
+                                                className="absolute inset-0 bg-[#D4A574] rounded-full shadow-md"
                                                 transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                             />
                                         )}

@@ -12,9 +12,9 @@ export default function PrivacyPolicy() {
         description="How Zoravia Terra Journeys collects, uses, and protects your personal information when inquiring about and planning your travel in Rwanda."
       />
 
-      <div className="container mx-auto px-6 md:px-10 lg:px-16 max-w-5xl py-12 md:py-16 space-y-12">
+      <div className="container mx-auto px-4 sm:px-6 md:px-10 lg:px-16 max-w-5xl py-8 sm:py-12 md:py-16 space-y-8 sm:space-y-12">
         {/* Intro Card */}
-        <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
           <div className="flex items-center gap-3 text-[#D4A574]">
             <Shield size={22} />
             <h2 className="text-xl md:text-2xl font-light text-white tracking-wide">
@@ -30,7 +30,7 @@ export default function PrivacyPolicy() {
         </div>
 
         {/* Section 1: Information Collected */}
-        <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-5">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-5">
           <div className="flex items-center gap-3 text-[#D4A574]">
             <Eye size={20} />
             <h2 className="text-lg md:text-xl font-light text-white tracking-wide">
@@ -54,7 +54,7 @@ export default function PrivacyPolicy() {
         </div>
 
         {/* Section 2: How We Use Your Information */}
-        <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-5">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-5">
           <div className="flex items-center gap-3 text-[#D4A574]">
             <Lock size={20} />
             <h2 className="text-lg md:text-xl font-light text-white tracking-wide">
@@ -73,7 +73,7 @@ export default function PrivacyPolicy() {
         </div>
 
         {/* Section 3: Third-Party Services & Form Processing */}
-        <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
           <h2 className="text-lg md:text-xl font-light text-white tracking-wide">
             3. Third-Party Service Providers
           </h2>
@@ -85,7 +85,7 @@ export default function PrivacyPolicy() {
         </div>
 
         {/* Section 4: Data Security */}
-        <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
           <h2 className="text-lg md:text-xl font-light text-white tracking-wide">
             4. Data Security & Retention
           </h2>
@@ -97,7 +97,7 @@ export default function PrivacyPolicy() {
         </div>
 
         {/* Section 5: Your Rights & Contact */}
-        <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-6">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-6">
           <h2 className="text-lg md:text-xl font-light text-white tracking-wide">
             5. Inquiries & Contact Details
           </h2>

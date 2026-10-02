@@ -12,9 +12,9 @@ export default function TermsConditions() {
         description="General terms governing website use, safari inquiries, itinerary proposals, and travel planning with Zoravia Terra Journeys."
       />
 
-      <div className="container mx-auto px-6 md:px-10 lg:px-16 max-w-5xl py-12 md:py-16 space-y-12">
+      <div className="container mx-auto px-4 sm:px-6 md:px-10 lg:px-16 max-w-5xl py-8 sm:py-12 md:py-16 space-y-8 sm:space-y-12">
         {/* Overview */}
-        <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
           <div className="flex items-center gap-3 text-[#D4A574]">
             <FileText size={22} />
             <h2 className="text-xl md:text-2xl font-light text-white tracking-wide">
@@ -30,7 +30,7 @@ export default function TermsConditions() {
         </div>
 
         {/* Section 1: Inquiries & Proposals */}
-        <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-5">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-5">
           <div className="flex items-center gap-3 text-[#D4A574]">
             <Compass size={20} />
             <h2 className="text-lg md:text-xl font-light text-white tracking-wide">
@@ -51,7 +51,7 @@ export default function TermsConditions() {
         </div>
 
         {/* Section 2: Traveler Responsibilities */}
-        <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-5">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-5">
           <div className="flex items-center gap-3 text-[#D4A574]">
             <AlertCircle size={20} />
             <h2 className="text-lg md:text-xl font-light text-white tracking-wide">
@@ -75,7 +75,7 @@ export default function TermsConditions() {
         </div>
 
         {/* Section 3: Intellectual Property */}
-        <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
           <h2 className="text-lg md:text-xl font-light text-white tracking-wide">
             3. Website Content & Intellectual Property
           </h2>
@@ -87,7 +87,7 @@ export default function TermsConditions() {
         </div>
 
         {/* Section 4: Limitation of Liability */}
-        <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
           <h2 className="text-lg md:text-xl font-light text-white tracking-wide">
             4. Service Adjustments & Force Majeure
           </h2>
@@ -100,7 +100,7 @@ export default function TermsConditions() {
         </div>
 
         {/* Section 5: Governing Law & Contact */}
-        <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-6">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-6">
           <h2 className="text-lg md:text-xl font-light text-white tracking-wide">
             5. Inquiries & Official Communication
           </h2>

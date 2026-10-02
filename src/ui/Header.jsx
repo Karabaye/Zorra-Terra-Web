@@ -65,6 +65,17 @@ const Header = () => {
     };
   }, [mobileMenuOpen]);
 
+  // Support closing mobile navigation with Escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape" && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [mobileMenuOpen]);
+
   return (
     <>
       {/* Floating Navbar */}
@@ -211,8 +222,11 @@ const Header = () => {
                 {/* Mobile menu button */}
                 <Motion.button
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  className="lg:hidden text-white p-2 rounded-lg hover:bg-white/5 active:bg-white/10 transition-colors duration-200"
+                  className="lg:hidden text-white min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded-lg hover:bg-white/5 active:bg-white/10 transition-colors duration-200"
                   whileTap={{ scale: 0.92 }}
+                  aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                  aria-expanded={mobileMenuOpen}
+                  aria-controls="mobile-navigation-sidebar"
                 >
                   <AnimatePresence mode="wait">
                     {mobileMenuOpen ? (
@@ -223,7 +237,7 @@ const Header = () => {
                         exit={{ rotate: 90, opacity: 0 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <X className="h-5 w-5" />
+                        <X className="h-6 w-6" />
                       </Motion.div>
                     ) : (
                       <Motion.div
@@ -233,7 +247,7 @@ const Header = () => {
                         exit={{ rotate: -90, opacity: 0 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <Menu className="h-5 w-5" />
+                        <Menu className="h-6 w-6" />
                       </Motion.div>
                     )}
                   </AnimatePresence>
@@ -263,7 +277,15 @@ const Header = () => {
 
             {/* Sidebar Panel */}
             <Motion.div
-              className="absolute right-0 top-0 h-full w-[80%] max-w-[300px] flex flex-col"
+              id="mobile-navigation-sidebar"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Navigation Menu"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 26, stiffness: 240 }}
+              className="absolute right-0 top-0 h-full w-[85%] max-w-[320px] flex flex-col"
               style={{
                 background: "linear-gradient(160deg, #061220 0%, #020c18 60%, #010a14 100%)",
                 borderLeft: "0.5px solid rgba(255,255,255,0.07)",
@@ -498,7 +520,7 @@ const Header = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9, duration: 0.8 }}
-                className="text-4xl md:text-6xl lg:text-5xl font-light tracking-tight text-white uppercase leading-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white uppercase leading-tight"
               >
                 Every Journey Tells a Story
               </Motion.h1>
@@ -506,7 +528,7 @@ const Header = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.1, duration: 0.8 }}
-                className="mt-4 text-lg md:text-2xl font-light italic text-white/80"
+                className="mt-4 text-base sm:text-lg md:text-2xl font-light italic text-white/80"
               >
                 Let Us Help You Create Yours
               </Motion.p>
@@ -515,7 +537,7 @@ const Header = () => {
         </header>
       )}
 
-      {!isHomePage && <div className="pt-20 md:pt-28"></div>}
+      {!isHomePage && <div className="pt-14 md:pt-20"></div>}
     </>
   );
 };

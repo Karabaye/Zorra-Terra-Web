@@ -23,20 +23,20 @@ export default function Gallery() {
       <section className="relative">
         <div className="absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_50%_0%,rgba(212,165,116,0.18),transparent_62%)]" />
 
-        <div className="relative mx-auto max-w-6xl px-6 pb-6 pt-12 md:pt-16">
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pb-4 sm:pb-6 pt-6 sm:pt-10 md:pt-14">
           <Motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65 }}
-            className="border-l-2 border-[#D4A574]/65 pl-5"
+            className="border-l-2 border-[#D4A574]/65 pl-4 sm:pl-5"
           >
-            <p className="text-[10px] font-bold uppercase tracking-[0.32em] text-[#D4A574]">
+            <p className="text-[10px] font-bold uppercase tracking-[0.25em] sm:tracking-[0.32em] text-[#D4A574]">
               Gallery
             </p>
-            <h1 className="mt-3 text-4xl font-light leading-tight md:text-5xl">
+            <h1 className="mt-2 sm:mt-3 text-2xl sm:text-4xl md:text-5xl font-light leading-tight">
               Akagera Safari Gallery
             </h1>
-            <p className="mt-3 max-w-2xl text-sm font-light leading-7 text-white/58 md:text-base">
+            <p className="mt-2 sm:mt-3 max-w-2xl text-xs sm:text-sm md:text-base font-light leading-relaxed sm:leading-7 text-white/58">
               Moments from Akagera, arranged for a smoother and faster visit.
             </p>
           </Motion.div>

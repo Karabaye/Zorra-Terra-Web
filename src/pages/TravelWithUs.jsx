@@ -112,6 +112,17 @@ const FixedFlyerModal = ({ flyer, onClose }) => {
             exit={{ y: 16, opacity: 0, scale: 0.97 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
           >
+            {/* Top-right mobile close button */}
+            <Motion.button
+              type="button"
+              onClick={onClose}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Close modal"
+              className="absolute top-3 right-3 z-30 w-10 h-10 rounded-full border border-white/20 bg-[#041124]/85 backdrop-blur-md text-white/90 hover:text-white hover:bg-white/20 transition-colors flex items-center justify-center lg:hidden shadow-lg"
+            >
+              <X size={18} />
+            </Motion.button>
+
             <div className="flex h-full min-h-[22rem] max-h-[calc(100vh-3rem)] flex-col overflow-hidden lg:flex-row">
 
               {/* ── LEFT: Image (50%) ── */}
@@ -137,14 +148,14 @@ const FixedFlyerModal = ({ flyer, onClose }) => {
               {/* ── RIGHT: Content (50%) ── */}
               <div className="lg:w-1/2 flex min-h-0 flex-col overflow-hidden bg-[#071E3D]">
                 <div className="flex flex-col flex-1 overflow-y-auto px-5 py-5 sm:px-6 sm:py-6 lg:px-7 lg:py-7">
-                  <div className="flex justify-end mb-3 shrink-0">
+                  <div className="hidden lg:flex justify-end mb-3 shrink-0">
                     <Motion.button
                       type="button"
                       onClick={onClose}
                       whileHover={{ scale: 1.08 }}
                       whileTap={{ scale: 0.95 }}
                       aria-label="Close modal"
-                      className="w-10 h-10 rounded-full border border-white/15 bg-white/[0.08] text-white/70 hover:text-white hover:bg-white/15 transition-colors flex items-center justify-center"
+                      className="w-10 h-10 rounded-full border border-white/15 bg-white/[0.08] text-white/70 hover:text-white hover:bg-white/15 transition-colors items-center justify-center"
                     >
                       <X size={16} />
                     </Motion.button>
@@ -392,10 +403,10 @@ const JourneyBlueprint = ({ blueprint, index }) => {
             <Link
               to="/booking"
               state={{ packageName: blueprint.title }}
-              className="group inline-flex items-center text-[10px] font-bold tracking-[0.3em] text-[#D4A574] uppercase border-b border-[#D4A574]/10 pb-1.5 hover:border-[#D4A574]/50 transition-all duration-500"
+              className="group inline-flex items-center flex-wrap gap-y-1 text-[10px] font-bold tracking-[0.15em] sm:tracking-[0.25em] text-[#D4A574] uppercase border-b border-[#D4A574]/10 pb-1.5 hover:border-[#D4A574]/50 transition-all duration-500"
             >
-              Design your version of {blueprint.title}
-              <ArrowRight className="ml-3 h-3.5 w-3.5 transition-transform group-hover:translate-x-1.5" />
+              <span>Design your version of {blueprint.title}</span>
+              <ArrowRight className="ml-2.5 h-3.5 w-3.5 transition-transform group-hover:translate-x-1.5 shrink-0" />
             </Link>
           </div>
         </div>
@@ -892,15 +903,15 @@ const TravelWithUs = () => {
   return (
     <div className="min-h-screen bg-[#021732] text-white selection:bg-[#D4A574]/30 selection:text-white pb-24">
       {/* Intro Section */}
-      <section className="relative z-20 pb-10 pt-24 md:pt-28">
-        <div className="container mx-auto px-6 md:px-10 lg:px-16 max-w-4xl">
+      <section className="relative z-20 pb-8 pt-8 md:pt-14">
+        <div className="container mx-auto px-4 sm:px-6 md:px-10 lg:px-16 max-w-4xl">
           <Motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center text-center space-y-6"
+              className="flex flex-col items-center text-center space-y-4 sm:space-y-6"
           >
-              <h1 className="text-4xl md:text-5xl font-light text-white leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-5xl font-light text-white leading-tight">
                    <span className="text-white">Extended Flexible Tours</span>
               </h1>
               <p className="text-sm md:text-[15px] text-white/50 leading-[1.8] font-light max-w-2xl mx-auto mt-2">

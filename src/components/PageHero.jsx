@@ -11,12 +11,12 @@ const fadeUp = {
 
 const PageHero = ({ title, subtitle, description, children }) => {
   return (
-    <section className="relative pt-28 pb-10 border-b border-white/[0.05] overflow-hidden">
+    <section className="relative pt-8 md:pt-14 pb-8 md:pb-12 border-b border-white/[0.05] overflow-hidden">
       {/* Background Gradient & Glow */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0c2d4a] to-transparent pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[180px] bg-[#D4A574]/5 blur-[100px] rounded-full pointer-events-none" />
       
-      <div className="container mx-auto px-6 lg:px-16 max-w-5xl relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-5xl relative z-10">
         <Motion.div
           initial="hidden"
           animate="visible"
@@ -37,7 +37,7 @@ const PageHero = ({ title, subtitle, description, children }) => {
             <Motion.h1 
               variants={fadeUp} 
               custom={1}
-              className="font-display text-[clamp(2.2rem,4.5vw,3rem)] font-light text-white leading-tight mb-6"
+              className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white leading-tight mb-4 md:mb-6"
             >
               {title}
             </Motion.h1>

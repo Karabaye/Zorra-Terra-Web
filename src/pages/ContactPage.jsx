@@ -80,8 +80,13 @@ export default function ContactPage() {
 
     return (
         <div className="min-h-screen bg-[#021732] text-white selection:bg-[#D4A574]/30 selection:text-white overflow-x-hidden">
+            <PageHero
+                subtitle="Direct Line to Kigali"
+                title="Contact Zoravia"
+                description="Reach out to our on-ground team in Rwanda to start crafting your bespoke safari, primate trek, or personalized journey."
+            />
             
-            <section className="pb-12 px-4 sm:px-6 lg:px-8">
+            <section className="py-10 md:py-16 px-4 sm:px-6 lg:px-8">
                 <div className="container mx-auto max-w-6xl">
 
                     <Motion.div
@@ -92,7 +97,7 @@ export default function ContactPage() {
                     >
 
                         {/* Left Column: Pristine Image */}
-                        <div className="relative group overflow-hidden h-full min-h-[300px] md:min-h-[400px]">
+                        <div className="relative group overflow-hidden h-56 sm:h-72 lg:h-full min-h-[220px]">
                             <Motion.img
                                 initial={{ scale: 1.1 }}
                                 animate={{ scale: 1 }}
@@ -105,17 +110,17 @@ export default function ContactPage() {
                         </div>
 
                         {/* Right Column: Refined Form Column */}
-                        <div className="p-6 md:p-10 relative bg-[#021732]/50 backdrop-blur-3xl">
+                        <div className="p-5 sm:p-8 md:p-10 relative bg-[#021732]/50 backdrop-blur-3xl">
                             <div className="absolute top-0 right-0 w-48 h-48 bg-[#D4A574]/5 blur-[80px] pointer-events-none" />
 
-                            <div className="space-y-8 relative z-10">
+                            <div className="space-y-6 sm:space-y-8 relative z-10">
                                 {/* Compact Header for the form side */}
-                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/5">
+                                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/5">
                                     <div className="space-y-1">
-                                        <h1 className="text-4xl md:text-5xl font-light text-white leading-tight">
+                                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white leading-tight">
                                             Direct <span className="text-white">Details</span>
-                                        </h1>
-                                        <p className="text-[9px] font-bold uppercase tracking-widest text-white/20">Connect with Zoravia</p>
+                                        </h2>
+                                        <p className="text-[9px] font-bold uppercase tracking-widest text-white/40">Connect with Zoravia</p>
                                     </div>
                                     <div className="flex gap-3">
                                         {[
@@ -163,7 +168,7 @@ export default function ContactPage() {
                                             required
                                             maxLength={100}
                                             aria-required="true"
-                                            className="w-full bg-[#021732] border border-white/10 rounded-xl px-5 py-3 text-sm text-white placeholder:text-white/10 focus:border-[#D4A574] transition-all outline-none"
+                                            className="w-full bg-[#021732] border border-white/10 rounded-xl px-5 py-3 text-base md:text-sm min-h-[44px] text-white placeholder:text-white/20 focus:border-[#D4A574] transition-all outline-none"
                                             placeholder="Identity"
                                         />
                                     </div>
@@ -180,7 +185,7 @@ export default function ContactPage() {
                                                 required
                                                 maxLength={120}
                                                 aria-required="true"
-                                                className="w-full bg-[#021732] border border-white/10 rounded-xl px-5 py-3 text-sm text-white placeholder:text-white/10 focus:border-[#D4A574] transition-all outline-none"
+                                                className="w-full bg-[#021732] border border-white/10 rounded-xl px-5 py-3 text-base md:text-sm min-h-[44px] text-white placeholder:text-white/20 focus:border-[#D4A574] transition-all outline-none"
                                                 placeholder="Connection"
                                             />
                                         </div>
@@ -193,7 +198,7 @@ export default function ContactPage() {
                                                 value={formData.phone}
                                                 onChange={handleChange}
                                                 maxLength={30}
-                                                className="w-full bg-[#021732] border border-white/10 rounded-xl px-5 py-3 text-sm text-white placeholder:text-white/10 focus:border-[#D4A574] transition-all outline-none"
+                                                className="w-full bg-[#021732] border border-white/10 rounded-xl px-5 py-3 text-base md:text-sm min-h-[44px] text-white placeholder:text-white/20 focus:border-[#D4A574] transition-all outline-none"
                                                 placeholder="Reach"
                                             />
                                         </div>
@@ -210,7 +215,7 @@ export default function ContactPage() {
                                             maxLength={3000}
                                             aria-required="true"
                                             rows={3}
-                                            className="w-full bg-[#021732] border border-white/10 rounded-[1.5rem] px-5 py-3 text-sm text-white placeholder:text-white/10 focus:border-[#D4A574] transition-all outline-none resize-none"
+                                            className="w-full bg-[#021732] border border-white/10 rounded-[1.25rem] px-5 py-3 text-base md:text-sm text-white placeholder:text-white/20 focus:border-[#D4A574] transition-all outline-none resize-none"
                                             placeholder="Share your travel intentions..."
                                         />
                                     </div>
@@ -219,14 +224,14 @@ export default function ContactPage() {
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
-                                            className={`group relative flex items-center gap-6 px-10 py-4 rounded-full bg-[#D4A574] text-[#021732] text-[10px] font-bold tracking-[0.3em] uppercase overflow-hidden shadow-xl transition-all duration-500 hover:scale-105 active:scale-95 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                            className={`group relative flex items-center justify-center gap-4 sm:gap-6 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-[#D4A574] text-[#021732] text-[10px] font-bold tracking-[0.25em] uppercase overflow-hidden shadow-xl transition-all duration-500 hover:scale-105 active:scale-95 w-full sm:w-auto ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                                         >
                                             <span className="relative z-10 flex items-center gap-3">
                                                 {isSubmitting ? 'Verifying...' : 'Send Message'}
                                                 <Send size={14} className={`${isSubmitting ? 'animate-pulse' : 'group-hover:translate-x-1.5'} transition-transform duration-300`} />
                                             </span>
                                         </button>
-                                        <p className="mt-4 text-[9px] text-white/20 italic tracking-widest uppercase">Typical response time: Under 2 Hours</p>
+                                        <p className="mt-4 text-[9px] text-white/30 italic tracking-widest uppercase text-center sm:text-left">Typical response time: Under 2 Hours</p>
                                     </div>
                                 </form>
                             </div>

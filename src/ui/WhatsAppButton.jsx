@@ -11,7 +11,7 @@ const WhatsAppButton = () => {
         return () => window.removeEventListener("ztj-consent-updated", handler);
     }, []);
 
-    const bottomClass = hasConsent ? "bottom-6" : "bottom-[260px] md:bottom-6";
+    const bottomClass = hasConsent ? "bottom-4 sm:bottom-6" : "bottom-[210px] sm:bottom-[170px] md:bottom-6";
 
     return (
         <a
@@ -23,9 +23,9 @@ const WhatsAppButton = () => {
             aria-label="Chat on WhatsApp"
         >
             <div className="relative">
-                <div className="absolute -right-1 -top-1 h-16 w-16 animate-ping rounded-full bg-[#25D366] opacity-30"></div>
-                <div className="pointer-events-none absolute right-0 bottom-full mb-4 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-2">
-                    <div className="rounded-xl bg-[#25D366] border border-white/20 px-4 py-2 text-sm font-bold whitespace-nowrap text-white flex items-center gap-2">
+                <div className="absolute -right-0.5 -top-0.5 h-13 w-13 sm:h-15 sm:w-15 animate-ping rounded-full bg-[#25D366] opacity-25 pointer-events-none"></div>
+                <div className="pointer-events-none absolute right-0 bottom-full mb-3 opacity-0 transition-all duration-300 hidden sm:block group-hover:opacity-100 group-hover:-translate-y-1">
+                    <div className="rounded-xl bg-[#25D366] border border-white/20 px-3.5 py-1.5 text-xs font-bold whitespace-nowrap text-white flex items-center gap-2 shadow-lg">
                         <span className="relative flex h-2 w-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
@@ -34,8 +34,8 @@ const WhatsAppButton = () => {
                         <div className="absolute top-full right-4 -mt-1 border-[6px] border-transparent border-t-[#25D366]"></div>
                     </div>
                 </div>
-                <div className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] border border-white/20 transition-all duration-500 hover:scale-110 hover:rotate-[360deg]">
-                    <FaWhatsapp className="h-8 w-8 text-white" />
+                <div className="relative flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-[#25D366] border border-white/20 shadow-xl transition-all duration-500 hover:scale-110">
+                    <FaWhatsapp className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
                 </div>
             </div>
         </a>

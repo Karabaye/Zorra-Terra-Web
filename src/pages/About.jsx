@@ -45,7 +45,7 @@ const SectionHeader = ({ label, heading, isH1 = false }) => {
       <HeadingTag
         variants={fadeUp}
         custom={1}
-        className="font-display text-[clamp(2.8rem,4.5vw,4.5rem)] font-light text-white leading-tight"
+        className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white leading-tight"
       >
         {heading}
       </HeadingTag>
@@ -64,16 +64,16 @@ export default function About() {
 
 
       {/* 1. OUR STORY */}
-      <section className="py-24 border-b border-white/[0.05]">
+      <section className="py-12 md:py-20 lg:py-24 border-b border-white/[0.05]">
         <SectionContainer>
           {/* Asymmetric grid: left column is slightly narrower to let content breathe */}
-          <div className="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-16 lg:gap-24 items-start">
+          <div className="grid md:grid-cols-[2fr_3fr] gap-8 md:gap-16 lg:gap-24 items-start">
 
             <SectionHeader label="Our Story" heading="Our Story" isH1={true} />
 
             <Motion.div
               initial="hidden" whileInView="visible" viewport={{ once: true }}
-              className="space-y-4 text-[15.5px] text-white/50 font-light leading-[1.9] md:pt-1"
+              className="space-y-4 text-[15px] sm:text-[15.5px] text-white/50 font-light leading-[1.8] sm:leading-[1.9] md:pt-1"
             >
               <Motion.p variants={fadeUp} custom={0}>
                 There's something special about arriving in Rwanda for the first time. The air feels different. The landscapes breathe. Everything moves at a calm, intentional rhythm.
@@ -93,15 +93,15 @@ export default function About() {
       </section>
 
       {/* 2. OUR PHILOSOPHY */}
-      <section className="py-24 border-b border-white/[0.05]">
+      <section className="py-12 md:py-20 lg:py-24 border-b border-white/[0.05]">
         <SectionContainer>
-          <div className="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-16 lg:gap-24 items-start">
+          <div className="grid md:grid-cols-[2fr_3fr] gap-8 md:gap-16 lg:gap-24 items-start">
 
             <SectionHeader label="Our Philosophy" heading="Our Philosophy" />
 
             <Motion.div
               initial="hidden" whileInView="visible" viewport={{ once: true }}
-              className="space-y-5 text-[15.5px] text-white/50 font-light leading-[1.9]"
+              className="space-y-5 text-[15px] sm:text-[15.5px] text-white/50 font-light leading-[1.8] sm:leading-[1.9]"
             >
               <Motion.p variants={fadeUp} custom={0}>
                 Because no two travelers are the same, every experience we create starts with listening. We take time to understand what excites you, how you like to travel, and what kind of moments you want to remember.
@@ -115,7 +115,7 @@ export default function About() {
                 ].map((line, i) => (
                   <Motion.div key={i} variants={fadeUp} custom={1 + i} className="flex items-start gap-4 pl-4 border-l border-[#D4A574]/25">
                     <span className="text-[#D4A574] text-[9px] mt-2 shrink-0">✦</span>
-                    <p className="text-[14.5px] leading-relaxed">{line}</p>
+                    <p className="text-[14px] sm:text-[14.5px] leading-relaxed">{line}</p>
                   </Motion.div>
                 ))}
               </div>
@@ -129,15 +129,15 @@ export default function About() {
       </section>
 
       {/* 3. BEYOND TRAVELING */}
-      <section className="py-24 border-b border-white/[0.05]">
+      <section className="py-12 md:py-20 lg:py-24 border-b border-white/[0.05]">
         <SectionContainer>
-          <div className="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-16 lg:gap-24 items-start">
+          <div className="grid md:grid-cols-[2fr_3fr] gap-8 md:gap-16 lg:gap-24 items-start">
 
             <SectionHeader label="Beyond Traveling" heading="Beyond Traveling" />
 
             <Motion.div
               initial="hidden" whileInView="visible" viewport={{ once: true }}
-              className="space-y-5 text-[15.5px] text-white/50 font-light leading-[1.9]"
+              className="space-y-5 text-[15px] sm:text-[15.5px] text-white/50 font-light leading-[1.8] sm:leading-[1.9]"
             >
               <Motion.p variants={fadeUp} custom={0}>
                 Rwanda is known for its parks, wildlife, and landscapes. But we guide you into the moments that go deeper — so your journey becomes a story you carry with you.
@@ -150,7 +150,7 @@ export default function About() {
                 ].map((item, i) => (
                   <Motion.div key={i} variants={fadeUp} custom={1 + i} className="flex items-center gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5">
                     <div className="text-[#D4A574] shrink-0">{item.icon}</div>
-                    <p className="text-[14px]">{item.text}</p>
+                    <p className="text-[13.5px] sm:text-[14px]">{item.text}</p>
                   </Motion.div>
                 ))}
               </div>
@@ -160,9 +160,9 @@ export default function About() {
       </section>
 
       {/* 4. WITH YOU */}
-      <section className="py-24 border-b border-white/[0.05]">
+      <section className="py-12 md:py-20 lg:py-24 border-b border-white/[0.05]">
         <SectionContainer>
-          <div className="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-16 lg:gap-24 items-start">
+          <div className="grid md:grid-cols-[2fr_3fr] gap-8 md:gap-16 lg:gap-24 items-start">
 
             <SectionHeader label="The Zoravia Promise" heading={<>With You, Every Step<br className="hidden lg:block" /> of the Way</>} />
 
@@ -170,7 +170,7 @@ export default function About() {
               initial="hidden" whileInView="visible" viewport={{ once: true }}
               className="space-y-8"
             >
-              <Motion.p variants={fadeUp} custom={0} className="text-[15.5px] text-white/50 font-light leading-[1.9]">
+              <Motion.p variants={fadeUp} custom={0} className="text-[15px] sm:text-[15.5px] text-white/50 font-light leading-[1.8] sm:leading-[1.9]">
                 We understand that travel is deeply personal. We approach every journey with professionalism, care, and discretion — so you can focus on enjoying every moment.
               </Motion.p>
 
@@ -191,7 +191,7 @@ export default function About() {
               <Motion.div variants={fadeUp} custom={5} className="pt-4">
                 <Link
                   to="/booking"
-                  className="group relative inline-flex items-center gap-6 px-10 py-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white hover:text-[#021732] text-[10px] font-bold tracking-[0.3em] uppercase overflow-hidden transition-all duration-500 hover:border-[#D4A574] hover:scale-105 active:scale-95"
+                  className="group relative inline-flex items-center justify-center gap-4 sm:gap-6 px-7 sm:px-10 py-3.5 sm:py-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white hover:text-[#021732] text-[10px] font-bold tracking-[0.2em] sm:tracking-[0.3em] uppercase overflow-hidden transition-all duration-500 hover:border-[#D4A574] hover:scale-105 active:scale-95 w-full sm:w-auto"
                 >
                   <span className="relative z-10 flex items-center gap-3">
                     Start Your Journey
@@ -206,7 +206,7 @@ export default function About() {
       </section>
 
       {/* FINAL: FOUNDER MESSAGE */}
-      <section className="py-32">
+      <section className="py-14 md:py-24 lg:py-32">
         <SectionContainer>
           <div ref={founderRef} className="grid lg:grid-cols-[1fr_1.5fr] gap-10 lg:gap-20 items-center">
 

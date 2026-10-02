@@ -136,7 +136,7 @@ const Footer = () => {
                     className="text-gray-400 hover:text-[#D4A574] transition-colors duration-200 flex items-start gap-2 text-sm"
                   >
                     <Mail size={16} className="mt-0.5 flex-shrink-0" />
-                    <span>zoraviaterrajourneys@gmail.com</span>
+                    <span className="break-all sm:break-normal">zoraviaterrajourneys@gmail.com</span>
                   </a>
                 </li>
                 <li>

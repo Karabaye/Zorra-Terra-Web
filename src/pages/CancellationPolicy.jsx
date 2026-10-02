@@ -12,9 +12,9 @@ export default function CancellationPolicy() {
         description="Understanding our approach to cancellations, itinerary modifications, and government-regulated park permits for Rwanda travel."
       />
 
-      <div className="container mx-auto px-6 md:px-10 lg:px-16 max-w-5xl py-12 md:py-16 space-y-12">
+      <div className="container mx-auto px-4 sm:px-6 md:px-10 lg:px-16 max-w-5xl py-8 sm:py-12 md:py-16 space-y-8 sm:space-y-12">
         {/* Overview Card */}
-        <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
           <div className="flex items-center gap-3 text-[#D4A574]">
             <RefreshCw size={22} />
             <h2 className="text-xl md:text-2xl font-light text-white tracking-wide">
@@ -31,7 +31,7 @@ export default function CancellationPolicy() {
         </div>
 
         {/* Section 1: Government & Park Permits */}
-        <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-5">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-5">
           <div className="flex items-center gap-3 text-[#D4A574]">
             <ShieldCheck size={20} />
             <h2 className="text-lg md:text-xl font-light text-white tracking-wide">
@@ -50,7 +50,7 @@ export default function CancellationPolicy() {
         </div>
 
         
-        <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-5">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-5">
           <div className="flex items-center gap-3 text-[#D4A574]">
             <Calendar size={20} />
             <h2 className="text-lg md:text-xl font-light text-white tracking-wide">
@@ -71,7 +71,7 @@ export default function CancellationPolicy() {
         </div>
 
         {/* Section 3: Proposal-Specific Terms */}
-        <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
           <div className="flex items-center gap-3 text-[#D4A574]">
             <CheckSquare size={20} />
             <h2 className="text-lg md:text-xl font-light text-white tracking-wide">
@@ -86,7 +86,7 @@ export default function CancellationPolicy() {
         </div>
 
         {/* Section 4: Travel Insurance Recommendation */}
-        <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
           <h2 className="text-lg md:text-xl font-light text-white tracking-wide">
             4. Recommended Travel Insurance
           </h2>
@@ -98,7 +98,7 @@ export default function CancellationPolicy() {
         </div>
 
         {/* Section 5: Notice of Cancellation & Contact */}
-        <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-6">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 space-y-6">
           <h2 className="text-lg md:text-xl font-light text-white tracking-wide">
             5. Submitting a Cancellation or Modification Request
           </h2>

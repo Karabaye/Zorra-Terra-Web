@@ -15,20 +15,33 @@
   --navy-light: #031d3d;
 }
 
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   font-family: var(--body-font);
   background: var(--midnight-blue);
   color: #ffffff;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Ensure interactive elements have correct cursor/caret */
+/* Ensure interactive elements have correct cursor/caret and prevent iOS auto-zoom */
 input,
 textarea,
 select {
   caret-color: auto;
   cursor: text;
+  font-size: 16px; /* Prevents auto-zoom on mobile iOS Safari */
 }
 
 select {
@@ -48,6 +61,7 @@ h4,
 h5,
 h6 {
   font-family: var(--body-font);
+  word-break: break-word;
 }
 
 .font-script {
@@ -58,11 +72,27 @@ h6 {
   font-family: 'Cormorant Garamond', 'Cormorant Garant', Georgia, serif;
 }
 
-/* Ensure smooth transitions */
-* {
-  transition-property: background-color, border-color, color, fill, stroke, transform, box-shadow;
+/* Scoped smooth transitions for interactive elements without layout thrashing */
+button,
+a,
+input,
+select,
+textarea {
+  transition-property: background-color, border-color, color, fill, stroke, transform, box-shadow, opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
+  transition-duration: 250ms;
+}
+
+/* Support WCAG 2.2 reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Custom link styles */

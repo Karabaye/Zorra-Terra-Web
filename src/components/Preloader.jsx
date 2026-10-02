@@ -158,16 +158,16 @@ const Preloader = ({ onComplete }) => {
                             </div>
                         </Motion.div>
 
-                        <div className="text-center px-10">
+                        <div className="text-center px-4 sm:px-10 max-w-full">
                             {/* ARTISTIC WORD REVEAL */}
-                            <div className="flex flex-wrap justify-center gap-6 mb-12 max-w-5xl relative overflow-hidden py-2">
+                            <div className="flex flex-wrap justify-center gap-2.5 sm:gap-6 mb-8 sm:mb-12 max-w-5xl relative overflow-hidden py-2">
                                 {welcomeWords.map((word, i) => (
                                     <Motion.span
                                         key={i}
                                         initial={{ opacity: 0, y: 15 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.8, delay: 0.5 + i * 0.08 }}
-                                        className="text-white text-[14px] md:text-[20px] font-bold tracking-[1.2em] md:tracking-[1.8em] uppercase leading-none"
+                                        className="text-white text-[11px] sm:text-[15px] md:text-[20px] font-bold tracking-[0.2em] sm:tracking-[0.6em] md:tracking-[1.2em] uppercase leading-none"
                                     >
                                         {word}
                                     </Motion.span>
@@ -184,19 +184,19 @@ const Preloader = ({ onComplete }) => {
                                 initial={{ scaleX: 0 }}
                                 animate={{ scaleX: 1 }}
                                 transition={{ duration: 1.2, delay: 1.1 }}
-                                className="h-[1px] w-64 bg-gradient-to-r from-transparent via-[#D4A574] to-transparent mx-auto mb-12"
+                                className="h-[1px] w-40 sm:w-64 bg-gradient-to-r from-transparent via-[#D4A574] to-transparent mx-auto mb-8 sm:mb-12"
                             />
 
                             <Motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 1, delay: 1.4 }}
-                                className="space-y-4"
+                                className="space-y-3"
                             >
-                                <span className="block text-[#D4A574] text-[22px] md:text-[28px] font-black tracking-[0.8em] md:tracking-[1.2em] uppercase leading-none">
+                                <span className="block text-[#D4A574] text-[15px] sm:text-[20px] md:text-[28px] font-black tracking-[0.2em] sm:tracking-[0.5em] md:tracking-[1em] uppercase leading-snug">
                                     Zoravia Terra Journeys Ltd
                                 </span>
-                                <span className="block text-white/20 text-[12px] md:text-[14px] tracking-[0.5em] uppercase font-bold mt-2">
+                                <span className="block text-white/40 text-[10px] sm:text-[12px] md:text-[14px] tracking-[0.2em] sm:tracking-[0.4em] uppercase font-bold mt-2">
                                     Your Gateway to the Thousand Hills
                                 </span>
                             </Motion.div>

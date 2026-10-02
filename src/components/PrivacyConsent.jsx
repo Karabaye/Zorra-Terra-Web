@@ -83,14 +83,14 @@ export default function PrivacyConsent() {
             role="region"
             aria-label="Privacy and Cookie Consent"
           >
-            <div className="bg-[#021732]/98 backdrop-blur-md border-t md:border border-[#D4A574]/35 p-4 sm:p-5 md:py-3.5 md:px-6 lg:py-4 lg:px-7 shadow-[0_15px_40px_rgba(0,0,0,0.85)] rounded-none md:rounded-[2px]">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6 lg:gap-8">
+            <div className="bg-[#021732]/98 backdrop-blur-md border-t md:border border-[#D4A574]/35 p-3.5 sm:p-5 md:py-3.5 md:px-6 lg:py-4 lg:px-7 shadow-[0_15px_40px_rgba(0,0,0,0.85)] rounded-t-[3px] md:rounded-[2px] max-h-[85vh] overflow-y-auto">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-3.5 sm:gap-4 md:gap-6 lg:gap-8">
                 {/* LEFT: ICON + CLEAR HUMAN COPY */}
                 <div className="flex-1 min-w-0 flex items-start gap-3 md:gap-4">
                   <div className="pt-0.5 flex-shrink-0 text-[#D4A574]">
                     {/* Compact privacy cookie icon */}
                     <svg
-                      className="w-5 h-5"
+                      className="w-4 h-4 sm:w-5 sm:h-5"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -109,10 +109,10 @@ export default function PrivacyConsent() {
                   </div>
 
                   <div className="space-y-1">
-                    <h3 className="text-sm md:text-[15px] font-semibold text-white tracking-wide">
+                    <h3 className="text-xs sm:text-sm md:text-[15px] font-semibold text-white tracking-wide">
                       We use cookies to improve your experience
                     </h3>
-                    <p className="text-xs text-white/75 font-light leading-relaxed">
+                    <p className="text-[11px] sm:text-xs text-white/75 font-light leading-relaxed">
                       We use necessary cookies to keep our website secure and working properly. With your permission, we also use analytics cookies to understand how visitors use our website and improve our travel experience. You can accept all cookies or continue with only necessary cookies.{" "}
                       <Link
                         to="/privacy-policy"
@@ -129,7 +129,7 @@ export default function PrivacyConsent() {
                   <button
                     type="button"
                     onClick={handleAcceptAll}
-                    className="w-full py-2 px-3.5 rounded-none md:rounded-[2px] bg-[#D4A574] text-[#021732] text-xs font-bold tracking-wider uppercase hover:bg-[#c99560] transition-colors duration-200 text-center focus:outline-none focus:ring-1 focus:ring-[#D4A574]"
+                    className="w-full min-h-[40px] py-2 px-3.5 rounded-[2px] bg-[#D4A574] text-[#021732] text-xs font-bold tracking-wider uppercase hover:bg-[#c99560] transition-colors duration-200 text-center focus:outline-none focus:ring-1 focus:ring-[#D4A574]"
                   >
                     Allow All
                   </button>
@@ -137,7 +137,7 @@ export default function PrivacyConsent() {
                   <button
                     type="button"
                     onClick={handleRejectOptional}
-                    className="w-full py-2 px-3.5 rounded-none md:rounded-[2px] bg-transparent border border-white/35 text-white text-xs font-semibold tracking-wider uppercase hover:bg-white/10 hover:border-white transition-colors duration-200 text-center focus:outline-none focus:ring-1 focus:ring-[#D4A574]"
+                    className="w-full min-h-[40px] py-2 px-3.5 rounded-[2px] bg-transparent border border-white/35 text-white text-xs font-semibold tracking-wider uppercase hover:bg-white/10 hover:border-white transition-colors duration-200 text-center focus:outline-none focus:ring-1 focus:ring-[#D4A574]"
                   >
                     Necessary Only
                   </button>
@@ -145,7 +145,7 @@ export default function PrivacyConsent() {
                   <button
                     type="button"
                     onClick={() => setShowSettings(true)}
-                    className="w-full py-2 px-3.5 rounded-none md:rounded-[2px] bg-transparent border border-white/20 text-white/80 text-xs font-medium tracking-wider uppercase hover:bg-white/10 hover:text-white transition-colors duration-200 text-center focus:outline-none focus:ring-1 focus:ring-[#D4A574]"
+                    className="w-full min-h-[40px] py-2 px-3.5 rounded-[2px] bg-transparent border border-white/20 text-white/80 text-xs font-medium tracking-wider uppercase hover:bg-white/10 hover:text-white transition-colors duration-200 text-center focus:outline-none focus:ring-1 focus:ring-[#D4A574]"
                     aria-haspopup="dialog"
                   >
                     Adjust Preferences

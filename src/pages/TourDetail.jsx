@@ -41,10 +41,10 @@ export default function TourDetail({ tourSlug }) {
   return (
     <div className="min-h-screen bg-[#021732] text-white selection:bg-[#D4A574]/30 selection:text-white pb-24">
       {/* Breadcrumb & Hero Header */}
-      <section className="relative z-20 pt-28 md:pt-32 pb-8 border-b border-white/[0.06]">
-        <div className="container mx-auto px-6 md:px-10 lg:px-16 max-w-7xl">
+      <section className="relative z-20 pt-6 md:pt-12 pb-6 md:pb-8 border-b border-white/[0.06]">
+        <div className="container mx-auto px-4 sm:px-6 md:px-10 lg:px-16 max-w-7xl">
           {/* Breadcrumb */}
-          <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs text-white/40 font-light flex-wrap">
+          <nav aria-label="Breadcrumb" className="mb-4 sm:mb-6 flex items-center gap-2 text-xs text-white/40 font-light flex-wrap">
             <Link to="/" className="hover:text-white transition-colors">Home</Link>
             <span>/</span>
             <Link to="/short-escapes" className="hover:text-white transition-colors">Short Escape Tours</Link>
@@ -63,12 +63,12 @@ export default function TourDetail({ tourSlug }) {
             </div>
 
             {/* Semantic H1 */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight">
               {tour.title}
             </h1>
 
             {tour.tagline && (
-              <p className="text-base sm:text-lg text-white/60 font-light max-w-3xl leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg text-white/60 font-light max-w-3xl leading-relaxed">
                 {tour.tagline}
               </p>
             )}
@@ -88,10 +88,10 @@ export default function TourDetail({ tourSlug }) {
       </section>
 
       {/* Main Tour Content */}
-      <section className="container mx-auto px-6 md:px-10 lg:px-16 max-w-7xl py-12 lg:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <section className="container mx-auto px-4 sm:px-6 md:px-10 lg:px-16 max-w-7xl py-8 sm:py-12 lg:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           {/* Left Column: Media + Overview */}
-          <div className="lg:col-span-6 space-y-8">
+          <div className="lg:col-span-6 space-y-6 sm:space-y-8">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-white/[0.02]">
               <img
                 src={tour.image}
@@ -100,8 +100,8 @@ export default function TourDetail({ tourSlug }) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#021732] via-transparent to-transparent opacity-60" />
 
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="p-4 md:p-6 rounded-xl bg-[#021732]/85 backdrop-blur-2xl border border-white/10">
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
+                <div className="p-3.5 sm:p-5 md:p-6 rounded-xl bg-[#021732]/85 backdrop-blur-2xl border border-white/10">
                   <p className="text-[9px] font-medium uppercase tracking-[0.15em] text-[#D4A574] mb-1">
                     Investment
                   </p>
@@ -111,7 +111,7 @@ export default function TourDetail({ tourSlug }) {
             </div>
 
             {/* Tour Story / Description */}
-            <div className="space-y-4 rounded-xl bg-white/[0.02] border border-white/5 p-6 md:p-8">
+            <div className="space-y-4 rounded-xl bg-white/[0.02] border border-white/5 p-5 sm:p-6 md:p-8">
               <h2 className="text-xl md:text-2xl font-light text-white tracking-wide">
                 Experience Overview
               </h2>
@@ -123,16 +123,16 @@ export default function TourDetail({ tourSlug }) {
           </div>
 
           {/* Right Column: Key Facts, Itinerary, Inclusions */}
-          <div className="lg:col-span-6 space-y-10">
+          <div className="lg:col-span-6 space-y-8 sm:space-y-10">
             {/* Quick Metrics */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-5 md:p-6 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
+              <div className="p-3.5 sm:p-5 md:p-6 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
                 <p className="text-[9px] font-medium text-white/40 uppercase tracking-[0.1em]">Duration</p>
-                <p className="text-lg md:text-xl font-light text-white">{tour.duration}</p>
+                <p className="text-base sm:text-lg md:text-xl font-light text-white">{tour.duration}</p>
               </div>
-              <div className="p-5 md:p-6 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+              <div className="p-3.5 sm:p-5 md:p-6 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
                 <p className="text-[9px] font-medium text-white/40 uppercase tracking-[0.1em]">Style</p>
-                <p className="text-lg md:text-xl font-light text-white">Private & Curated</p>
+                <p className="text-base sm:text-lg md:text-xl font-light text-white">Private & Curated</p>
               </div>
             </div>
 
@@ -282,14 +282,14 @@ export default function TourDetail({ tourSlug }) {
               <Link
                 to="/booking"
                 state={{ packageName: tour.title }}
-                className="flex-1 py-4 rounded-xl bg-[#D4A574] text-[#021732] text-xs font-bold uppercase tracking-[0.2em] text-center hover:bg-[#D4A574]/90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#D4A574]/15"
+                className="flex-1 min-h-[44px] py-3.5 sm:py-4 px-4 rounded-xl bg-[#D4A574] text-[#021732] text-xs font-bold uppercase tracking-[0.12em] sm:tracking-[0.2em] text-center hover:bg-[#D4A574]/90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#D4A574]/15"
               >
                 <span>Request This Journey</span>
                 <ArrowRight size={14} />
               </Link>
               <Link
                 to="/short-escapes"
-                className="py-4 px-6 rounded-xl border border-white/15 text-xs font-semibold uppercase tracking-[0.15em] hover:bg-white/5 transition-all text-white text-center flex items-center justify-center gap-2"
+                className="min-h-[44px] py-3.5 sm:py-4 px-5 sm:px-6 rounded-xl border border-white/15 text-xs font-semibold uppercase tracking-[0.1em] sm:tracking-[0.15em] hover:bg-white/5 transition-all text-white text-center flex items-center justify-center gap-2"
               >
                 <ArrowLeft size={14} />
                 <span>All Escapes</span>
